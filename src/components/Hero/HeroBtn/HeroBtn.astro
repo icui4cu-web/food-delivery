@@ -1,0 +1,19 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./hero-btn.scss";
+
+const { slides } = Astro.props;
+---
+
+<a
+	class="hero-btn"
+	href={slides[0].btn.href}
+	data-btns={JSON.stringify(slides.map(s => s.btn))}
+>
+	<span class="hero-btn__label-col">
+		<span class="hero-btn__label">{slides[0].btn.label}</span>
+	</span>
+	<div class="hero-btn__icon-wrapper">
+		<Icon id="arrow-right" />
+	</div>
+</a>

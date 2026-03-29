@@ -1,0 +1,60 @@
+.header {
+	--container-width: 1488px;
+	padding: 7px 10px 7px 16px;
+	background-color: rgba($color: #f5f1ec, $alpha: 0.72);
+	box-shadow: 1px 0px 18px rgba($color: #000000, $alpha: 0.17);
+	border-radius: 36px;
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 24px;
+	}
+
+	&__nav-btn {
+		flex-shrink: 0;
+		padding: 4px;
+		font-size: 32px;
+	}
+
+
+	@media (width<992px) {
+
+		&__nav,
+		&__search-btn,
+		&__profile-btn {
+			display: none;
+		}
+	}
+
+	@media (width>=992px) {
+		padding: 16px 36px 16px 46px;
+
+		&__inner {
+			display: grid;
+			grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) 1fr;
+			align-items: center;
+			column-gap: 12px;
+		}
+
+		&__logo {
+			width: max-content;
+		}
+
+		&__nav-btn {
+			display: none;
+		}
+
+		&__nav {
+			flex-grow: 1;
+		}
+
+		&__actions {
+			justify-self: end;
+			display: flex;
+			align-items: center;
+			column-gap: 21px;
+		}
+	}
+}

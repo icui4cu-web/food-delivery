@@ -1,0 +1,91 @@
+---
+import Header from "@components/Header/Header.astro";
+import HeroAccordion from "./HeroAccordion/HeroAccordion.astro";
+import HeroPagination from "./HeroPagination/HeroPagination.astro";
+import HeroBtn from "./HeroBtn/HeroBtn.astro";
+import HeroPreview from "./HeroPreview/HeroPreview.astro";
+
+import "./hero.scss";
+
+const slides = [
+	{
+		// preview: {
+		// 	src: "/media/hero-preview-family.webp",
+		// 	width: 860,
+		// 	height: 790
+		// },
+		preview: {
+			src: "/media/hero-preview-demo.webp",
+			width: 1920,
+			height: 1080
+		},
+		title: "Доставка Свіжих продуктів для всієї родини",
+		description: [
+			"Ми виробляємо понад 200 видів м’ясної, гастрономічної та кондитерської продукції:  cвіже м’ясо, ароматні ковбаси та делікатеси, смачні кондитерські вироби — усе для Ваших домашніх сніданків, сімейних обідів і святкових вечерь.",
+		],
+		btn: {
+			label: "Купити в роздріб",
+			href: "#link-1"
+		},
+	},
+	{
+		preview: {
+			src: "/media/hero-preview-business.webp",
+			width: 860,
+			height: 790
+		},
+		title: "Стабільні поставки для вашого бізнесу",
+		description: [
+			"Власне виробництво та понад 200 позицій продукції, які допомагають нашим партнерам збільшувати продажі.  Ми забезпечуємо якісний сервіс, конкурентні ціни, та продукцію з високою маржинальністю. Разом з нами Ваш бізнес зростає!",
+		],
+		btn: {
+			label: "Купити оптом",
+			href: "#link-2"
+		},
+	},
+	{
+		preview: {
+			src: "/media/hero-preview-horeca.webp",
+			width: 860,
+			height: 790
+		},
+		title: "Сертифіковане м’ясо для ресторанів та кафе",
+		description: [
+			"FoodDelivery — надійний постачальник свіжого м’яса та гастрономії для ресторанів. Забезпечуємо стабільну якість, контроль безпеки продукції та вигідні умови співпраці.",
+			"Щоб Ви могли створювати найкращі страви для своїх гостей!",
+		],
+		btn: {
+			label: "Замовити",
+			href: "#link-3"
+		},
+	},
+];
+---
+
+<div class="hero" data-active-slide="1">
+	<Header class="hero__header" />
+	<HeroPreview class="hero__preview" {slides} />
+	<div class="hero__inner container">
+		<div class="hero__content">
+			<HeroAccordion class="hero__accordion" />
+			<div class="hero__text">
+				{
+					slides.map(({ title, description }, index) => (
+						<div class:list={["hero__text-slide", { _active: !index }]}>
+							<h2 class="hero__title">{title}</h2>
+							<div class="hero__description">
+								{description.map((p) => (
+									<p>{p}</p>
+								))}
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+		<div class="hero__actions">
+			<HeroPagination class="hero__pagination" />
+			<HeroBtn {slides} />
+		</div>
+	</div>
+</div>

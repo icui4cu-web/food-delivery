@@ -1,0 +1,27 @@
+:root {
+	interpolate-size: allow-keywords;
+
+	--container-width: 1406px;
+	--container-gutters: 10px;
+	--page-font-family: "Roboto", sans-serif;
+	--page-font-size: 16px;
+	--page-font-weight: 400;
+	--page-line-height: 1.2;
+	--page-color: #000;
+	--page-background: #fff;
+
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	font-family: var(--page-font-family);
+	font-size: var(--page-font-size);
+	font-weight: var(--page-font-weight);
+	line-height: var(--page-line-height);
+	color: var(--page-color);
+	background-color: var(--page-background);
+	font-optical-sizing: auto;
+	font-variation-settings: "wdth" 100;
+}

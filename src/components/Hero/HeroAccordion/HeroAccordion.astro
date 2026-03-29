@@ -1,0 +1,41 @@
+---
+import "./hero-accordion.scss";
+
+const { class: className } = Astro.props;
+
+const slides = [
+	{
+		label: "СІМ’Я",
+		image: {
+			filename: "hero-accordion-family",
+			alt: "Свіжі продукти для сім'ї"
+		},
+	},
+	{
+		label: "БІЗНЕС",
+		image: {
+			filename: "hero-accordion-business",
+			alt: "Свіжі продукти для бізнесу"
+		},
+	},
+	{
+		label: "HoReCa",
+		image: {
+			filename: "hero-accordion-horeca"
+		},
+	},
+];
+---
+
+<div class:list={[className, "hero-accordion"]}>
+	{
+		slides.map(({ label, image }, index) => (
+			<details class="hero-accordion__slide" name="hero-accordion" open={!index}>
+				<summary class="hero-accordion__btn">
+					<span class="hero-accordion__btn-label">{label}</span>
+				</summary>
+				<img class="hero-accordion__img" src={`/media/${image.filename}.webp`} alt={image.alt} width="500" height="240" decoding="async" />
+			</details>
+		))
+	}
+</div>

@@ -1,0 +1,31 @@
+.hero-pagination {
+	$bullet-size: 8px;
+
+	display: flex;
+	column-gap: 18px;
+
+	&__bullet {
+		position: relative;
+		width: $bullet-size;
+		height: $bullet-size;
+		border-radius: $bullet-size * 0.5;
+		background-color: var(--bg, #000);
+		transition: width var(--hero-transition-duration);
+
+		&._active {
+			width: 45px;
+		}
+
+		@for $i from 1 through 3 {
+			&:nth-child(#{$i}) {
+				--bg: var(--hero-slide-color-#{$i});
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: -8px;
+		}
+	}
+}

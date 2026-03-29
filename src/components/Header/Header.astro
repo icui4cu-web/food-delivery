@@ -1,0 +1,36 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import Logo from "@components/Logo/Logo.astro";
+import Nav from "@components/Nav/Nav.astro";
+import Icon from "@components/Icon/Icon.astro";
+import "./header.scss";
+
+const { class: className } = Astro.props;
+---
+
+<header class:list={[className, "header container-lg"]}>
+	<div class="header__inner">
+		<button class="header__nav-btn" type="button" aria-label="Відкрити меню">
+			<Icon id="burger" />
+		</button>
+		<Logo class="header__logo" />
+		<Nav class="header__nav" />
+		<div class="header__actions">
+			<Btn
+				class="header__search-btn"
+				variant="outline"
+				iconStart="search"
+				aria-label="Пошук"
+				title="Пошук"
+			/>
+			<Btn
+				class="header__profile-btn"
+				variant="outline"
+				iconStart="profile"
+				aria-label="Профіль"
+				title="Профіль"
+			/>
+			<Btn variant="solid" iconStart="cart" aria-label="Кошик" title="Кошик" />
+		</div>
+	</div>
+</header>

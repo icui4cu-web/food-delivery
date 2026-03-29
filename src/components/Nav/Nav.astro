@@ -1,0 +1,28 @@
+---
+import "./nav.scss";
+
+const { class: className } = Astro.props;
+
+const nav = [
+	"Акції",
+	"Продукція",
+	"Про нас",
+	"Партнерам",
+	"Доставка",
+	"Контакти",
+];
+---
+
+<nav class:list={[className, "nav"]}>
+	<ul class="nav__list">
+		{
+			nav.map((text) => (
+				<li class="nav__item">
+					<a class="nav__link" href="#">
+						{text}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

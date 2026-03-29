@@ -1,0 +1,155 @@
+@use "sass:math";
+@use "/src/scss/fn";
+
+.hero {
+	$container-width: 1488px;
+	$background-color: #efebe3;
+	$max-content-width: 594px;
+
+	--hero-transition-duration: .5s;
+	--hero-slide-color-1: #ff7276;
+	--hero-slide-color-2: #62b5e5;
+	--hero-slide-color-3: #ffa300;
+	--container-width: #{$container-width};
+
+	position: relative;
+	isolation: isolate;
+	background: $background-color url('/assets/img/hero-bg.svg') left -37px bottom -50px / 78.2% no-repeat;
+	padding-bottom: 72px;
+	overflow: hidden;
+
+	&[data-active-slide="1"] {
+		--hero-theme: var(--hero-slide-color-1);
+	}
+
+	&[data-active-slide="2"] {
+		--hero-theme: var(--hero-slide-color-2);
+	}
+
+	&[data-active-slide="3"] {
+		--hero-theme: var(--hero-slide-color-3);
+	}
+
+	&__text {
+		display: grid;
+	}
+
+	&__text-slide {
+		grid-area: 1 / 1;
+		transition-property: visibility, opacity;
+		transition-duration: var(--hero-transition-duration);
+
+		&:not(._active) {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+
+	&__title {
+		font: 500 fn.rs(30px, 44px)/1.363636364 "Oswald", sans-serif;
+		letter-spacing: -0.025em;
+		text-transform: uppercase;
+		text-wrap: balance;
+	}
+
+	&__description {
+		margin-top: 32px;
+		font-size: fn.rs(15px, 18px);
+
+		p+p {
+			margin-top: 1em;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@media (width<992px) {
+		&__header {
+			position: absolute;
+			z-index: 1;
+			inset: 22px 16px auto;
+		}
+
+		&__preview {
+			margin-bottom: 14px;
+			min-height: 390px;
+			max-height: 600px;
+		}
+
+		&__accordion {
+			margin-bottom: 48px;
+		}
+
+		&__actions {
+			margin-top: 39px;
+		}
+	}
+
+
+	@media (width>=992px) {
+		padding-block: 28px 50px;
+		background: $background-color url('/assets/img/hero-bg.svg') right calc(50% + 638px) top 156px / 593px no-repeat;
+
+		&__preview {
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			right: fn.rs(-208px, 0px, 992px, 1200px);
+			width: 866px;
+			height: 100%;
+		}
+
+		&__inner {
+			min-height: 731px;
+			position: relative;
+			display: flex;
+			column-gap: 32px;
+		}
+
+		&__content {
+			max-width: $max-content-width;
+			flex-shrink: 0;
+			display: flex;
+			flex-direction: column;
+			padding-left: 46px;
+		}
+
+		&__text {
+			order: -1;
+			margin-block: auto;
+			align-items: center;
+			padding-block: 70px 40px;
+		}
+
+		&__accordion {
+			max-width: $max-content-width;
+			height: 225px;
+		}
+
+		&__actions {
+			margin-left: auto;
+			align-self: flex-end;
+			padding-right: 36px;
+			width: 710px;
+			align-items: flex-end;
+		}
+	}
+
+	@media (992px <=width < 1440px) {
+		&__text-slide {
+			border-radius: 16px;
+			background-color: rgba($color: $background-color, $alpha: 0.7);
+			outline: 16px solid rgba($color: $background-color, $alpha: 0.7);
+		}
+	}
+
+	@media (width >=1540px) {
+		&__preview {
+			width: calc(50% + 96px);
+		}
+	}
+}

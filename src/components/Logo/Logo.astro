@@ -1,0 +1,9 @@
+---
+import "./logo.scss";
+
+const { class: className } = Astro.props;
+---
+
+<h1 class:list={[className, "logo"]}>
+	Food <img class="logo__img" src="/assets/img/logo.svg" width="300" height="386" /> delivery
+</h1>

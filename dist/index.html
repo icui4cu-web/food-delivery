@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/index.css">
+</head>
+
+<body>
+
+    <div class="hero" data-active-slide="1">
+        <header class="hero__header header container-lg">
+            <div class="header__inner">
+                <button class="header__nav-btn" type="button" aria-label="Відкрити меню">
+                    <svg class="icon">
+                        <use href="/assets/img/icons.svg#burger"></use>
+                    </svg>
+                </button>
+                <h1 class="header__logo logo">
+                    Food
+                    <img class="logo__img" src="/assets/img/logo.svg" width="300" height="386"> delivery
+                </h1>
+                <nav class="header__nav nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Акції
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Продукція
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Про нас
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Партнерам
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Доставка
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="nav__link" href="#">
+                                Контакти
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <button title="Пошук" type="button" aria-label="Пошук" class="header__search-btn btn btn_variant_outline btn_icon-only">
+                        <svg class="btn__icon icon">
+                            <use href="/assets/img/icons.svg#search"></use>
+                        </svg>
+                    </button>
+                    <button title="Профіль" type="button" aria-label="Профіль" class="header__profile-btn btn btn_variant_outline btn_icon-only">
+                        <svg class="btn__icon icon">
+                            <use href="/assets/img/icons.svg#profile"></use>
+                        </svg>
+                    </button>
+                    <button title="Кошик" type="button" aria-label="Кошик" class="btn btn_variant_solid btn_icon-only">
+                        <svg class="btn__icon icon">
+                            <use href="/assets/img/icons.svg#cart"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="hero__preview hero-preview">
+            <div class="hero-preview__progress"></div>
+            <img class="hero-preview__img _active" src="/media/hero-preview-demo.webp" width="1920" height="1080" alt="" decoding="async">
+            <img class="hero-preview__img" src="/media/hero-preview-business.webp" width="860" height="790" alt="" decoding="async">
+            <img class="hero-preview__img" src="/media/hero-preview-horeca.webp" width="860" height="790" alt="" decoding="async">
+        </div>
+        <div class="hero__inner container">
+            <div class="hero__content">
+                <div class="hero__accordion hero-accordion">
+                    <details class="hero-accordion__slide" name="hero-accordion" open>
+                        <summary class="hero-accordion__btn">
+                            <span class="hero-accordion__btn-label">СІМ’Я</span>
+                        </summary>
+                        <img class="hero-accordion__img" src="/media/hero-accordion-family.webp" alt="Свіжі продукти для сім'ї" width="500" height="240" decoding="async">
+                    </details>
+                    <details class="hero-accordion__slide" name="hero-accordion">
+                        <summary class="hero-accordion__btn">
+                            <span class="hero-accordion__btn-label">БІЗНЕС</span>
+                        </summary>
+                        <img class="hero-accordion__img" src="/media/hero-accordion-business.webp" alt="Свіжі продукти для бізнесу" width="500" height="240" decoding="async">
+                    </details>
+                    <details class="hero-accordion__slide" name="hero-accordion">
+                        <summary class="hero-accordion__btn">
+                            <span class="hero-accordion__btn-label">HoReCa</span>
+                        </summary>
+                        <img class="hero-accordion__img" src="/media/hero-accordion-horeca.webp" width="500" height="240" decoding="async">
+                    </details>
+                </div>
+                <div class="hero__text">
+                    <div class="hero__text-slide _active">
+                        <h2 class="hero__title">Доставка Свіжих продуктів для всієї родини</h2>
+                        <div class="hero__description">
+                            <p>Ми виробляємо понад 200 видів м’ясної, гастрономічної та кондитерської продукції: cвіже м’ясо, ароматні ковбаси та делікатеси, смачні кондитерські вироби — усе для Ваших домашніх сніданків, сімейних обідів і святкових вечерь.</p>
+                        </div>
+                    </div>
+                    <div class="hero__text-slide">
+                        <h2 class="hero__title">Стабільні поставки для вашого бізнесу</h2>
+                        <div class="hero__description">
+                            <p>Власне виробництво та понад 200 позицій продукції, які допомагають нашим партнерам збільшувати продажі. Ми забезпечуємо якісний сервіс, конкурентні ціни, та продукцію з високою маржинальністю. Разом з нами Ваш бізнес зростає!</p>
+                        </div>
+                    </div>
+                    <div class="hero__text-slide">
+                        <h2 class="hero__title">Сертифіковане м’ясо для ресторанів та кафе</h2>
+                        <div class="hero__description">
+                            <p>FoodDelivery — надійний постачальник свіжого м’яса та гастрономії для ресторанів. Забезпечуємо стабільну якість, контроль безпеки продукції та вигідні умови співпраці.</p>
+                            <p>Щоб Ви могли створювати найкращі страви для своїх гостей!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__actions">
+                <div class="hero__pagination hero-pagination">
+                    <button class="hero-pagination__bullet _active" type="button" data-slide="0"></button>
+                    <button class="hero-pagination__bullet" type="button" data-slide="1"></button>
+                    <button class="hero-pagination__bullet" type="button" data-slide="2"></button>
+                </div>
+                <a class="hero-btn" href="#link-1" data-btns="[{&#34;label&#34;:&#34;Купити в роздріб&#34;,&#34;href&#34;:&#34;#link-1&#34;},{&#34;label&#34;:&#34;Купити оптом&#34;,&#34;href&#34;:&#34;#link-2&#34;},{&#34;label&#34;:&#34;Замовити&#34;,&#34;href&#34;:&#34;#link-3&#34;}]">
+                    <span class="hero-btn__label-col">
+                        <span class="hero-btn__label">Купити в роздріб</span>
+                    </span>
+                    <div class="hero-btn__icon-wrapper">
+                        <svg class="icon">
+                            <use href="/assets/img/icons.svg#arrow-right"></use>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="/assets/js/index.js"></script>
+</body>
+
+</html>

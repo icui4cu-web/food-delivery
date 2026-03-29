@@ -1,0 +1,14 @@
+---
+import "./hero-preview.scss";
+
+const { class: className, slides } = Astro.props;
+---
+
+<div class:list={[className, "hero-preview"]}>
+	<div class="hero-preview__progress"></div>
+	{
+		slides.map(({ preview }, index) => (
+			<img class:list={["hero-preview__img", { _active: !index }]} {...preview} alt="" decoding="async" />
+		))
+	}
+</div>

@@ -1,0 +1,52 @@
+@use "/src/scss/fn";
+
+.nav {
+	$root: &;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		font-size: fn.rs(16px, 20px, 992px, 1200px);
+		font-weight: 500;
+	}
+
+	&__link {
+		display: block;
+		align-content: center;
+		padding: 8px fn.rs(8px, 15px, 992px, 1200px);
+		border-radius: 100px;
+		text-align: center;
+	}
+
+	@media (hover) {
+		&__list {
+			position: relative;
+			isolation: isolate;
+
+			&::before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				position-anchor: --link;
+				top: anchor(top);
+				bottom: anchor(bottom);
+				left: anchor(left);
+				right: anchor(right);
+				background: rgba($color: #fff, $alpha: 0.8);
+				border-radius: 100px;
+				opacity: 0;
+				transition: .2s;
+				pointer-events: none;
+			}
+
+			&:has(#{$root}__link:hover)::before {
+				opacity: 1;
+			}
+		}
+
+		&__link:hover {
+			anchor-name: --link;
+		}
+	}
+}
