@@ -8,20 +8,20 @@ const slides = [
 		label: "СІМ’Я",
 		image: {
 			filename: "hero-accordion-family",
-			alt: "Свіжі продукти для сім'ї"
+			alt: "Свіжі продукти для сім'ї",
 		},
 	},
 	{
 		label: "БІЗНЕС",
 		image: {
 			filename: "hero-accordion-business",
-			alt: "Свіжі продукти для бізнесу"
+			alt: "Свіжі продукти для бізнесу",
 		},
 	},
 	{
 		label: "HoReCa",
 		image: {
-			filename: "hero-accordion-horeca"
+			filename: "hero-accordion-horeca",
 		},
 	},
 ];
@@ -30,12 +30,19 @@ const slides = [
 <div class:list={[className, "hero-accordion"]}>
 	{
 		slides.map(({ label, image }, index) => (
-			<details class="hero-accordion__slide" name="hero-accordion" open={!index}>
-				<summary class="hero-accordion__btn">
+			<div class:list={['hero-accordion__slide', {_open: !index}]}>
+				<button class="hero-accordion__btn" type="button">
 					<span class="hero-accordion__btn-label">{label}</span>
-				</summary>
-				<img class="hero-accordion__img" src={`/media/${image.filename}.webp`} alt={image.alt} width="500" height="240" decoding="async" />
-			</details>
+				</button>
+				<img
+					class="hero-accordion__img"
+					src={`/media/${image.filename}.webp`}
+					alt={image.alt}
+					width="500"
+					height="240"
+					decoding="async"
+				/>
+			</div>
 		))
 	}
 </div>

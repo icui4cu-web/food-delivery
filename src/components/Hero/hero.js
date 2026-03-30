@@ -28,13 +28,11 @@ class HeroSlider {
 		this.els.bullets.forEach(btn =>
 			btn.addEventListener('click', () => this.goTo(+btn.dataset.slide))
 		);
-
-		this.els.accordion.forEach((details, i) =>
-			details.addEventListener('toggle', () => {
-				if (details.open && i !== this.current) this.goTo(i);
+		this.els.accordion.forEach((slide, i) =>
+			slide.querySelector('.hero-accordion__btn').addEventListener('click', () => {
+				if (!slide.classList.contains('_open')) this.goTo(i);
 			})
 		);
-
 		const pauseOn = [
 			...this.els.accordion,
 			...this.els.texts,
@@ -57,18 +55,11 @@ class HeroSlider {
 
 	_update() {
 		const i = this.current;
-
 		this.root.dataset.activeSlide = i + 1;
-
 		this.els.bullets.forEach((el, idx) => el.classList.toggle('_active', idx === i));
 		this.els.texts.forEach((el, idx) => el.classList.toggle('_active', idx === i));
 		this.els.previews.forEach((el, idx) => el.classList.toggle('_active', idx === i));
-
-		this.els.accordion.forEach((details, idx) => {
-			if (idx === i && !details.open) details.open = true;
-			if (idx !== i && details.open) details.open = false;
-		});
-
+		this.els.accordion.forEach((slide, idx) => slide.classList.toggle('_open', idx === i));
 		this._resetProgress();
 	}
 
