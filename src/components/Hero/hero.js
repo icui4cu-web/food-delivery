@@ -40,8 +40,12 @@ class HeroSlider {
 			this.root.querySelector('.hero-btn'),
 		];
 		pauseOn.forEach(el => {
-			el.addEventListener('mouseenter', () => this._pause());
-			el.addEventListener('mouseleave', () => this._resume());
+			el.addEventListener('pointerenter', (e) => {
+				if (e.pointerType === 'mouse') this._pause();
+			});
+			el.addEventListener('pointerleave', (e) => {
+				if (e.pointerType === 'mouse') this._resume();
+			});
 		});
 	}
 
