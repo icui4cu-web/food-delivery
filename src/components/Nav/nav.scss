@@ -17,36 +17,47 @@
 		padding: 8px fn.rs(8px, 15px, 992px, 1200px);
 		border-radius: 100px;
 		text-align: center;
+		transition: background-color .2s;
 	}
 
-	@media (hover) {
-		&__list {
-			position: relative;
-			isolation: isolate;
-
-			&::before {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				position-anchor: --link;
-				top: anchor(top);
-				bottom: anchor(bottom);
-				left: anchor(left);
-				right: anchor(right);
-				background: rgba($color: #fff, $alpha: 0.8);
-				border-radius: 100px;
-				opacity: 0;
-				transition: .2s;
-				pointer-events: none;
-			}
-
-			&:has(#{$root}__link:hover)::before {
-				opacity: 1;
+	@supports not (position-anchor: --x) {
+		@media (hover) {
+			&__link:hover {
+				background-color: rgba($color: #fff, $alpha: 0.8);
 			}
 		}
+	}
 
-		&__link:hover {
-			anchor-name: --link;
+	@supports (position-anchor: --x) {
+		@media (hover) {
+			&__list {
+				position: relative;
+				isolation: isolate;
+
+				&::before {
+					content: "";
+					position: absolute;
+					z-index: -1;
+					position-anchor: --link;
+					top: anchor(top);
+					bottom: anchor(bottom);
+					left: anchor(left);
+					right: anchor(right);
+					background-color: rgba($color: #fff, $alpha: 0.8);
+					border-radius: 100px;
+					opacity: 0;
+					transition: .2s;
+					pointer-events: none;
+				}
+
+				&:has(#{$root}__link:hover)::before {
+					opacity: 1;
+				}
+			}
+
+			&__link:hover {
+				anchor-name: --link;
+			}
 		}
 	}
 }
