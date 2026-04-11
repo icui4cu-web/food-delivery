@@ -23,6 +23,10 @@
 		animation: header-entering .5s forwards;
 	}
 
+	&_leaving {
+		animation: header-leaving .5s forwards;
+	}
+
 	&__inner {
 		display: flex;
 		justify-content: space-between;
@@ -103,5 +107,11 @@
 	}
 	to {
 		transform: translateY(0%);
+	}
+}
+
+@keyframes header-leaving {
+	to {
+		transform: translateY(-100%);
 	}
 }

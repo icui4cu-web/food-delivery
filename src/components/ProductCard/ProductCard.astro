@@ -67,9 +67,9 @@ const { class: className, name, image, weight, badges, price, units, quantity } 
 		<div class="product-card__price-row">
 			<p class="product-card__price-label">Роздрібна ціна:</p>
 			<div class="product-card__prices">
-				{price.old && <div class="product-card__price-old">{price.old}</div>}
-				<div class="product-card__price">{price.value}</div>
-				<div class="product-card__price-units">грн/{units}</div>
+				{price.old && <s class="product-card__price-old">{price.old}</s>}
+				<span class="product-card__price">{price.value}</span>
+				<span class="product-card__price-units">грн/{units}</span>
 			</div>
 		</div>
 		<div class="product-card__actions">
