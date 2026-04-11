@@ -1,10 +1,16 @@
 ---
 import Icon from "@components/Icon/Icon.astro";
 import "./cart-btn.scss";
+
+interface Props {
+	label: string;
+}
+
+const { label } = Astro.props;
 ---
 
-<button class="cart-btn" type="button">
-	<span class="cart-btn__label"><slot /></span>
+<button class="cart-btn" type="button" aria-label={label}>
+	<span class="cart-btn__label">{label}</span>
 	<span class="cart-btn__icon">
 		<Icon id="cart" />
 	</span>

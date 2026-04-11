@@ -19,7 +19,7 @@ const categories = [
 ---
 
 <div class="categories swiper" id={sliderId}>
-	<ul class="categories__row swiper-wrapper">
-		{categories.map((item) => <CategoryCard class="swiper-slide" as="li" {...item} />)}
-	</ul>
+	<div class="categories__row swiper-wrapper">
+		{categories.map((item) => <CategoryCard class="swiper-slide" {...item} />)}
+	</div>
 </div>

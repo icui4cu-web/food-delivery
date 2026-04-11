@@ -1,10 +1,9 @@
-import "src/components/Hero/hero"
-import "src/components/Hero/HeroAccordion/hero-accordion"
-import "src/components/Header/header"
-import "src/components/Categories/categories"
-import "src/components/Expandable/expandable";
-import "src/components/Slider/slider";
-import "src/components/Offers/offers";
-import "src/components/Quantity/quantity";
+import "@components/Hero/hero"
+import "@components/Header/header"
+import "@components/Categories/categories"
+import "@components/Expandable/expandable";
+import "@components/Slider/slider";
+import "@components/Offers/offers";
+import "@components/Quantity/quantity";
 
 import "./demo";

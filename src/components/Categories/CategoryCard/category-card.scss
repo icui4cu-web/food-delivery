@@ -1,10 +1,6 @@
 .category-card {
-	&__link {
-		display: block;
-
-		border-radius: 20px;
-		transition: filter .2s;
-	}
+	border-radius: 20px;
+	transition: filter .2s;
 
 	&__img {
 		border-radius: inherit;
@@ -33,10 +29,7 @@
 
 	@media (width>=768px) {
 		$overlay-padding-block: 0.5em;
-
-		&__link {
-			position: relative;
-		}
+		position: relative;
 
 		&__img {
 			aspect-ratio: 440 / 254;
@@ -63,7 +56,7 @@
 	}
 
 	@media (hover) {
-		&__link:hover {
+		&:hover {
 			filter: brightness(1.2);
 		}
 	}

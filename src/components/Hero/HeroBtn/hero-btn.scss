@@ -6,7 +6,7 @@
 	justify-content: end;
 	padding: 5px 6px;
 	border-radius: 20px;
-	background-color: var(--hero-theme);
+	background-color: var(--hero-btn-bg, var(--hero-theme));
 	color: #fff;
 	font-size: 18px;
 	line-height: 1;
@@ -39,8 +39,9 @@
 		align-items: center;
 		justify-content: center;
 		background-color: #fff;
-		color: var(--hero-theme);
+		color: var(--hero-btn-icon-color, var(--hero-theme));
 		font-size: 20px;
+		transition: color var(--hero-transition-duration);
 	}
 
 	@media(hover) {

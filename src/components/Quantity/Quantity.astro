@@ -15,7 +15,7 @@ const { class: className, value, step = 1, units, min, max } = Astro.props;
 ---
 
 <div class:list={[className, "quantity"]} data-step={step} data-min={min} data-max={max}>
-	<button class="quantity__btn _minus" type="button">
+	<button class="quantity__btn _minus" type="button" aria-label="Менше">
 		<Icon id="minus" />
 	</button>
 	<input
@@ -24,8 +24,9 @@ const { class: className, value, step = 1, units, min, max } = Astro.props;
 		value={`${value} ${units ?? ""}`}
 		data-units={units}
 		autocomplete="off"
+		aria-label="Кількість товару"
 	/>
-	<button class="quantity__btn _plus" type="button">
+	<button class="quantity__btn _plus" type="button" aria-label="Більше">
 		<Icon id="plus" />
 	</button>
 </div>

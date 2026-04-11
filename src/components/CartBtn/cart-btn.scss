@@ -79,7 +79,7 @@
 
 		#{$root}._loading & {
 			&::before {
-				$size: 1em;
+				$size: 18px;
 				content: '';
 				position: absolute;
 				top: calc(50% - $size * 0.5);

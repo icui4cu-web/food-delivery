@@ -1,15 +1,31 @@
 ---
 import "./hero-preview.scss";
 
+interface Props {
+	slides: {
+		preview: {
+			src: string;
+			width: number;
+			height: number;
+		};
+	}[];
+	class?: string;
+}
+
 const { class: className, slides } = Astro.props;
 ---
 
 <div class:list={[className, "hero-preview"]}>
 	<div class="hero-preview__progress"></div>
 	{
-		// @ts-ignore
 		slides.map(({ preview }, index) => (
-			<img class:list={["hero-preview__img", { _active: !index }]} {...preview} alt="" decoding="async" />
+			<img
+				class:list={["hero-preview__img", { _active: !index }]}
+				{...preview}
+				alt=""
+				decoding="async"
+				fetchpriority={!index ? "high" : undefined}
+			/>
 		))
 	}
 </div>

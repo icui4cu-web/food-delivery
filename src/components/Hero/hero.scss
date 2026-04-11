@@ -1,14 +1,17 @@
 @use "sass:math";
 
 .hero {
-	--hero-transition-duration: .5s;
+	--hero-transition-duration: .8s;
+	--hero-text-duration: .5s;
+	--hero-preview-duration: .6s;
 	--hero-slide-color-1: var(--clr-gamma);
 	--hero-slide-color-2: var(--clr-beta);
 	--hero-slide-color-3: var(--clr-alpha);
 
 	position: relative;
 	isolation: isolate;
-	background: url('/assets/img/hero-bg.svg') left -37px bottom -50px / 78.2% no-repeat;
+	padding-bottom: fluid(80, 140);
+	background: url('/assets/img/hero-bg.svg') left -37px bottom fluid(30, 90) / 78.2% no-repeat;
 	overflow: hidden;
 
 	&[data-active-slide="1"] {
@@ -28,21 +31,32 @@
 	}
 
 	&__text-slide {
-		grid-area: 1 / 1;
-		visibility: hidden;
+		grid-area: 1/1;
 		opacity: 0;
+		visibility: hidden;
 		transform: translateY(0);
-		transition-property: visibility, opacity, transform;
-		transition-duration: var(--hero-transition-duration);
+		pointer-events: none;
+		will-change: opacity, transform;
 
 		&._active {
-			visibility: visible;
 			opacity: 1;
+			visibility: visible;
 			transform: translateY(0);
+			pointer-events: auto;
+		}
 
-			@starting-style {
-				transform: translateY(30px);
-			}
+		&.is-entering,
+		&.is-leaving {
+			visibility: visible;
+			pointer-events: none;
+		}
+
+		&.is-entering {
+			animation: hero-text-enter var(--hero-text-duration) ease forwards;
+		}
+
+		&.is-leaving {
+			animation: hero-text-leave var(--hero-text-duration) ease forwards;
 		}
 	}
 
@@ -153,5 +167,29 @@
 		&__preview {
 			width: calc(50% + 63px);
 		}
+	}
+}
+
+@keyframes hero-text-enter {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes hero-text-leave {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(-50px);
 	}
 }

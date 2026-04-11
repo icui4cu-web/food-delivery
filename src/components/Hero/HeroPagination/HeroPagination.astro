@@ -7,7 +7,12 @@ const { class: className } = Astro.props;
 <div class:list={[className, "hero-pagination"]}>
 	{
 		Array.from({ length: 3 }).map((_, index) => (
-			<button class:list={["hero-pagination__bullet", { _active: !index }]} type="button" data-slide={index} />
+			<button
+				class:list={["hero-pagination__bullet", { _active: !index }]}
+				type="button"
+				data-slide={index}
+				aria-label={`Перейти до слайда ${index + 1}`}
+			/>
 		))
 	}
 </div>
