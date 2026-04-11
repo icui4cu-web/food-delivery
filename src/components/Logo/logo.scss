@@ -1,13 +1,5 @@
 .logo {
-	display: inline-flex;
-	align-items: center;
-	font: 300 32px/1 'Oswald', sans-serif;
-	white-space: nowrap;
-
 	&__img {
-		flex-shrink: 0;
-		margin-inline: 6px 4px;
-		height: 30px;
-		width: auto;
+		width: 100%;
 	}
 }

@@ -1,0 +1,31 @@
+---
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import "./section.scss";
+
+interface Props {
+	title: string;
+	subtitle?: string;
+	class?: string;
+	type?: string;
+}
+
+const { class: className, type, title, subtitle } = Astro.props;
+---
+
+<section class:list={[className, "section", type && `section_type_${type}`]}>
+	<header class="section__header">
+		<hgroup class="section__hgroup">
+			<Subtitle>{subtitle}</Subtitle>
+			<Title as="h2" size={2}>{title}</Title>
+		</hgroup>
+		{
+			Astro.slots.has("section-actions") && (
+				<div class="section__actions">
+					<slot name="section-actions" />
+				</div>
+			)
+		}
+	</header>
+	<slot />
+</section>

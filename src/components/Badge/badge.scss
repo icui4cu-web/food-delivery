@@ -1,0 +1,47 @@
+.badge {
+	width: fit-content;
+	padding: 4px 14px;
+	font: 14px/1.2 'Oswald', sans-serif;
+
+	&_attach {
+		$radius: 12px;
+
+		&_start {
+			border-top-right-radius: $radius;
+			border-bottom-right-radius: $radius;
+		}
+
+		&_end {
+			border-top-left-radius: $radius;
+			border-bottom-left-radius: $radius;
+			text-align: right;
+		}
+	}
+
+	&_theme {
+		&_white {
+			background-color: #fff;
+			color: #777;
+		}
+
+		&_primary {
+			background-color: var(--clr-primary);
+			color: #fff;
+		}
+
+		&_alpha {
+			background-color: var(--clr-alpha);
+			color: #fff;
+		}
+
+		&_beta {
+			background-color: var(--clr-beta);
+			color: #fff;
+		}
+
+		&_gamma {
+			background-color: var(--clr-gamma);
+			color: #fff;
+		}
+	}
+}

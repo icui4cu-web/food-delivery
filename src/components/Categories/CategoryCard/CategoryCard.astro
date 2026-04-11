@@ -1,0 +1,24 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./category-card.scss";
+
+const { as: Tag = "div", class: className, label, icon, image } = Astro.props;
+---
+
+<Tag class:list={[className, "category-card"]}>
+	<a class="category-card__link" href="#">
+		<img
+			class="category-card__img"
+			src={`/media/categories/${image}.webp`}
+			alt=""
+			width="440"
+			height="254"
+			loading="lazy"
+			decoding="async"
+		/>
+		<div class="category-card__overlay">
+			{label}
+			<Icon class="category-card__icon" id={icon} spritesheet="categories" />
+		</div>
+	</a>
+</Tag>

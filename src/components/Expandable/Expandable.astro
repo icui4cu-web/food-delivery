@@ -1,0 +1,27 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import "./expandable.scss";
+
+interface Props {
+	visibleNodes: 2 | 3;
+	class?: string;
+	expandText: string;
+	collapseText: string;
+}
+
+const { class: className, visibleNodes = 2, expandText, collapseText } = Astro.props;
+---
+
+<div class:list={[className, "expandable"]} data-visible-nodes={visibleNodes}>
+	<div class="expandable__content u-margin-trim">
+		<slot name="content" />
+	</div>
+	<Btn
+		class="expandable__btn"
+		variant="ghost"
+		iconEnd="chevron-down"
+		slot="button"
+		data-collapse-text={collapseText}
+		data-expandable-trigger="">{expandText}</Btn
+	>
+</div>

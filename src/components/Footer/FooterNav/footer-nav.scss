@@ -1,0 +1,15 @@
+.footer-nav {
+	&__item:not(:last-child) {
+		margin-bottom: 5px;
+	}
+
+	&__link {
+		transition: color .2s;
+	}
+
+	@media (hover) {
+		&__link:hover {
+			color: var(--clr-alpha);
+		}
+	}
+}

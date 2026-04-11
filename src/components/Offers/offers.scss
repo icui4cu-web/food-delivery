@@ -1,0 +1,35 @@
+@use "/src/scss/mixins";
+
+.offers {
+	width: calc(100% + var(--container-gutters) * 2);
+	margin-inline: calc(var(--container-gutters) * -1);
+	padding-inline: var(--container-gutters);
+	overflow: clip visible;
+
+	// swiper-pre-init дублюють breakpoints в js для запобігання cumulative shift layout
+	@include mixins.swiper-pre-init(1.2, 20px);
+
+	@media (width>=390px) {
+		@include mixins.swiper-pre-init(1.5, 20px);
+	}
+
+	@media (width>=520px) {
+		@include mixins.swiper-pre-init(1.8, 20px);
+	}
+
+	@media (width>=620px) {
+		@include mixins.swiper-pre-init(2.4, 20px);
+	}
+
+	@media (width>=860px) {
+		@include mixins.swiper-pre-init(3, 30px);
+	}
+
+	@media (width>=992px) {
+		@include mixins.swiper-pre-init(3.5, 30px);
+	}
+
+	@media (width>=1200px) {
+		@include mixins.swiper-pre-init(4, 30px);
+	}
+}

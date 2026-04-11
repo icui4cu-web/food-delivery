@@ -1,0 +1,5 @@
+$container-width: 1400px;
+$container-gutters-mobile: 10px;
+$container-gutters-desktop: 20px;
+$container-outer-width-mobile: $container-width + $container-gutters-mobile * 2;
+$container-outer-width-desktop: $container-width + $container-gutters-desktop * 2;

@@ -1,0 +1,12 @@
+.footer-logo {
+	&__img {
+		max-height: 80px;
+		width: auto;
+	}
+
+	@media (width>=992px) {
+		&__img {
+			max-height: 74px;
+		}
+	}
+}

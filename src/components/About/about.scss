@@ -1,0 +1,32 @@
+.about {
+	&__header {
+		margin-bottom: fluid(22, 32);
+	}
+
+	&__description {
+		font-size: fluid(16, 18);
+		line-height: 1.333333333;
+
+		p {
+			margin-block: .3em;
+		}
+	}
+
+	&__btn {
+		margin-top: fluid(26, 66);
+	}
+
+	@media (width<1200px) {
+		&__slider {
+			margin: fluid(37, 60) auto 0;
+			max-width: 810px;
+		}
+	}
+
+	@media (width>=1200px) {
+		display: grid;
+		align-items: start;
+		grid-template-columns: minmax(0, 37.1428571429%) minmax(0, 1fr);
+		column-gap: fluid(32, 70, 1200);
+	}
+}

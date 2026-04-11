@@ -1,16 +1,23 @@
 ---
 import "/src/scss/index.scss";
+import Header from "@components/Header/Header.astro";
+import Footer from "@components/Footer/Footer.astro";
+
+const { metaTitle } = Astro.props;
 ---
 
 <html lang="uk">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>{metaTitle}</title>
+		<link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
 	</head>
 	<body>
+		<Header position="absolute" />
 		<slot />
-
+		<Footer />
+		<script src="/assets/js/swiper-bundle.min.js" defer is:inline></script>
 		<script src="/src/scripts/index.js"></script>
 	</body>
 </html>

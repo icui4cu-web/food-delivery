@@ -5,32 +5,26 @@ import Nav from "@components/Nav/Nav.astro";
 import Icon from "@components/Icon/Icon.astro";
 import "./header.scss";
 
-const { class: className } = Astro.props;
+interface Props {
+	position?: "absolute";
+}
+
+const { position } = Astro.props;
 ---
 
-<header class:list={[className, "header container-lg"]}>
+<header class:list={["header", position && `header_pos_${position}`]}>
 	<div class="header__inner">
 		<button class="header__nav-btn" type="button" aria-label="Відкрити меню">
 			<Icon id="burger" />
 		</button>
-		<Logo class="header__logo" />
+		<div class="header__logo">
+			<Logo class="header__logo" />
+		</div>
 		<Nav class="header__nav" />
 		<div class="header__actions">
-			<Btn
-				class="header__search-btn"
-				variant="outline"
-				iconStart="search"
-				aria-label="Пошук"
-				title="Пошук"
-			/>
-			<Btn
-				class="header__profile-btn"
-				variant="outline"
-				iconStart="profile"
-				aria-label="Профіль"
-				title="Профіль"
-			/>
-			<Btn variant="solid" iconStart="cart" aria-label="Кошик" title="Кошик" />
+			<Btn class="header__search-btn" variant="outline" iconStart="search" title="Пошук" />
+			<Btn class="header__profile-btn" variant="outline" iconStart="profile" title="Профіль" />
+			<Btn variant="solid" iconStart="cart" title="Кошик" />
 		</div>
 	</div>
 </header>

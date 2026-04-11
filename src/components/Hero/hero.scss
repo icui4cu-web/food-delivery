@@ -1,21 +1,14 @@
 @use "sass:math";
-@use "/src/scss/fn";
 
 .hero {
-	$container-width: 1488px;
-	$background-color: #efebe3;
-	$max-content-width: 594px;
-
 	--hero-transition-duration: .5s;
-	--hero-slide-color-1: #ff7276;
-	--hero-slide-color-2: #62b5e5;
-	--hero-slide-color-3: #ffa300;
-	--container-width: #{$container-width};
+	--hero-slide-color-1: var(--clr-gamma);
+	--hero-slide-color-2: var(--clr-beta);
+	--hero-slide-color-3: var(--clr-alpha);
 
 	position: relative;
 	isolation: isolate;
-	background: $background-color url('/assets/img/hero-bg.svg') left -37px bottom -50px / 78.2% no-repeat;
-	padding-bottom: 72px;
+	background: url('/assets/img/hero-bg.svg') left -37px bottom -50px / 78.2% no-repeat;
 	overflow: hidden;
 
 	&[data-active-slide="1"] {
@@ -36,25 +29,37 @@
 
 	&__text-slide {
 		grid-area: 1 / 1;
-		transition-property: visibility, opacity;
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(0);
+		transition-property: visibility, opacity, transform;
 		transition-duration: var(--hero-transition-duration);
 
-		&:not(._active) {
-			visibility: hidden;
-			opacity: 0;
+		&._active {
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+
+			@starting-style {
+				transform: translateY(30px);
+			}
 		}
 	}
 
-	&__title {
-		font: 500 fn.rs(30px, 44px)/1.363636364 "Oswald", sans-serif;
-		letter-spacing: -0.025em;
+	&__subtitle {
+		font-size: 18px;
 		text-transform: uppercase;
+		color: var(--hero-theme);
+	}
+
+	&__title {
 		text-wrap: balance;
 	}
 
 	&__description {
 		margin-top: 32px;
-		font-size: fn.rs(15px, 18px);
+		font-size: fluid(15, 18);
+		line-height: 1.2;
 
 		p+p {
 			margin-top: 1em;
@@ -68,12 +73,6 @@
 	}
 
 	@media (width<992px) {
-		&__header {
-			position: absolute;
-			z-index: 1;
-			inset: 22px 16px auto;
-		}
-
 		&__preview {
 			margin-bottom: 14px;
 			min-height: 390px;
@@ -87,54 +86,57 @@
 		&__actions {
 			margin-top: 39px;
 		}
+
+		&__subtitle {
+			display: none;
+		}
 	}
 
 
 	@media (width>=992px) {
-		padding-block: 28px 50px;
-		background: $background-color url('/assets/img/hero-bg.svg') right calc(50% + 638px) top 156px / 593px no-repeat;
+		background: url('/assets/img/hero-bg.svg') right calc(50% + 638px) top 156px / 593px no-repeat;
 
 		&__preview {
 			position: absolute;
 			z-index: -1;
 			top: 0;
-			right: fn.rs(-208px, 0px, 992px, 1200px);
+			right: fluid(-208, 0, 992, 1200);
 			width: 866px;
 			height: 100%;
+			max-height: 790px;
 		}
 
 		&__inner {
-			min-height: 731px;
+			padding-top: 86px;
+			min-height: 830px;
 			position: relative;
 			display: flex;
 			column-gap: 32px;
 		}
 
 		&__content {
-			max-width: $max-content-width;
+			max-width: 548px;
 			flex-shrink: 0;
 			display: flex;
 			flex-direction: column;
-			padding-left: 46px;
 		}
 
 		&__text {
 			order: -1;
 			margin-block: auto;
 			align-items: center;
-			padding-block: 70px 40px;
+			padding-block: 58px 40px;
 		}
 
 		&__accordion {
-			max-width: $max-content-width;
+			max-width: 548px;
 			height: 225px;
 		}
 
 		&__actions {
 			margin-left: auto;
 			align-self: flex-end;
-			padding-right: 36px;
-			width: 710px;
+			width: 668px;
 			align-items: flex-end;
 		}
 	}
@@ -142,14 +144,14 @@
 	@media (992px <=width < 1440px) {
 		&__text-slide {
 			border-radius: 16px;
-			background-color: rgba($color: $background-color, $alpha: 0.7);
-			outline: 16px solid rgba($color: $background-color, $alpha: 0.7);
+			background-color: rgba($color: #efebe3, $alpha: 0.7);
+			outline: 16px solid rgba($color: #efebe3, $alpha: 0.7);
 		}
 	}
 
 	@media (width >=1540px) {
 		&__preview {
-			width: calc(50% + 96px);
+			width: calc(50% + 63px);
 		}
 	}
 }

@@ -1,0 +1,17 @@
+---
+import "./footer-nav.scss";
+
+const { items } = Astro.props;
+---
+
+<ul class="footer-nav">
+	{
+		items.map((text) => (
+			<li class="footer-nav__item">
+				<a class="footer-nav__link" href="#">
+					{text}
+				</a>
+			</li>
+		))
+	}
+</ul>

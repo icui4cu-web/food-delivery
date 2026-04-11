@@ -2,10 +2,3 @@
 	width: min(var(--container-width), 100% - var(--container-gutters) * 2);
 	margin-inline: auto;
 }
-
-@media (width>=992px) {
-	.container-lg {
-		width: min(var(--container-width), 100% - var(--container-gutters) * 2);
-		margin-inline: auto;
-	}
-}

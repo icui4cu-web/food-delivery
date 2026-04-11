@@ -1,27 +1,43 @@
+@use "./_var";
+
 :root {
 	interpolate-size: allow-keywords;
 
-	--container-width: 1406px;
-	--container-gutters: 10px;
+	--container-width: #{var.$container-width};
+	--container-gutters: #{var.$container-gutters-mobile};
 	--page-font-family: "Roboto", sans-serif;
-	--page-font-size: 16px;
-	--page-font-weight: 400;
-	--page-line-height: 1.2;
-	--page-color: #000;
-	--page-background: #fff;
+	--page-font: fluid(14, 16)/1.5 var(--page-font-family);
+	--clr-primary: #bd1d2d;
+	--clr-alpha: #ffa300;
+	--clr-beta: #62b5e5;
+	--clr-gamma: #ff7276;
+	--clr-gamma-darker: #f9696d;
 
 	@media (prefers-reduced-motion: no-preference) {
 		scroll-behavior: smooth;
 	}
+
+	@media (width>=768px) {
+		--container-gutters: #{var.$container-gutters-desktop};
+	}
+}
+
+html {
+	height: 100%;
 }
 
 body {
-	font-family: var(--page-font-family);
-	font-size: var(--page-font-size);
-	font-weight: var(--page-font-weight);
-	line-height: var(--page-line-height);
-	color: var(--page-color);
-	background-color: var(--page-background);
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	font: var(--page-font);
+	color: #000;
+	background-color: #f3eee7;
 	font-optical-sizing: auto;
 	font-variation-settings: "wdth" 100;
+}
+
+::selection {
+	background-color: var(--clr-primary);
+	color: #fff;
 }

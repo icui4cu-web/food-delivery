@@ -4,9 +4,13 @@ import "./icon.scss";
 interface Props {
 	id: string;
 	class?: string;
+	fill?: string;
+	spritesheet?: string;
 }
 
-const { class: className, id } = Astro.props;
+const { class: className, id, spritesheet = "icons", fill } = Astro.props;
 ---
 
-<svg class:list={[className, "icon"]}><use href={`/assets/img/icons.svg#${id}`}></use></svg>
+<svg class:list={[className, "icon"]}
+	><use href={`/assets/img/${spritesheet}.svg#${id}`} {fill}></use></svg
+>

@@ -1,0 +1,6 @@
+@mixin swiper-pre-init($slides, $gap: 0px) {
+	&:not(.swiper-initialized) .swiper-slide {
+		width: calc((100% - #{$gap} * #{$slides - 1}) / #{$slides});
+		margin-right: $gap;
+	}
+}

@@ -1,0 +1,17 @@
+.expandable {
+	$root: &;
+
+	&:not(&._expanded)[data-visible-nodes="2"]>.expandable__content>:nth-child(n+3),
+	&:not(&._expanded)[data-visible-nodes="3"]>.expandable__content>:nth-child(n+4) {
+		display: none
+	}
+
+	&__btn {
+		margin-top: var(--expandable-btn-offset);
+		font-size: inherit;
+
+		#{$root}._expanded & {
+			--btn-icon-transform: scaleY(-1);
+		}
+	}
+}

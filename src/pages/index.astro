@@ -1,8 +1,22 @@
 ---
-import Layout from "@layouts/Layout.astro"
-import Hero from "@components/Hero/Hero.astro"
+const pages = [{ label: "Головна", slug: "homepage" }];
 ---
 
-<Layout>
-	<Hero />
-</Layout>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pages</title>
+	</head>
+	<body>
+		<ol>
+			{
+				pages.map(({ label, slug }) => (
+					<li>
+						<a href={`/${slug}`}>{label}</a>
+					</li>
+				))
+			}
+		</ol>
+	</body>
+</html>

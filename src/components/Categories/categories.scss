@@ -1,0 +1,43 @@
+@use "/src/scss/mixins";
+@use "/src/scss/var";
+@use "sass:math";
+
+.categories {
+	// swiper-pre-init дублюють breakpoints в js для запобігання cumulative shift layout
+	@include mixins.swiper-pre-init(2.2, 14px);
+
+	@media (width>=390px) {
+		@include mixins.swiper-pre-init(2.5, 14px);
+	}
+
+	@media (width>=576px) {
+		@include mixins.swiper-pre-init(3.5, 14px);
+	}
+
+	@media (width>=768px) {
+		@include mixins.swiper-pre-init(2.5, 14px);
+	}
+
+	@media (width<992px) {
+		margin-inline: calc(var(--container-gutters) * -1);
+		padding-inline: var(--container-gutters);
+	}
+
+	@media (width>=992px) {
+		&__row {
+			$row-gap-px: 35px;
+			$column-gap-px: 40px;
+			$row-gap-vw: math.div($row-gap-px * 100vw, var.$container-outer-width-desktop);
+			$column-gap-vw: math.div($column-gap-px * 100vw, var.$container-outer-width-desktop);
+
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: min($row-gap-vw, $row-gap-px) min($column-gap-vw, $column-gap-px);
+		}
+
+		.swiper-slide {
+			margin-right: 0 !important;
+			width: auto !important;
+		}
+	}
+}

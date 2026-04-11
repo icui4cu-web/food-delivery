@@ -1,0 +1,94 @@
+---
+import ProductCard from "@components/ProductCard/ProductCard.astro";
+import "./offers.scss";
+
+interface Props {
+	sliderId: string;
+}
+
+const { sliderId } = Astro.props;
+
+const products = [
+	{
+		name: "Ковбаса Дрогобицька напівкопчена",
+		image: "/demo-content/product-1.png",
+		weight: "500 г",
+		badges: {
+			position: "start",
+			items: [
+				{ label: "Акція", theme: "primary" },
+				{ label: "ДСТУ", theme: "gamma" },
+				{ label: "В/Г", theme: "alpha" },
+			],
+		},
+		price: {
+			old: 399,
+			value: 385,
+		},
+		units: "шт",
+		quantity: {
+			step: 1,
+			value: 1
+		}
+	},
+	{
+		name: "Шинка особлива",
+		image: "/demo-content/product-2.png",
+		weight: "1 кг",
+		badges: {
+			position: "start",
+			items: [{ label: "Акція", theme: "primary" }],
+		},
+		price: {
+			value: 245,
+		},
+		units: "кг",
+		quantity: {
+			step: 0.1,
+			value: 1,
+			min: 0.5
+		}
+	},
+	{
+		name: "Ковбаса Домашня смажена",
+		image: "/demo-content/product-3.png",
+		weight: "1 кг",
+		badges: {
+			position: "end",
+			items: [{ label: "Хіт", theme: "beta" }],
+		},
+		price: {
+			value: 277,
+		},
+		units: "шт",
+		quantity: {
+			step: 1,
+			value: 10,
+			min: 10
+		}
+	},
+	{
+		name: "Ковбаса Київська с/к в/г",
+		image: "/demo-content/product-4.png",
+		weight: "1 кг",
+		badges: {
+			position: "start",
+			items: [{ label: "В/Г", theme: "alpha" }],
+		},
+		price: {
+			value: 385,
+		},
+		units: "шт",
+		quantity: {
+			step: 1,
+			value: 1
+		}
+	},
+] as const;
+---
+
+<div class="offers swiper" id={sliderId}>
+	<div class="offers__slider swiper-wrapper">
+		{[...products, ...products].map((product) => <ProductCard class="swiper-slide" {...product} />)}
+	</div>
+</div>

@@ -1,0 +1,10 @@
+.payments {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	&__logo {
+		max-height: 20px;
+		width: auto;
+	}
+}

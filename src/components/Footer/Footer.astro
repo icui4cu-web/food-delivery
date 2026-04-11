@@ -1,0 +1,84 @@
+---
+import "./footer.scss";
+import FooterLogo from "./FooterLogo/FooterLogo.astro";
+import Payments from "@components/Payments/Payments.astro";
+import FooterNav from "./FooterNav/FooterNav.astro";
+import Social from "@components/Social/Social.astro";
+
+const productionNav = [
+	"Свіже м’ясо",
+	"Ковбаси та м’ясні делікатеси",
+	"Напівфабрикати",
+	"Кондитерські вироби",
+	"Їжа для тварин",
+];
+
+const infoNav = [
+	"Доставка та оплата",
+	"Про виробництво"
+]
+---
+
+<footer class="footer">
+	<div class="footer__top container">
+		<FooterLogo class="footer__logo" />
+		<div class="footer__nav">
+			<div>
+				<p class="footer__title">Продукція</p>
+				<FooterNav items={productionNav} />
+			</div>
+			<div>
+				<p class="footer__title">Інформація</p>
+				<FooterNav items={infoNav} />
+			</div>
+		</div>
+		<address class="footer__contacts">
+			<p class="footer__title">Контакти</p>
+			<dl class="footer__contacts-row">
+				<div>
+					<dt class="footer__contact-label">Відділ оптових продажів</dt>
+					<dd class="footer__contact">
+						<a class="footer__contact-link" href="tel:+380730009888">+380 (73) 000 98 88</a>
+					</dd>
+				</div>
+				<div>
+					<dt class="footer__contact-label">Відділ дистрибуції</dt>
+					<dd class="footer__contact">
+						<a class="footer__contact-link" href="tel:+380930008890">+380 (93) 000 88 90</a>
+					</dd>
+				</div>
+				<div>
+					<dt class="footer__contact-label">Відділ закупівлі сировини</dt>
+					<dd class="footer__contact">
+						<a class="footer__contact-link" href="tel:+380930008999">+380 (93) 000 89 99</a>
+					</dd>
+				</div>
+			</dl>
+			<dl class="footer__contacts-row">
+				<div>
+					<dt class="footer__contact-label">Адреса виробництва та магазин</dt>
+					<dd class="footer__contact">Україна, м. Київ, вул. Горлівська, 137</dd>
+				</div>
+				<div>
+					<dt class="footer__contact-label">E-mail</dt>
+					<dd class="footer__contact">
+						<a class="footer__contact-link" href="mailto:info@foodfactory.kyiv.ua">info@foodfactory.kyiv.ua</a>
+					</dd>
+				</div>
+			</dl>
+			<Social label="Соціальні мережі" />
+		</address>
+	</div>
+	<div class="footer__bottom">
+		<div class="footer__bottom-inner container">
+			<div class="footer__copyright">
+				<p>© Copyright FoodFactory, ТОВ «ФудФекторі». Усі права захищено.</p>
+				<p>
+					Використання матеріалів сайту дозволяється тільки за умови активного гіперпосилання на сайт
+					foodfactory.kyiv.ua
+				</p>
+			</div>
+			<Payments class="footer__payments" />
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,21 @@
+---
+import "./footer-logo.scss";
+
+const { class: className } = Astro.props;
+const Tag = Astro.url.pathname === "/homepage" ? "p" : "a";
+const href = Tag === 'a' ? '/' : undefined
+---
+
+<Tag class:list={[className, "footer-logo"]} {href}>
+	<picture>
+		<source media="(max-width: 991.98px)" srcset="/assets/img/logo-h-light.svg" width="353" height="80" />
+		<img
+			class="footer-logo__img"
+			src="/assets/img/logo-v-light.svg"
+			alt="ТОВ Фуд Фекторі Київ"
+			width="78"
+			height="74"
+			loading="lazy"
+		/>
+	</picture>
+</Tag>

@@ -1,0 +1,14 @@
+.swiper-nav {
+	display: flex;
+	column-gap: 22px;
+
+	&__btn {
+		font-size: 18px;
+	}
+
+	@media (width>=992px) {
+		&_placement_catalog {
+			display: none;
+		}
+	}
+}

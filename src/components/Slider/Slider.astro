@@ -1,0 +1,28 @@
+---
+import "./slider.scss";
+
+interface Props {
+	items: {
+		src: string;
+		width: number;
+		height: number;
+		alt: string;
+	}[];
+	class?: string;
+}
+
+const { class: className, items } = Astro.props;
+---
+
+<div class:list={[className, "slider swiper"]}>
+	<div class="swiper-wrapper">
+		{
+			items.map((item) => (
+				<div class="swiper-slide">
+					<img class="slider__img" {...item} loading="lazy" decoding="async" />
+				</div>
+			))
+		}
+	</div>
+	<div class="slider__pagination swiper-pagination"></div>
+</div>

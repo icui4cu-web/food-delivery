@@ -1,17 +1,16 @@
 ---
 import type { HTMLTag, Polymorphic } from "astro/types";
+import "./btn.scss";
 
 import Icon from "@components/Icon/Icon.astro";
 
-import "./btn.scss";
-
 type Props<Tag extends HTMLTag> = Polymorphic<{
 	as: Tag;
-	variant: "solid" | "outline";
-	size?: "sm" | "md" | "lg";
+	variant: "solid" | "outline" | "outline-muted" | "outline-white" | "ghost";
 	href?: string;
 	class?: string;
 	iconStart?: string;
+	iconEnd?: string;
 	type?: "button" | "submit" | "reset";
 	title?: string;
 }>;
@@ -19,29 +18,25 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 const {
 	as: Tag = "href" in Astro.props ? "a" : "button",
 	variant,
-	size,
 	href,
 	class: className,
 	iconStart,
+	iconEnd,
 	type = "button",
 	title,
 	...props
 } = Astro.props;
+const hasLabel = Astro.slots.has("default");
 ---
 
 <Tag
-	class:list={[
-		className,
-		"btn",
-		`btn_variant_${variant}`,
-		size && `btn_size_${size}`,
-		!Astro.slots.has('default') && 'btn_icon-only'
-	]}
+	class:list={[className, `btn btn_variant_${variant}`, !hasLabel && "btn_icon-only"]}
 	{href}
 	{title}
 	type={!href ? type : undefined}
 	{...props}
 >
-	{iconStart && <Icon class="btn__icon" id={iconStart} />}
+	{iconStart && <Icon class:list={["btn__icon", hasLabel && "_start"]} id={iconStart} />}
 	<slot />
+	{iconEnd && <Icon class:list={["btn__icon", hasLabel && "_end"]} id={iconEnd} />}
 </Tag>

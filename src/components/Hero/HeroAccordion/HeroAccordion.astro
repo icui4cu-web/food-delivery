@@ -7,21 +7,22 @@ const slides = [
 	{
 		label: "СІМ’Я",
 		image: {
-			filename: "hero-accordion-family",
+			src: "/media/hero/accordion-family.webp",
 			alt: "Свіжі продукти для сім'ї",
 		},
 	},
 	{
 		label: "БІЗНЕС",
 		image: {
-			filename: "hero-accordion-business",
+			src: "/media/hero/accordion-business.webp",
 			alt: "Свіжі продукти для бізнесу",
 		},
 	},
 	{
 		label: "HoReCa",
 		image: {
-			filename: "hero-accordion-horeca",
+			src: "/media/hero/accordion-horeca.webp",
+			alt: ""
 		},
 	},
 ];
@@ -36,8 +37,7 @@ const slides = [
 				</button>
 				<img
 					class="hero-accordion__img"
-					src={`/media/${image.filename}.webp`}
-					alt={image.alt}
+					{...image}
 					width="500"
 					height="240"
 					decoding="async"

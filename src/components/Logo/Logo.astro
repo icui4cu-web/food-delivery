@@ -2,8 +2,10 @@
 import "./logo.scss";
 
 const { class: className } = Astro.props;
+const Tag = Astro.url.pathname === "/homepage" ? "h1" : "a";
+const href = Tag === 'a' ? '/' : undefined
 ---
 
-<h1 class:list={[className, "logo"]}>
-	Food <img class="logo__img" src="/assets/img/logo.svg" width="300" height="386" /> delivery
-</h1>
+<Tag class:list={[className, "logo"]} {href}>
+	<img class="logo__img" src="/assets/img/logo-h-dark.svg" width="311" height="70" alt="ТОВ Фуд Фекторі Київ" />
+</Tag>

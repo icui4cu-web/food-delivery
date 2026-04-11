@@ -1,0 +1,7 @@
+---
+import "./subtitle.scss";
+
+const { class: className } = Astro.props;
+---
+
+<p class:list={[className, "subtitle"]}><slot /></p>

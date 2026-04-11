@@ -1,0 +1,87 @@
+---
+import Badge from "@components/Badge/Badge.astro";
+import Quantity from "@components/Quantity/Quantity.astro";
+import "./product-card.scss";
+import CartBtn from "@components/CartBtn/CartBtn.astro";
+
+type Badge = {
+	label: string;
+	theme: "primary" | "alpha" | "beta" | "gamma";
+};
+
+type Badges = {
+	position: "start" | "end";
+	items: readonly Badge[];
+};
+
+interface Props {
+	name: string;
+	image: string;
+	weight: string;
+	badges: Badges;
+	price: {
+		old?: number;
+		value: number;
+	};
+	units: string;
+	quantity: {
+		step: number;
+		value: number;
+		min?: number;
+	};
+	class?: string;
+}
+
+const { class: className, name, image, weight, badges, price, units, quantity } = Astro.props;
+---
+
+<article class:list={[className, "product-card"]}>
+	<a class="product-card__img-link" href="#">
+		<img
+			class="product-card__img"
+			src={image}
+			alt=""
+			width="338"
+			height="226"
+			loading="lazy"
+			decoding="async"
+		/>
+		{
+			badges && (
+				<div class={`product-card__badges _pos_${badges.position}`}>
+					{badges.items.map((item) => (
+						<Badge theme={item.theme} attach={badges.position}>
+							{item.label}
+						</Badge>
+					))}
+				</div>
+			)
+		}
+		<Badge class="product-card__weight" theme="white" attach="end">{weight}</Badge>
+	</a>
+	<div class="product-card__content">
+		<div class="product-card__name">
+			<a class="product-card__name-link" href="#">{name}</a>
+		</div>
+		<p class="product-card__sku">Артикул: 14310</p>
+		<div class="product-card__price-row">
+			<p class="product-card__price-label">Роздрібна ціна:</p>
+			<div class="product-card__prices">
+				{price.old && <div class="product-card__price-old">{price.old}</div>}
+				<div class="product-card__price">{price.value}</div>
+				<div class="product-card__price-units">грн/{units}</div>
+			</div>
+		</div>
+		<div class="product-card__actions">
+			<Quantity
+				class="product-card__quantity"
+				{units}
+				value={quantity.value}
+				step={quantity.step}
+				min={quantity.min}
+				max={99}
+			/>
+			<CartBtn>В кошик</CartBtn>
+		</div>
+	</div>
+</article>

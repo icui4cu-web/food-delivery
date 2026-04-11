@@ -1,0 +1,31 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import "./swiper-nav.scss";
+
+interface Props {
+	sliderTargetId: string;
+	placement?: string;
+}
+
+const { sliderTargetId, placement } = Astro.props;
+---
+
+<div
+	class:list={["swiper-nav", placement && `swiper-nav_placement_${placement}`]}
+	data-slider={sliderTargetId}
+>
+	<Btn
+		class="swiper-nav__btn"
+		variant="outline-muted"
+		iconStart="chevron-left"
+		aria-label="Назад"
+		data-action="slidePrev"
+	/>
+	<Btn
+		class="swiper-nav__btn"
+		variant="outline-muted"
+		iconStart="chevron-right"
+		aria-label="Вперед"
+		data-action="slideNext"
+	/>
+</div>

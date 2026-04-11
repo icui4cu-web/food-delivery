@@ -7,12 +7,21 @@
 		height: 100%;
 		min-height: 0;
 		object-fit: cover;
-		transition-property: visibility, opacity;
-		transition-duration: var(--hero-transition-duration);
+		transition-property: visibility, opacity, transform;
+		// transition-duration: var(--hero-transition-duration);
+		transition-duration: 1s;
+		transform: translateX(50px);
+		opacity: 0;
+		visibility: hidden;
 
-		&:not(._active) {
-			visibility: hidden;
-			opacity: 0;
+		&._active {
+			transform: translateX(0);
+			opacity: 1;
+			visibility: visible;
+
+			@starting-style {
+				transform: translateX(-500px);
+			}
 		}
 	}
 
@@ -35,7 +44,7 @@
 
 	@media (width>=992px) {
 		mask-image: url('/assets/img/hero-mask.svg'), linear-gradient(#000);
-		mask-size: 868px 794px, calc(100% - 866px) 100%;
+		mask-size: 1440px 794px, calc(100% - 1438px) 100%;
 		mask-position: left top, right center;
 		mask-repeat: no-repeat;
 		mask-composite: add;

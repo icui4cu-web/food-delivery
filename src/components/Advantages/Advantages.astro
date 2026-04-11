@@ -1,0 +1,41 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./advantages.scss";
+
+const { class: className } = Astro.props;
+
+const advantages = [
+	{
+		icon: "factory",
+		title: "Власне виробництво та 100% свіжа сировина",
+		description:
+			"Основною конкурентною перевагою продукції «Фуд Фекторі» є використання винятково свіжої м'ясної сировини, надходження якої забезпечує власний забійний цех.",
+	},
+	{
+		icon: "certificate",
+		title: "Офіційна сертифікація всієї продукції",
+		description:
+			"Високу якість нашої продукції підтверджують відповідні сертифікаційні документи: ветеринарні свідоцтва, сертифікати відповідності, висновки санепідеміологічних експертиз, якісні посвідчення та протоколи випробувань.",
+	},
+	{
+		icon: "validity",
+		title: "Гарантія відповідності стандартам",
+		description:
+			"«Фуд Фекторі» гарантує повну відповідність своєї продукції усім необхідним технічним нормативам, завдяки жорсткому контролю над дотриманням всіх необхідних норм на усіх етапах виробництва та зберігання продукції.",
+	},
+];
+---
+
+<section class:list={[className, "advantages"]}>
+	{
+		advantages.map(({ icon, title, description }) => (
+			<article class="advantages__card">
+				<div class="advantages__icon-wrapper">
+					<Icon class="advantages__icon" id={icon} />
+				</div>
+				<h3 class="advantages__title">{title}</h3>
+				<p class="advantages__description">{description}</p>
+			</article>
+		))
+	}
+</section>

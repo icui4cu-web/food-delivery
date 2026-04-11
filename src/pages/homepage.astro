@@ -1,0 +1,56 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/Hero/Hero.astro";
+import Section from "@components/Section/Section.astro";
+import SwiperNav from "@components/SwiperNav/SwiperNav.astro";
+import Categories from "@components/Categories/Categories.astro";
+import Btn from "@components/Btn/Btn.astro";
+import About from "@components/About/About.astro";
+import Advantages from "@components/Advantages/Advantages.astro";
+import Offers from "@components/Offers/Offers.astro";
+import Partnership from "@components/Partnership/Partnership.astro";
+import SeoText from "@components/SeoText/SeoText.astro";
+---
+
+<Layout metaTitle="Homepage">
+	<main>
+		<Hero class="page__section" />
+
+		<Section
+			class="page__section container"
+			title="Каталог продукції"
+			subtitle="для широкого кола гурманів"
+		>
+			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="catalog" placement="catalog" />
+				<Btn href="#" variant="outline-muted" iconEnd="arrow-right">В магазин</Btn>
+			</Fragment>
+			<Categories sliderId="catalog" />
+		</Section>
+
+		<Section
+			class="page__section container"
+			title="Спеціальні пропозиції"
+			subtitle="Акції та ціни тижня"
+		>
+			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="offers" />
+				<Btn href="#" variant="outline-muted" iconEnd="arrow-right">Дивитись всі</Btn>
+			</Fragment>
+			<Offers sliderId="offers" />
+		</Section>
+
+		<About class="page__section container" />
+
+		<Advantages class="page__section container" />
+
+		<Section class="page__section container" title="Партнерам" subtitle="Співробітництво">
+			<Fragment slot="section-actions">
+				<Btn href="#" variant="outline-white" iconEnd="arrow-right">Детальніше</Btn>
+			</Fragment>
+			<Partnership />
+		</Section>
+
+		<SeoText />
+	</main>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import CategoryCard from "./CategoryCard/CategoryCard.astro";
+import "./categories.scss";
+
+interface Props {
+	sliderId: string;
+}
+
+const { sliderId } = Astro.props;
+
+const categories = [
+	{ label: "Ковбасні вироби", icon: "sausage", image: "sausages" },
+	{ label: "М’ясні делікатеси", icon: "ham", image: "charcuterie" },
+	{ label: "Свіже м’ясо", icon: "steak", image: "meat" },
+	{ label: "Кондитерські вироби", icon: "cake", image: "confectionery" },
+	{ label: "Заморожені продукти", icon: "snowflake", image: "frozen" },
+	{ label: "Хліб та випічка", icon: "bread", image: "bakery" },
+];
+---
+
+<div class="categories swiper" id={sliderId}>
+	<ul class="categories__row swiper-wrapper">
+		{categories.map((item) => <CategoryCard class="swiper-slide" as="li" {...item} />)}
+	</ul>
+</div>

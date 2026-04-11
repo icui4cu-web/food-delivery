@@ -1,0 +1,40 @@
+---
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import Btn from "@components/Btn/Btn.astro";
+import Slider from "@components/Slider/Slider.astro";
+import "./about.scss";
+
+const { class: className } = Astro.props;
+
+const slides = [
+	{ src: "/media/about/own-production.webp", width: 810, height: 470, alt: "" },
+	{ src: "/media/about/fresh-products.webp", width: 810, height: 470, alt: "" },
+	{ src: "/media/about/premium-quality.webp", width: 810, height: 470, alt: "" },
+];
+---
+
+<div class:list={[className, "about"]}>
+	<div class="about__text">
+		<hgroup class="about__header">
+			<Subtitle>Власне виробництво</Subtitle>
+			<Title as="h2" size={2}>Вітчизняний виробник продуктів харчування</Title>
+		</hgroup>
+		<div class="about__description u-margin-trim">
+			<p>
+				«Фуд Фекторі» - виробничо-торгова компанія, яка пройшла шлях зростання від ковбасного цеху до
+				великого сучасного харчового комбінату з європейським обладнанням та ефективною системою
+				керування якістю.
+			</p>
+			<p>
+				Виготовляючи на власних потужностях широкий асортимент продуктів харчування: свіжого м'яса,
+				ковбас та делікатесів, напівфабрикатів та кондитерських виробів, ми завжди залишаємось віддані
+				принципам бездоганної якості.
+			</p>
+		</div>
+		<Btn class="about__btn" href="#" variant="outline-white" iconEnd="arrow-right">Про нас</Btn>
+	</div>
+	<div class="about__slider">
+		<Slider items={slides} />
+	</div>
+</div>

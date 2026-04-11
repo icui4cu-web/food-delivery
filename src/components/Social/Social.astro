@@ -1,0 +1,64 @@
+---
+// @ts-nocheck
+import Icon from "@components/Icon/Icon.astro";
+import "./social.scss";
+
+interface Props {
+	label?: string;
+}
+
+const { label } = Astro.props;
+
+const showGradient = !Astro.locals.socialGradientRendered;
+if (showGradient) Astro.locals.socialGradientRendered = true;
+
+const links = [
+	{ icon: "telegram", href: "#", title: "Telegram" },
+	{ icon: "instagram", href: "#", title: "Instagram" },
+	{ icon: "tiktok", href: "#", title: "TikTok" },
+	{ icon: "facebook", href: "#", title: "Facebook" },
+	{ icon: "youtube", href: "#", title: "Youtube" },
+];
+---
+
+<div class="social">
+	{label && <p class="social__label">{label}</p>}
+	<ul class="social__list">
+		{
+			links.map(({ icon, ...rest }) => (
+				<li class="social__item">
+					<a class="social__link" {...rest} target="_blank">
+						<Icon id={icon} fill="url(#social-icon-gradient)" />
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+{
+	showGradient && (
+		<svg
+			aria-hidden="true"
+			style="position: absolute; width: 0; height: 0; overflow: hidden;"
+			version="1.1"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+		>
+			<defs>
+				<linearGradient
+					id="social-icon-gradient"
+					x1="4.49988"
+					y1="20"
+					x2="24.9999"
+					y2="4.00003"
+					gradientUnits="userSpaceOnUse"
+				>
+					<stop stop-color="#FFA300" />
+					<stop offset="0.25" stop-color="#FF7276" />
+					<stop offset="0.65" stop-color="#CB2C30" />
+				</linearGradient>
+			</defs>
+		</svg>
+	)
+}

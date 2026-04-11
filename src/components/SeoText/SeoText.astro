@@ -1,0 +1,27 @@
+---
+import Title from "@components/Title/Title.astro";
+import Expandable from "@components/Expandable/Expandable.astro";
+import "./seo-text.scss";
+---
+
+<section class="seo-text">
+	<div class="seo-text__inner container">
+		<Title class="seo-text__title" as="h2" size={3} line="start" theme="gamma"
+			>М’ясо від виробника — свіже, якісне та перевірене</Title
+		>
+		<Expandable
+			class="seo-text__description"
+			visibleNodes={2}
+			expandText="Читати повністю"
+			collapseText="Згорнути"
+		>
+			<Fragment slot="content">
+				<p>Свіже м’ясо від виробника — це запорука якості, безпеки та натурального смаку. Замовляючи продукцію безпосередньо у виробника, ви отримуєте гарантовано свіжий продукт, який зберігає всі корисні властивості. Ми пропонуємо широкий асортимент м’ясних виробів, що виготовляються із відбірної сировини відповідно до сучасних стандартів якості.</p>
+				<p> Наше підприємство займається повним циклом виробництва — від контролю за відгодівлею тварин до пакування готової продукції. Такий підхід дозволяє гарантувати стабільну якість м’яса, його безпечність та автентичний смак.</p>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, minus corporis dignissimos, sunt vero doloribus beatae libero, aspernatur nihil ea expedita dolores quidem laboriosam similique culpa impedit laborum commodi. Rem?</p>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, minus corporis dignissimos, sunt vero doloribus beatae libero, aspernatur nihil ea expedita dolores quidem laboriosam similique culpa impedit laborum commodi. Rem?</p>
+			</Fragment>
+			
+		</Expandable>
+	</div>
+</section>

@@ -1,0 +1,31 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./quantity.scss";
+
+interface Props {
+	value: number;
+	step?: number;
+	units?: string;
+	class?: string;
+	min?: number;
+	max?: number;
+}
+
+const { class: className, value, step = 1, units, min, max } = Astro.props;
+---
+
+<div class:list={[className, "quantity"]} data-step={step} data-min={min} data-max={max}>
+	<button class="quantity__btn _minus" type="button">
+		<Icon id="minus" />
+	</button>
+	<input
+		class="quantity__input"
+		inputmode="numeric"
+		value={`${value} ${units ?? ""}`}
+		data-units={units}
+		autocomplete="off"
+	/>
+	<button class="quantity__btn _plus" type="button">
+		<Icon id="plus" />
+	</button>
+</div>

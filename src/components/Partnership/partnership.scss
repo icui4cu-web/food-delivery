@@ -1,0 +1,30 @@
+.partnership {
+	--cols: 1;
+	display: grid;
+	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+	gap: 25px 60px;
+
+	&__card {
+		padding: fluid(30, 50) fluid(16, 50);
+		border-radius: 20px;
+		background-color: #fff;
+	}
+
+	&__title {
+		margin-bottom: 20px;
+		font-size: fluid(20, 30);
+	}
+
+	&__description {
+		font-size: fluid(14, 18);
+		line-height: 1.333333333;
+
+		p {
+			margin-block: 0.8em;
+		}
+	}
+
+	@media (width>=992px) {
+		--cols: 2;
+	}
+}

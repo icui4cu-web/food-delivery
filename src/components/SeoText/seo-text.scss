@@ -1,0 +1,29 @@
+.seo-text {
+	padding-block: fluid(44, 80) fluid(58, 68);
+	background-color: #fff;
+
+	&__description {
+		--expandable-btn-offset: 38px;
+		font-size: fluid(16, 18);
+		line-height: 1.333333333;
+
+		p {
+			margin-block: .3em;
+		}
+	}
+
+	@media (width<1200px) {
+		&__title {
+			margin-bottom: 40px;
+		}
+	}
+
+	@media (width>=1200px) {
+		&__inner {
+			display: grid;
+			grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
+			align-items: start;
+			column-gap: fluid(32, 117, 1200);
+		}
+	}
+}

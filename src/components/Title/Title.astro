@@ -1,0 +1,23 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+import "./title.scss";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag;
+	size: 1 | 2 | 3 | 4 | 5 | 6;
+	class?: string;
+	line?: "start" | "end";
+	theme?: "alpha" | "beta" | "gamma";
+}>;
+
+const { as: Tag, class: className, size, line, theme } = Astro.props;
+---
+
+<Tag
+	class:list={[
+		className,
+		`title title_size_${size}`,
+		line && `title_line_${line}`,
+		theme && `title_theme_${theme}`,
+	]}><slot /></Tag
+>

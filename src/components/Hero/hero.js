@@ -3,7 +3,7 @@ class HeroSlider {
 		this.root = root;
 		this.total = root.querySelectorAll('.hero__text-slide').length;
 		this.current = 0;
-		this.duration = 5000;
+		this.duration = 3000;
 		this.paused = false;
 		this.timer = null;
 		this.elapsed = 0;
