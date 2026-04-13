@@ -1,30 +1,166 @@
+@use "sass:math";
+
 .partnership {
-	--cols: 1;
-	display: grid;
-	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-	gap: 25px 60px;
+	$root: &;
 
 	&__card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto 1fr;
+		position: relative;
 		padding: fluid(30, 50) fluid(16, 50);
 		border-radius: 20px;
 		background-color: #fff;
+		transition: background-color, color;
+		transition-duration: .2s;
+
+		&_theme {
+			&_beta {
+				--bg: url('/media/partnership/opt.webp');
+				--theme: var(--clr-beta);
+			}
+
+			&_alpha {
+				--bg: url('/media/partnership/horeca.webp');
+				--theme: var(--clr-alpha);
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			inset: 0;
+			border-radius: inherit;
+			background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg) center top / cover no-repeat;
+			opacity: 0;
+			transition: opacity .2s;
+		}
 	}
 
 	&__title {
+		position: relative;
+		padding-bottom: 16px;
 		margin-bottom: 20px;
 		font-size: fluid(20, 30);
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 70px;
+			max-width: 100%;
+			height: 6px;
+			border-radius: 2px;
+			background-color: var(--theme);
+			transition: width .2s;
+		}
 	}
 
 	&__description {
+		grid-column-start: 1;
+		grid-row-start: 2;
 		font-size: fluid(14, 18);
 		line-height: 1.333333333;
+		transition: opacity .2s, visibility .2s;
 
 		p {
 			margin-block: 0.8em;
 		}
 	}
 
+	&__actions {
+		align-self: end;
+		grid-column-start: 1;
+		grid-row-start: 2;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px math.div(40px * 100%, 570px);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .2s, visibility .2s;
+	}
+
+	&__btn {
+		min-width: fit-content;
+		flex: 1;
+		font-weight: 500;
+	}
+
+	@media (width<992px) {
+		&__card {
+			&:not(:last-child) {
+				margin-bottom: 25px;
+			}
+		}
+	}
+
 	@media (width>=992px) {
-		--cols: 2;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: fluid(24, 60, 992);
+	}
+
+	@media (hover) {
+		&__card:hover {
+			background-color: transparent;
+			color: #fff;
+
+			&::before {
+				opacity: 1;
+			}
+		}
+
+		&__title {
+			#{$root}__card:hover &::after {
+				width: clamp(70px, 54%, 310px);
+			}
+		}
+
+		&__description {
+			#{$root}__card:hover & {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		&__actions {
+			#{$root}__card:hover & {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	@media not (hover) {
+		&__card._active {
+			background-color: transparent;
+			color: #fff;
+
+			&::before {
+				opacity: 1;
+			}
+		}
+
+		&__title {
+			#{$root}__card._active &::after {
+				width: clamp(70px, 54%, 310px);
+			}
+		}
+
+		&__description {
+			#{$root}__card._active & {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		&__actions {
+			#{$root}__card._active & {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
 	}
 }

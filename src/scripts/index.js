@@ -5,5 +5,6 @@ import "@components/Expandable/expandable";
 import "@components/Slider/slider";
 import "@components/Offers/offers";
 import "@components/Quantity/quantity";
+import "@components/Partnership/partnership";
 
 import "./demo";

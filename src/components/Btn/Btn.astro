@@ -6,7 +6,16 @@ import Icon from "@components/Icon/Icon.astro";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{
 	as: Tag;
-	variant: "solid" | "outline" | "outline-muted" | "outline-white" | "ghost";
+	variant:
+		| "solid"
+		| "solid-alpha"
+		| "solid-beta"
+		| "outline"
+		| "outline-muted"
+		| "outline-white"
+		| "solid-white"
+		| "ghost";
+	size?: "lg";
 	href?: string;
 	class?: string;
 	iconStart?: string;
@@ -18,6 +27,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 const {
 	as: Tag = "href" in Astro.props ? "a" : "button",
 	variant,
+	size,
 	href,
 	class: className,
 	iconStart,
@@ -30,7 +40,13 @@ const hasLabel = Astro.slots.has("default");
 ---
 
 <Tag
-	class:list={[className, `btn btn_variant_${variant}`, !hasLabel && "btn_icon-only"]}
+	class:list={[
+		className,
+		"btn",
+		`btn_variant_${variant}`,
+		size && `btn_size_${size}`,
+		!hasLabel && "btn_icon-only",
+	]}
 	{href}
 	{title}
 	type={!href ? type : undefined}

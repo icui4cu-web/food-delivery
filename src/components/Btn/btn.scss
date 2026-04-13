@@ -17,7 +17,7 @@
 	text-align: center;
 	user-select: none;
 	outline: none;
-	transition-property: background-color, color, border-color;
+	transition-property: background-color, color, border-color, filter;
 	transition-duration: .15s;
 
 	&:not(&_icon-only, &_variant_ghost) {
@@ -28,7 +28,19 @@
 		&_solid {
 			--bg: #000;
 			--color: #fff;
-			--border-color: #000;
+			--border-color: transparent;
+		}
+
+		&_solid-alpha {
+			--bg: var(--clr-alpha);
+			--color: #000;
+			--border-color: transparent;
+		}
+
+		&_solid-beta {
+			--bg: var(--clr-beta);
+			--color: #000;
+			--border-color: transparent;
 		}
 
 		&_outline {
@@ -44,6 +56,12 @@
 		}
 
 		&_outline-white {
+			--bg: transparent;
+			--color: #fff;
+			--border-color: #fff;
+		}
+
+		&_solid-white {
 			--bg: #fff;
 			--color: #000;
 			--border-color: #b7b7b7;
@@ -53,6 +71,13 @@
 			min-height: auto;
 			padding: 0;
 			border-radius: 0;
+		}
+	}
+
+	&_size {
+		&_lg {
+			min-height: fluid(50, 60);
+			font-size: fluid(20, 24);
 		}
 	}
 
@@ -80,10 +105,32 @@
 	}
 
 	@media (hover) {
-		&:not(&_variant_ghost):hover {
-			--bg: var(--clr-primary);
-			--color: #fff;
-			--border-color: var(--clr-primary);
+		&_variant {
+			&_solid:hover {
+				--bg: var(--clr-primary);
+			}
+
+			&_solid-alpha:hover,
+			&_solid-beta:hover {
+				filter: brightness(1.2);
+			}
+
+			&_solid-white:hover {
+				--color: var(--clr-primary);
+				--border-color: var(--clr-primary);
+			}
+
+			&_outline:hover,
+			&_outline-muted:hover {
+				--color: var(--clr-primary);
+				--border-color: var(--clr-primary);
+			}
+
+			&_outline-white:hover {
+				--bg: #fff;
+				--color: #000;
+				--border-color: transparent;
+			}
 		}
 
 		&_variant_ghost:hover {

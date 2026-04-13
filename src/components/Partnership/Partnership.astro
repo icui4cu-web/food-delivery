@@ -1,23 +1,49 @@
 ---
 import Title from "@components/Title/Title.astro";
+import Btn from "@components/Btn/Btn.astro";
 import "./partnership.scss";
+
+const items = [
+	{
+		theme: "beta",
+		title: "Для оптових покупців",
+		description: [
+			"Співпраця з Food factory – це доступ до сучасного виробництва, стабільних поставок якісної продукції та гнучких умов для партнерів. Ми пропонуємо широкий асортимент, індивідуальний підхід і підтримку на кожному етапі співпраці.",
+			"<b>Давайте разом розвивати успішний бізнес!</b>",
+		],
+	},
+	{
+		theme: "alpha",
+		title: "Для Horeca",
+		description: [
+			"Співпраця з Food factory – це доступ до сучасного виробництва, стабільних поставок якісної продукції та гнучких умов для партнерів. Ми пропонуємо широкий асортимент, індивідуальний підхід і підтримку на кожному етапі співпраці.",
+			"<b>Давайте разом розвивати успішний бізнес!</b>",
+		],
+	},
+] as const;
 ---
 
 <div class="partnership">
-	<div class="partnership__card">
-		<Title class="partnership__title" as="h3" size={3} line="end" theme="beta"
-			>Для оптових покупців</Title
-		>
-		<div class="partnership__description u-margin-trim">
-			<p>Співпраця з Food factory – це доступ до сучасного виробництва, стабільних поставок якісної продукції та гнучких умов для партнерів. Ми пропонуємо широкий асортимент, індивідуальний підхід і підтримку на кожному етапі співпраці.</p>
-			<p><b>Давайте разом розвивати успішний бізнес!</b></p>
-		</div>
-	</div>
-	<div class="partnership__card">
-		<Title class="partnership__title" as="h3" size={3} line="end" theme="alpha">Для Horeca</Title>
-		<div class="partnership__description u-margin-trim">
-			<p>Співпраця з Food factory – це доступ до сучасного виробництва, стабільних поставок якісної продукції та гнучких умов для партнерів. Ми пропонуємо широкий асортимент, індивідуальний підхід і підтримку на кожному етапі співпраці.</p>
-			<p><b>Давайте разом розвивати успішний бізнес!</b></p>
-		</div>
-	</div>
+	{
+		items.map(({ theme, title, description }) => (
+			<div class={`partnership__card partnership__card_theme_${theme}`}>
+				<Title class="partnership__title" as="h3" size={3}>
+					{title}
+				</Title>
+				<div class="partnership__description u-margin-trim">
+					{description.map((p) => (
+						<p set:html={p} />
+					))}
+				</div>
+				<div class="partnership__actions">
+					<Btn class="partnership__btn" href="https://www.google.com/" variant="outline-white" size="lg">
+						Вхід
+					</Btn>
+					<Btn class="partnership__btn" href="https://www.google.com/" variant={`solid-${theme}`} size="lg">
+						Реєстрація
+					</Btn>
+				</div>
+			</div>
+		))
+	}
 </div>
