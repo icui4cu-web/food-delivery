@@ -1,0 +1,23 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import CatalogSection from "@components/Catalog/Catalog.astro";
+import SeoText from "@components/SeoText/SeoText.astro";
+---
+
+<Layout metaTitle="Catalog" headerPosition="static" pageId="catalog-home">
+	<link rel="stylesheet" href="/assets/css/nouislider.min.css" slot="head">
+	<script src="/assets/js/nouislider.min.js" slot="scripts" is:inline></script>
+
+	<Breadcrumbs items={["Продукція", "Роздрібний каталог"]} />
+	<main>
+		<hgroup class="page__title container">
+			<Subtitle size="lg">Для дому</Subtitle>
+			<Title as="h1" size={1}>Роздрібний каталог</Title>
+		</hgroup>
+		<CatalogSection class="container" view="list" />
+		<SeoText />
+	</main>
+</Layout>

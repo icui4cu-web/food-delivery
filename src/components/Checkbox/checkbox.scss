@@ -1,0 +1,28 @@
+.checkbox {
+	width: 24px;
+	height: 24px;
+	border-radius: 4px;
+	border: 1px solid #d8dde9;
+	appearance: none;
+	transition-property: border-color, background-color, filter;
+	transition-duration: .2s;
+
+	&:checked {
+		background: var(--page-theme, var(--clr-primary)) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+		border-color: transparent;
+	}
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	@media (hover) {
+		&:not(:checked,:disabled):hover {
+			border-color: var(--page-theme, var(--clr-primary));
+		}
+
+		&:checked:not(:disabled):hover {
+			filter: brightness(1.2);
+		}
+	}
+}

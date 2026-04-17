@@ -12,7 +12,7 @@ import Partnership from "@components/Partnership/Partnership.astro";
 import SeoText from "@components/SeoText/SeoText.astro";
 ---
 
-<Layout metaTitle="Homepage">
+<Layout metaTitle="Homepage" headerPosition="absolute" pageId="homepage">
 	<main>
 		<Hero />
 
@@ -22,10 +22,10 @@ import SeoText from "@components/SeoText/SeoText.astro";
 			subtitle="для широкого кола гурманів"
 		>
 			<Fragment slot="section-actions">
-				<SwiperNav sliderTargetId="catalog" placement="catalog" />
+				<SwiperNav sliderTargetId="categories" placement="categories" />
 				<Btn href="#" variant="outline-muted" iconEnd="arrow-right">В магазин</Btn>
 			</Fragment>
-			<Categories sliderId="catalog" />
+			<Categories sliderId="categories" />
 		</Section>
 
 		<Section

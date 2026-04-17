@@ -1,0 +1,35 @@
+.range-slider {
+	$height: 7px;
+	$handle-size: 24px;
+
+	margin-inline: $handle-size * 0.5;
+	box-shadow: none;
+	border: none;
+	background-color: #eee;
+	height: $height;
+
+	&.noUi-horizontal {
+		height: $height;
+	}
+
+	.noUi-connect {
+		background-color: var(--page-theme, var(--clr-primary));
+	}
+
+	.noUi-handle {
+		top: -$handle-size * 0.5 + $height * 0.5;
+		right: -$handle-size * 0.5;
+		width: $handle-size;
+		height: $handle-size;
+		border-radius: 50%;
+		border: none;
+		box-shadow: none;
+		background-color: var(--page-theme, var(--clr-primary));
+		cursor: grab;
+
+		&::before,
+		&::after {
+			content: none;
+		}
+	}
+}

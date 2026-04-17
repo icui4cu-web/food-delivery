@@ -3,3 +3,6 @@ $container-gutters-mobile: 10px;
 $container-gutters-desktop: 20px;
 $container-outer-width-mobile: $container-width + $container-gutters-mobile * 2;
 $container-outer-width-desktop: $container-width + $container-gutters-desktop * 2;
+
+$sticky-header-z: 100;
+$filter-z: 200;

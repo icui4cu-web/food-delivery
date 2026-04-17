@@ -1,0 +1,7 @@
+---
+import "./select.scss";
+
+const { class: className } = Astro.props;
+---
+
+<select class:list={[className, "select"]}><slot /></select>

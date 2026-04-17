@@ -1,0 +1,26 @@
+---
+import products from "@data/products.json";
+import Filter from "@components/Filter/Filter.astro";
+import ProductToolbar from "@components/ProductToolbar/ProductToolbar.astro";
+import ProductCardH from "@components/ProductCardH/ProductCardH.astro";
+import Pagination from "@components/Pagination/Pagination.astro";
+import "./catalog.scss";
+
+interface Props {
+	view: "grid" | "list";
+	class?: string;
+}
+
+const { class: className, view } = Astro.props;
+---
+
+<div class:list={[className, "catalog"]}>
+	<Filter class="catalog__filter" />
+	<div class="catalog__content">
+		<ProductToolbar class="catalog__toolbar" />
+		<div class={`catalog__products catalog__products_view_${view}`}>
+			{[...products, ...products, ...products].map((product) => <ProductCardH {...product} />)}
+		</div>
+		<Pagination class="catalog__pagination" />
+	</div>
+</div>

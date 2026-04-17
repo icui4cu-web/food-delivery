@@ -1,36 +1,8 @@
 ---
 import Badge from "@components/Badge/Badge.astro";
 import Quantity from "@components/Quantity/Quantity.astro";
-import "./product-card.scss";
 import CartBtn from "@components/CartBtn/CartBtn.astro";
-
-type Badge = {
-	label: string;
-	theme: "primary" | "alpha" | "beta" | "gamma";
-};
-
-type Badges = {
-	position: "start" | "end";
-	items: readonly Badge[];
-};
-
-interface Props {
-	name: string;
-	image: string;
-	weight: string;
-	badges: Badges;
-	price: {
-		old?: number;
-		value: number;
-	};
-	units: string;
-	quantity: {
-		step: number;
-		value: number;
-		min?: number;
-	};
-	class?: string;
-}
+import "./product-card.scss";
 
 const { class: className, name, image, weight, badges, price, units, quantity } = Astro.props;
 ---
@@ -49,8 +21,8 @@ const { class: className, name, image, weight, badges, price, units, quantity } 
 		{
 			badges && (
 				<div class={`product-card__badges _pos_${badges.position}`}>
-					{badges.items.map((item) => (
-						<Badge theme={item.theme} attach={badges.position}>
+					{badges.items.map((item: any) => (
+						<Badge class="product-card__badge" theme={item.theme} attach={badges.position}>
 							{item.label}
 						</Badge>
 					))}

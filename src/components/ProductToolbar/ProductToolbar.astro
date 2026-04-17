@@ -1,0 +1,31 @@
+---
+import Select from "@components/Select/Select.astro";
+import ProductToolbarBtn from "./ProductToolbarBtn/ProductToolbarBtn.astro";
+import "./product-toolbar.scss";
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[className, "product-toolbar"]}>
+	<div class="product-toolbar__filter">
+		<ProductToolbarBtn
+			class="product-toolbar__filter-btn"
+			theme="accent"
+			title="Відкрити фільтри товарів"
+			icon="filter"
+			data-filter-open-btn=""
+		/>
+		<p class="product-toolbar__filter-total">Знайдено 205 товарів</p>
+	</div>
+	<div class="product-toolbar__actions">
+		<Select class="product-toolbar__select">
+			<option selected="selected" value="default">За замовчуванням</option>
+			<option value="price-asc">Від дешевих до дорогих</option>
+			<option value="price-desc">Від дорогих до дешевих</option>
+			<option value="new">Спочатку новинки</option>
+			<option value="sale">Спочатку акційні</option>
+		</Select>
+		<ProductToolbarBtn theme="white" icon="tiles" title="Товари плиткою" data-view="grid" disabled />
+		<ProductToolbarBtn theme="white" icon="list" title="Товари списком" data-view="list" />
+	</div>
+</div>

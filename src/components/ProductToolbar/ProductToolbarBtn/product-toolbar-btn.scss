@@ -1,0 +1,50 @@
+.product-toolbar-btn {
+	flex-shrink: 0;
+	width: 65px;
+	height: 41px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 20px;
+	background-color: var(--bg);
+	color: var(--color);
+	font-size: 23px;
+	transition: background-color, color, filter;
+	transition-duration: .2s;
+
+	&_theme {
+		&_white {
+			--outline-color: var(--clr-primary);
+			--bg: #fff;
+			--color: #777777;
+		}
+
+		&_accent {
+			--outline-color: #f49900;
+			--bg: #f49900;
+			--color: #000;
+		}
+	}
+
+	&[disabled] {
+		color: #000;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--outline-color);
+		outline-offset: 2px;
+	}
+
+	@media (hover) {
+		&_theme {
+			&_white:not(:disabled):hover {
+				--bg: var(--clr-primary);
+				--color: #fff;
+			}
+
+			&_accent:not(:disabled):hover {
+				filter: brightness(1.2);
+			}
+		}
+	}
+}

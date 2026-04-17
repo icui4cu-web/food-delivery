@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .product-card {
 	$root: &;
 	$bp-min: 240;
@@ -13,29 +15,31 @@
 	&__img-link {
 		position: relative;
 		display: block;
+		border: 1px solid #fff;
+		border-bottom: 0;
 		border-top-left-radius: inherit;
 		border-top-right-radius: inherit;
 		user-select: none;
+		overflow: hidden;
 	}
 
 	&__img {
 		display: block;
 		aspect-ratio: 338/226;
 		width: 100%;
-		border-top-left-radius: inherit;
-		border-top-right-radius: inherit;
 	}
 
 	&__weight {
 		position: absolute;
 		right: 0;
-		bottom: 15px;
+		bottom: math.div(15px * 100%, 180px);
 		font-family: inherit;
+		font-size: fluid(10, 14, $bp-min, 270, cqw);
 	}
 
 	&__badges {
 		position: absolute;
-		top: 18px;
+		top: math.div(18px * 100%, 180px);
 		text-transform: uppercase;
 
 		&._pos {
@@ -49,8 +53,12 @@
 		}
 
 		&>*+* {
-			margin-top: 12px;
+			margin-top: em(12, 14);
 		}
+	}
+
+	&__badge {
+		font-size: fluid(10, 14, $bp-min, 270, cqw);
 	}
 
 	&__content {
@@ -58,7 +66,7 @@
 		display: flex;
 		flex-direction: column;
 		padding:
-			fluid(18, 26, $bp-min, $bp-max, cqw) fluid(12, 15, $bp-min, $bp-max, cqw) fluid(27, 37, $bp-min, $bp-max, cqw);
+			fluid(16, 26, $bp-min, $bp-max, cqw) fluid(12, 15, $bp-min, $bp-max, cqw) fluid(27, 37, $bp-min, $bp-max, cqw);
 	}
 
 	&__name {
@@ -73,7 +81,7 @@
 	}
 
 	&__sku {
-		font-size: 14px;
+		font-size: 12px;
 		color: #777;
 	}
 
@@ -85,6 +93,7 @@
 	}
 
 	&__price-label {
+		display: none;
 		margin-right: auto;
 		font-size: fluid(14, 16, $bp-min, $bp-max, cqw);
 		line-height: 1.2;
@@ -115,16 +124,27 @@
 	}
 
 	&__actions {
-		margin-top: 30px;
+		margin-top: fluid(22, 30, $bp-min, $bp-max, cqw);
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		column-gap: 12px;
+		flex-direction: column;
+		gap: 16px 10px;
 	}
 
-	&__quantity {
-		max-width: 154px;
-		flex-grow: 1;
+	@container (width>=240px) {
+		&__price-label {
+			display: block;
+		}
+
+		&__actions {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&__quantity {
+			max-width: 154px;
+			flex-grow: 1;
+		}
 	}
 
 	@media (hover) {

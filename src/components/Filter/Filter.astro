@@ -1,0 +1,79 @@
+---
+import RangeSlider from "@components/RangeSlider/RangeSlider.astro";
+import Checkbox from "@components/Checkbox/Checkbox.astro";
+import Icon from "@components/Icon/Icon.astro";
+import "./filter.scss";
+
+const { class: className } = Astro.props;
+---
+
+<form class:list={[className, "filter"]} action="" autocomplete="off" data-filter>
+	<button class="filter__close-btn" type="button" data-filter-close-btn>
+		<Icon id="x" />
+	</button>
+	<fieldset class="filter__group filter__group_id_prices">
+		<legend class="filter__title">Ціна</legend>
+		<div class="filter__content">
+			<div class="filter__prices">
+				<div class="filter__price-col">
+					<label for="mse2_ms|price_0">Від</label>
+					<input class="filter__price" id="mse2_ms|price_0" type="text" value="35" data-filter-price-min />
+				</div>
+				<div class="filter__price-col">
+					<label for="mse2_ms|price_1">До</label>
+					<input class="filter__price" id="mse2_ms|price_1" type="text" value="1466" data-filter-price-max />
+				</div>
+			</div>
+			<RangeSlider id="filter-price-range" data-min="35" data-max="1466" />
+		</div>
+	</fieldset>
+	<details class="filter__group" open>
+		<summary class="filter__title">
+			Ковбаси та делікатеси
+			<Icon class="filter__title-icon" id="chevron-down" />
+		</summary>
+		<div class="filter__content">
+			<div class="filter__scroller">
+				{
+					[
+						"Свинина",
+						"Курятина",
+						"Яловичина",
+						"Індичка",
+						"Напівфабрикати",
+						"Баранина",
+						"Телятина",
+						"Кролятина",
+						"Качатина",
+						"Дичина",
+					].map((label, index) => (
+						<div class="filter__item">
+							<Checkbox
+								class="filter__checkbox"
+								id={`mse2_ms|vendor_${index}`}
+								name="vendor"
+								value={index}
+							/>
+							<label class="filter__item" for={`mse2_ms|vendor_${index}`}>
+								{label}
+							</label>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</details>
+	<details class="filter__group">
+		<summary class="filter__title">
+			Напівфабрикати
+			<Icon class="filter__title-icon" id="chevron-down" />
+		</summary>
+	</details>
+	<details class="filter__group">
+		<summary class="filter__title">
+			Кондитерські вироби
+			<Icon class="filter__title-icon" id="chevron-down" />
+		</summary>
+	</details>
+</form>
+<div class="filter-overlay" data-filter-overlay></div>

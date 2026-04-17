@@ -1,7 +1,12 @@
 ---
 import "./subtitle.scss";
 
-const { class: className } = Astro.props;
+interface Props {
+	size?: "lg";
+	class?: string;
+}
+
+const { class: className, size } = Astro.props;
 ---
 
-<p class:list={[className, "subtitle"]}><slot /></p>
+<p class:list={[className, "subtitle", size && `subtitle_size_${size}`]}><slot /></p>

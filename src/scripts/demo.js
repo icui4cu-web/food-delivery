@@ -1,4 +1,5 @@
 import * as cartBtn from "@components/CartBtn/cart-btn"
+import * as filter from "@components/Filter/filter"
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -15,3 +16,10 @@ document.querySelectorAll('.cart-btn').forEach(btn => {
 		cartBtn.setLoading(btn, false)
 	})
 })
+
+// Приклад роботи з фільтром
+document.querySelector('[data-filter]').addEventListener('filter:change', async () => {
+	filter.loading(true);
+	await delay(1000);
+	filter.loading(false);
+});

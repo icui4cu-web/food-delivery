@@ -4,16 +4,16 @@
 	$icon-size: 38px;
 	$transition-duration: .3s;
 
-	--theme: var(--clr-primary);
+	--bg: var(--page-theme, var(--clr-primary));
 	min-width: $icon-size + 27px;
 	height: $icon-size + $padding * 2;
 	padding: $padding;
 	position: relative;
-	background-color: var(--theme);
+	background-color: var(--bg);
 	color: #fff;
 	text-transform: lowercase;
 	border-radius: 20px;
-	font: 400 18px/1 'Oswald', sans-serif;
+	font: 400 fluid(16, 18, 240, 327, cqw)/1 'Oswald', sans-serif;
 	white-space: nowrap;
 	text-align: center;
 	user-select: none;
@@ -21,8 +21,13 @@
 	transition-duration: .2s, $transition-duration;
 	overflow: hidden;
 
+	&:focus-visible {
+		outline: 2px solid var(--bg);
+		outline-offset: 2px;
+	}
+
 	&._active {
-		--theme: #3a3a3a;
+		--bg: #3a3a3a;
 	}
 
 	&__label {
@@ -69,12 +74,16 @@
 		height: $icon-size;
 		border-radius: 50%;
 		background-color: #fff;
-		color: var(--theme);
+		color: var(--bg);
 		transition-property: right, color;
 		transition-duration: $transition-duration;
 
 		#{$root}._active & {
 			right: calc(100% - $icon-size - $padding);
+
+			.icon {
+				color: #3a3a3a;
+			}
 		}
 
 		#{$root}._loading & {
@@ -104,7 +113,7 @@
 		}
 	}
 
-	@container (width<300px) {
+	@container (240px <= width < 269px) {
 		&__label {
 			display: none;
 		}

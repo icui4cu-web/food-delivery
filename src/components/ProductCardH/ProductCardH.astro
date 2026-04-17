@@ -1,0 +1,42 @@
+---
+import Quantity from "@components/Quantity/Quantity.astro";
+import CartBtn from "@components/CartBtn/CartBtn.astro";
+import "./product-card-h.scss";
+
+const { class: className, name, image, weight, price, units, quantity } = Astro.props;
+---
+
+<article class:list={[className, "product-card-h"]}>
+	<p class="product-card-h__sku">Артикул: 14310</p>
+	<a class="product-card-h__img-link" href="#">
+		<img
+			class="product-card-h__img"
+			src={image}
+			alt=""
+			width="338"
+			height="226"
+			loading="lazy"
+			decoding="async"
+		/>
+	</a>
+	<div class="product-card-h__name">
+		<a class="product-card-h__name-link" href="#">{name}</a>
+	</div>
+	<p class="product-card-h__weight">{weight}</p>
+	<div class="product-card-h__prices">
+		{price.old && <s class="product-card-h__price-old">{price.old}</s>}
+		<span class="product-card-h__price">{price.value}</span>
+		<span class="product-card-h__price-units">грн/{units}</span>
+	</div>
+	<div class="product-card-h__actions">
+		<Quantity
+			class="product-card-h__quantity"
+			{units}
+			value={quantity.value}
+			step={quantity.step}
+			min={quantity.min}
+			max={99}
+		/>
+		<CartBtn class="product-card-h__cart-btn" label="В кошик" />
+	</div>
+</article>

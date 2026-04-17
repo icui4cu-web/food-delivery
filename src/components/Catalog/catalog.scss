@@ -1,0 +1,39 @@
+.catalog {
+	margin-bottom: fluid(29, 60);
+
+	&__toolbar {
+		margin-bottom: fluid(28, 14);
+	}
+
+	&__products {
+		&_view {
+			&_grid {
+				$gap: 4px;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(min(50% - $gap * 0.5, 240px), 1fr));
+				gap: $gap;
+			}
+
+			&_list>*+* {
+				margin-top: 10px;
+			}
+		}
+	}
+
+	&__pagination {
+		margin-top: fluid(12, 30);
+	}
+
+	@media (width<1200px) {
+		&__pagination {
+			margin-inline: auto;
+			width: fit-content;
+		}
+	}
+
+	@media (width>=1200px) {
+		display: grid;
+		grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
+		column-gap: 15px;
+	}
+}

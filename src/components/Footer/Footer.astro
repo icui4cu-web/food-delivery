@@ -5,6 +5,8 @@ import Payments from "@components/Payments/Payments.astro";
 import FooterNav from "./FooterNav/FooterNav.astro";
 import Social from "@components/Social/Social.astro";
 
+const { class: className } = Astro.props;
+
 const productionNav = [
 	"Свіже м’ясо",
 	"Ковбаси та м’ясні делікатеси",
@@ -13,13 +15,10 @@ const productionNav = [
 	"Їжа для тварин",
 ];
 
-const infoNav = [
-	"Доставка та оплата",
-	"Про виробництво"
-]
+const infoNav = ["Доставка та оплата", "Про виробництво"];
 ---
 
-<footer class="footer">
+<footer class:list={[className, "footer"]}>
 	<div class="footer__top container">
 		<FooterLogo class="footer__logo" />
 		<div class="footer__nav">
@@ -62,7 +61,9 @@ const infoNav = [
 				<div>
 					<dt class="footer__contact-label">E-mail</dt>
 					<dd class="footer__contact">
-						<a class="footer__contact-link" href="mailto:info@foodfactory.kyiv.ua">info@foodfactory.kyiv.ua</a>
+						<a class="footer__contact-link" href="mailto:info@foodfactory.kyiv.ua"
+							>info@foodfactory.kyiv.ua</a
+						>
 					</dd>
 				</div>
 			</dl>

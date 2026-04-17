@@ -1,4 +1,10 @@
 .subtitle {
-	color: var(--clr-primary);
+	color: var(--page-theme, var(--clr-primary));
 	text-transform: uppercase;
+
+	&_size {
+		&_lg {
+			font-size: fluid(14, 18);
+		}
+	}
 }

@@ -1,0 +1,29 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import ConditionWrapper from "@components/ConditionWrapper/ConditionWrapper.astro";
+import "./breadcrumbs.scss";
+
+interface Props {
+	items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="breadcrumbs container">
+	<li class="breadcrumbs__item">
+		<a class="breadcrumbs__link" href="/">
+			<Icon id="home" size={14} />
+			ФудФекторі
+		</a>
+	</li>
+	{
+		items.map((text, index) => (
+			<li class="breadcrumbs__item">
+				<ConditionWrapper class="breadcrumbs__link" as="a" href="#" active={index !== items.length - 1}>
+					{text}
+				</ConditionWrapper>
+			</li>
+		))
+	}
+</ol>

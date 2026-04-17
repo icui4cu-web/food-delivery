@@ -19,4 +19,8 @@
 	&__link {
 		font-size: 24px;
 	}
+
+	&__icon {
+		fill: var(--page-theme, url(#social-icon-gradient));
+	}
 }

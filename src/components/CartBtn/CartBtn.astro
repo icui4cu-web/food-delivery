@@ -4,12 +4,13 @@ import "./cart-btn.scss";
 
 interface Props {
 	label: string;
+	class?: string;
 }
 
-const { label } = Astro.props;
+const { class: className, label } = Astro.props;
 ---
 
-<button class="cart-btn" type="button" aria-label={label}>
+<button class:list={[className, "cart-btn"]} type="button" aria-label={label}>
 	<span class="cart-btn__label">{label}</span>
 	<span class="cart-btn__icon">
 		<Icon id="cart" />

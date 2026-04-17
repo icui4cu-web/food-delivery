@@ -6,7 +6,7 @@ import Icon from "@components/Icon/Icon.astro";
 import "./header.scss";
 
 interface Props {
-	position?: "absolute";
+	position: "absolute" | "static";
 }
 
 const { position } = Astro.props;

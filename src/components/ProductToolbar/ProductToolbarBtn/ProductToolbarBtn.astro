@@ -1,0 +1,24 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./product-toolbar-btn.scss";
+
+interface Props {
+	theme: "white" | "accent";
+	icon: string;
+	title: string;
+	class?: string;
+	disabled?: boolean;
+}
+
+const { class: className, icon, theme, title, disabled, ...props } = Astro.props;
+---
+
+<button
+	class:list={[className, `product-toolbar-btn product-toolbar-btn_theme_${theme}`]}
+	type="button"
+	{title}
+	{disabled}
+	{...props}
+>
+	<Icon id={icon} />
+</button>

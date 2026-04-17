@@ -1,7 +1,6 @@
 .footer {
 	--container-gutters: 20px;
 	--divider: #{1px solid rgba($color: #fff, $alpha: 0.1)};
-	margin-top: auto;
 	background-color: #272727;
 	color: #E5E5E5;
 
@@ -62,7 +61,7 @@
 
 	&__bottom {
 		padding-block: 20px;
-		background: linear-gradient(to right, var(--clr-alpha), var(--clr-gamma) 23%, #CB2C30 57%, var(--clr-beta));
+		background: var(--page-theme, linear-gradient(to right, var(--clr-alpha), var(--clr-gamma) 23%, #CB2C30 57%, var(--clr-beta)));
 		color: #111;
 	}
 

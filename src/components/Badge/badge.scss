@@ -1,6 +1,6 @@
 .badge {
 	width: fit-content;
-	padding: 4px 14px;
+	padding: em(4, 14) 1em;
 	font: 14px/1.2 'Oswald', sans-serif;
 
 	&_attach {

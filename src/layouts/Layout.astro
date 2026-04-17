@@ -3,7 +3,13 @@ import "/src/scss/index.scss";
 import Header from "@components/Header/Header.astro";
 import Footer from "@components/Footer/Footer.astro";
 
-const { metaTitle } = Astro.props;
+interface Props {
+	metaTitle: string;
+	headerPosition: "absolute" | "static";
+	pageId?: string;
+}
+
+const { metaTitle, headerPosition, pageId } = Astro.props;
 ---
 
 <html lang="uk">
@@ -11,14 +17,16 @@ const { metaTitle } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{metaTitle}</title>
-		<meta name="description" content={metaTitle}>
+		<meta name="description" content={metaTitle} />
 		<link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
+		<slot name="head" />
 	</head>
-	<body>
-		<Header position="absolute" />
+	<body class:list={["page", pageId && `page_id_${pageId}`]}>
+		<Header position={headerPosition} />
 		<slot />
-		<Footer />
+		<Footer class="page__footer" />
 		<script src="/assets/js/swiper-bundle.min.js" defer is:inline></script>
+		<slot name="scripts" />
 		<script src="/src/scripts/index.js"></script>
 	</body>
 </html>
