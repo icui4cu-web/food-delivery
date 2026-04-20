@@ -5,7 +5,7 @@
 	$transition-duration: .3s;
 
 	--bg: var(--page-theme, var(--clr-primary));
-	min-width: $icon-size + 27px;
+	min-width: $icon-size + 22px;
 	height: $icon-size + $padding * 2;
 	padding: $padding;
 	position: relative;
@@ -13,7 +13,7 @@
 	color: #fff;
 	text-transform: lowercase;
 	border-radius: 20px;
-	font: 400 fluid(16, 18, 240, 327, cqw)/1 'Oswald', sans-serif;
+	font: 400 16px/1 'Oswald', sans-serif;
 	white-space: nowrap;
 	text-align: center;
 	user-select: none;

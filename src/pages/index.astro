@@ -1,7 +1,9 @@
 ---
 const pages = [
 	{ label: "Головна", slug: "homepage" },
-	{ label: "Каталог плитка", slug: "catalog" },
+	{ label: "Каталог плитка", slug: "catalog-grid" },
+	{ label: "Каталог плитка (бізнес)", slug: "catalog-grid-business" },
+	{ label: "Каталог плитка (Horeca)", slug: "catalog-grid-horeca" },
 	{ label: "Каталог список", slug: "catalog-list" },
 ];
 ---
@@ -17,7 +19,7 @@ const pages = [
 			{
 				pages.map(({ label, slug }) => (
 					<li>
-						<a href={`/${slug}`}>{label}</a>
+						<a href={`/${slug}`} target="_blank">{label}</a>
 					</li>
 				))
 			}

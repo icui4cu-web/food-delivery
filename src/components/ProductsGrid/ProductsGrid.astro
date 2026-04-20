@@ -1,0 +1,9 @@
+---
+import products from "@data/products.json";
+import ProductTile from "@components/ProductTile/ProductTile.astro";
+import "./products-grid.scss";
+---
+
+<div class="products-grid">
+	{[...products, ...products, ...products].map((product) => <ProductTile {...product} />)}
+</div>

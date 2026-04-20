@@ -1,0 +1,6 @@
+.products-grid {
+	display: grid;
+	$gap: 4px;
+	grid-template-columns: repeat(auto-fill, minmax(min(50% - $gap * 0.5, 240px), 1fr));
+	gap: $gap;
+}

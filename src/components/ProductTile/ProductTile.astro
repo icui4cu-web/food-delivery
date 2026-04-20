@@ -1,0 +1,59 @@
+---
+import Badge from "@components/Badge/Badge.astro";
+import Quantity from "@components/Quantity/Quantity.astro";
+import CartBtn from "@components/CartBtn/CartBtn.astro";
+import "./product-tile.scss";
+
+const { class: className, name, image, weight, badges, price, units, quantity } = Astro.props;
+---
+
+<article class:list={[className, "product-tile"]}>
+	<a class="product-tile__img-link" href="#">
+		<img
+			class="product-tile__img"
+			src={image}
+			alt=""
+			width="338"
+			height="226"
+			loading="lazy"
+			decoding="async"
+		/>
+		{
+			badges && (
+				<div class={`product-tile__badges _pos_${badges.position}`}>
+					{badges.items.map((item: any) => (
+						<Badge class="product-tile__badge" theme={item.theme} attach={badges.position}>
+							{item.label}
+						</Badge>
+					))}
+				</div>
+			)
+		}
+		<Badge class="product-tile__weight" theme="white" attach="end">{weight}</Badge>
+	</a>
+	<div class="product-tile__content">
+		<div class="product-tile__name">
+			<a class="product-tile__name-link" href="#">{name}</a>
+		</div>
+		<p class="product-tile__sku">Артикул: 14310</p>
+		<div class="product-tile__price-row">
+			<p class="product-tile__price-label">Роздрібна ціна:</p>
+			<div class="product-tile__prices">
+				{price.old && <s class="product-tile__price-old">{price.old}</s>}
+				<span class="product-tile__price">{price.value}</span>
+				<span class="product-tile__price-units">грн/{units}</span>
+			</div>
+		</div>
+		<div class="product-tile__actions">
+			<Quantity
+				class="product-tile__quantity"
+				{units}
+				value={quantity.value}
+				step={quantity.step}
+				min={quantity.min}
+				max={99}
+			/>
+			<CartBtn label="В кошик" />
+		</div>
+	</div>
+</article>

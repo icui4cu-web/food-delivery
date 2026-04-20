@@ -5,21 +5,6 @@
 		margin-bottom: fluid(28, 14);
 	}
 
-	&__products {
-		&_view {
-			&_grid {
-				$gap: 4px;
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(min(50% - $gap * 0.5, 240px), 1fr));
-				gap: $gap;
-			}
-
-			&_list>*+* {
-				margin-top: 10px;
-			}
-		}
-	}
-
 	&__pagination {
 		margin-top: fluid(12, 30);
 	}
@@ -32,8 +17,22 @@
 	}
 
 	@media (width>=1200px) {
+		position: relative;
 		display: grid;
 		grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
 		column-gap: 15px;
+
+		&::before {
+			content: attr(data-background-text);
+			position: absolute;
+			z-index: -1;
+			right: 0;
+			bottom: 100%;
+			font-size: 116px;
+			font-weight: 900;
+			text-transform: uppercase;
+			color: rgba($color: #e3dacf, $alpha: 0.341);
+			white-space: nowrap;
+		}
 	}
 }

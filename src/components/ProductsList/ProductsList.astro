@@ -1,0 +1,9 @@
+---
+import products from "@data/products.json";
+import ProductRow from "./ProductRow/ProductRow.astro";
+import "./products-list.scss";
+---
+
+<div class="products-list">
+	{[...products, ...products, ...products].map((product) => <ProductRow {...product} />)}
+</div>

@@ -1,5 +1,5 @@
 ---
-import ProductCard from "@components/ProductCard/ProductCard.astro";
+import ProductTile from "@components/ProductTile/ProductTile.astro";
 import "./offers.scss";
 
 interface Props {
@@ -89,6 +89,6 @@ const products = [
 
 <div class="offers swiper" id={sliderId}>
 	<div class="offers__slider swiper-wrapper">
-		{[...products, ...products].map((product) => <ProductCard class="swiper-slide" {...product} />)}
+		{[...products, ...products].map((product) => <ProductTile class="swiper-slide" {...product} />)}
 	</div>
 </div>

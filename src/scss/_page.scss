@@ -9,6 +9,14 @@
 		&_catalog-home {
 			--page-theme: var(--clr-gamma);
 		}
+
+		&_catalog-business {
+			--page-theme: var(--clr-beta);
+		}
+
+		&_catalog-horeca {
+			--page-theme: var(--clr-alpha);
+		}
 	}
 
 	&__section {

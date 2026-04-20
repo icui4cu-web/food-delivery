@@ -1,0 +1,145 @@
+@use "sass:math";
+
+$bp-min: 390;
+$bp-max: 1095;
+
+.product-row {
+	$root: &;
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: subgrid;
+	align-items: center;
+	padding: 9px 10px;
+	background-color: #fff;
+	box-shadow: 0 0 3.5px rgba(186, 168, 143, 0.5);
+
+	&__sku {
+		font-size: 12px;
+		line-height: 1.2;
+		color: #777777;
+	}
+
+	&__img-link {
+		margin-block: -8px;
+	}
+
+	&__img {
+		display: block;
+		width: 91px;
+		aspect-ratio: 338/226;
+		object-fit: cover;
+	}
+
+	&__name {
+		max-width: 240px;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font: fluid(16, 18, $bp-min, $bp-max, cqw)/1.2 'Oswald', sans-serif;
+		letter-spacing: -0.02em;
+	}
+
+	&__name-link {
+		transition: color .2s;
+	}
+
+	&__weight {
+		font-size: 12px;
+		color: #777777;
+		white-space: nowrap;
+	}
+
+	&__prices {
+		justify-self: end;
+		white-space: nowrap;
+		column-gap: 0.35em;
+		font: fluid(14, 18, $bp-min, $bp-max, cqw)/1 'Oswald', sans-serif;
+	}
+
+	&__price-old {
+		display: block;
+		color: #898888;
+	}
+
+	&__price {
+		font-size: fluid(22, 28, $bp-min, $bp-max, cqw);
+
+		#{$root}__price-old+& {
+			color: var(--clr-primary);
+		}
+	}
+
+	&__price-units {
+		font-size: fluid(14, 18, $bp-min, $bp-max, cqw);
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		column-gap: 15px;
+		margin-left: 6px;
+	}
+
+	&__quantity {
+		width: 132px;
+	}
+
+	@media (width<992px) {
+		&__quantity {
+			display: none;
+		}
+	}
+
+	@media (width<680px) {
+		&__img-link {
+			display: none;
+		}
+	}
+
+	@media (width<576px) {
+		&__sku {
+			grid-row: 1;
+			grid-column: 1;
+		}
+
+		&__name {
+			grid-row: 2;
+			grid-column: 1;
+			align-self: start;
+		}
+
+		&__weight,
+		&__prices,
+		&__actions {
+			grid-row: 1 / 3;
+		}
+	}
+
+	@media (width<480px) {
+		&__sku-label,
+		&__cart-btn .cart-btn__label {
+			display: none;
+		}
+	}
+
+	@media (width>=768px) {
+		border-radius: 20px;
+		padding-inline: 20px;
+
+		&__prices {
+			display: flex;
+			align-items: baseline;
+			justify-content: flex-end;
+			text-align: right;
+		}
+	}
+
+	@media (hover) {
+
+		&__name-link:hover,
+		&__img-link:hover+&__name {
+			color: var(--clr-primary);
+		}
+	}
+}
