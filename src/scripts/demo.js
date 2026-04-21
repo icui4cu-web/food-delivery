@@ -18,7 +18,7 @@ document.querySelectorAll('.cart-btn').forEach(btn => {
 })
 
 // Приклад роботи з фільтром
-document.querySelector('[data-filter]').addEventListener('filter:change', async () => {
+document.querySelector('[data-filter]')?.addEventListener('filter:change', async () => {
 	filter.loading(true);
 	await delay(1000);
 	filter.loading(false);

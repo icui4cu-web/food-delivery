@@ -32,33 +32,16 @@
 	&__weight {
 		position: absolute;
 		right: 0;
-		bottom: math.div(15px * 100%, 180px);
+		bottom: math.div(13px * 100%, 218px);
 		font-family: inherit;
-		font-size: fluid(10, 14, $bp-min, 270, cqw);
+		font-size: fluid(10, 14, 183, 328, cqw);
 	}
 
 	&__badges {
-		position: absolute;
-		top: math.div(18px * 100%, 180px);
-		text-transform: uppercase;
-
-		&._pos {
-			&_start {
-				left: 0;
-			}
-
-			&_end {
-				right: 0;
-			}
-		}
-
-		&>*+* {
-			margin-top: em(12, 14);
-		}
-	}
-
-	&__badge {
-		font-size: fluid(10, 14, $bp-min, 270, cqw);
+		--badges-space-y: em(12, 14);
+		top: math.div(15px * 100%, 218px);
+		font-size: fluid(10, 14, 183, 328, cqw);
+		line-height: 1;
 	}
 
 	&__content {
@@ -86,7 +69,7 @@
 	}
 
 	&__price-row {
-		margin-top: fluid(10, 4, $bp-min, $bp-max, cqw);
+		margin-top: 10px;
 		display: flex;
 		align-items: flex-end;
 		column-gap: 12px;

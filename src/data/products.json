@@ -6,9 +6,9 @@
 		"badges": {
 			"position": "start",
 			"items": [
-				{ "label": "Акція", "theme": "primary" },
-				{ "label": "ДСТУ", "theme": "gamma" },
-				{ "label": "В/Г", "theme": "alpha" }
+				{ "text": "Акція", "theme": "primary", "size": "lg" },
+				{ "text": "ДСТУ", "theme": "gamma", "size": "md" },
+				{ "text": "В/Г", "theme": "alpha", "size": "sm" }
 			]
 		},
 		"price": {
@@ -27,7 +27,7 @@
 		"weight": "1 кг",
 		"badges": {
 			"position": "start",
-			"items": [{ "label": "Акція", "theme": "primary" }]
+			"items": [{ "text": "Акція", "theme": "primary", "size": "lg" }]
 		},
 		"price": {
 			"value": 245
@@ -45,7 +45,7 @@
 		"weight": "1 кг",
 		"badges": {
 			"position": "end",
-			"items": [{ "label": "Хіт", "theme": "beta" }]
+			"items": [{ "text": "Хіт", "theme": "beta", "size": "sm" }]
 		},
 		"price": {
 			"value": 277
@@ -63,7 +63,7 @@
 		"weight": "1 кг",
 		"badges": {
 			"position": "start",
-			"items": [{ "label": "В/Г", "theme": "alpha" }]
+			"items": [{ "text": "В/Г", "theme": "alpha", "size": "sm" }]
 		},
 		"price": {
 			"value": 385

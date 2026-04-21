@@ -7,12 +7,12 @@ import CatalogSection from "@components/Catalog/Catalog.astro";
 import SeoText from "@components/SeoText/SeoText.astro";
 ---
 
-<Layout metaTitle="Catalog" headerPosition="static" pageId="catalog-horeca">
+<Layout metaTitle="Catalog" headerPosition="static" theme="horeca">
 	<link rel="stylesheet" href="/assets/css/nouislider.min.css" slot="head">
 	<script src="/assets/js/nouislider.min.js" slot="scripts" is:inline></script>
 
 	<Breadcrumbs items={["Продукція", "Роздрібний каталог"]} />
-	<main>
+	<main class="page__main u-pb-0">
 		<hgroup class="page__title container">
 			<Subtitle size="lg">Для дому</Subtitle>
 			<Title as="h1" size={1}>Роздрібний каталог</Title>

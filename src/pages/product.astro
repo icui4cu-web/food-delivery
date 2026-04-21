@@ -1,0 +1,23 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import ProductSection from "@components/Product/Product.astro";
+import Offers from "@components/Offers/Offers.astro";
+import Section from "@components/Section/Section.astro";
+import SwiperNav from "@components/SwiperNav/SwiperNav.astro";
+---
+
+<Layout metaTitle="Product" headerPosition="static" theme="home">
+	<Breadcrumbs
+		items={["Продукція", "Роздрібний каталог", "Сирокопчені та сировялені", "Балик Дарницький"]}
+	/>
+	<main class="page__main">
+		<ProductSection />
+		<Section class="container" title="Рекомендуємо скуштувати" subtitle="Це теж добре смакує!">
+			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="offers" />
+			</Fragment>
+			<Offers sliderId="offers" />
+		</Section>
+	</main>
+</Layout>

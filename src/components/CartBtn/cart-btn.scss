@@ -13,7 +13,7 @@
 	color: #fff;
 	text-transform: lowercase;
 	border-radius: 20px;
-	font: 400 16px/1 'Oswald', sans-serif;
+	font: 400 fluid(16, 18, 183, 328, cqw)/1 'Oswald', sans-serif;
 	white-space: nowrap;
 	text-align: center;
 	user-select: none;
@@ -114,7 +114,7 @@
 	}
 
 	@container (240px <= width < 269px) {
-		&__label {
+		@at-root .product-tile &__label {
 			display: none;
 		}
 	}

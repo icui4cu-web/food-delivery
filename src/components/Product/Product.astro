@@ -1,0 +1,77 @@
+---
+import Title from "@components/Title/Title.astro";
+import Nutrition from "@components/Nutrition/Nutrition.astro";
+import Badges from "@components/Badges/Badges.astro";
+import Quantity from "@components/Quantity/Quantity.astro";
+import CartBtn from "@components/CartBtn/CartBtn.astro";
+import "./product.scss";
+---
+
+<div class="product container">
+	<div class="product__preview">
+		<img
+			class="product__img"
+			src="/demo-content/product-full.webp"
+			alt="Грудинка королівська к/в"
+			width="650"
+			height="466"
+			loading="lazy"
+			decoding="async"
+		/>
+		<Badges
+			class="product__badges"
+			items={[
+				{ text: "Акція", theme: "primary", size: "lg" },
+				{ text: "ДСТУ", theme: "gamma", size: "md" },
+				{ text: "В/Г", theme: "alpha", size: "sm" },
+			]}
+			position="start"
+		/>
+		<Badges
+			class="product__badges"
+			items={[{ text: "ХІТ", theme: "beta", size: "sm" }]}
+			position="end"
+		/>
+	</div>
+	<div class="product__text">
+		<Title class="product__title" as="h1" size={1}>Грудинка королівська к/в</Title>
+		<div class="product__meta">
+			<p class="product__weight">Вага: 500 г</p>
+			<p class="product__sku">Артикул: 14310</p>
+		</div>
+		<div class="product__purchase">
+			<div class="product__prices">
+				<s class="product__price-old">399</s>
+				<span class="product__price">385</span>
+				<span class="product__price-units">грн/шт</span>
+			</div>
+			<div class="product__actions">
+				<Quantity class="product__quantity" value={1} units="шт" />
+				<CartBtn class="product__cart-btn" label="В кошик" />
+			</div>
+		</div>
+		<p class="product__price-note">
+			<b>Ціна роздрібна за 1 кг.</b> Остаточна вага та вартість визначається Вашим клієнт-менеджером під
+			час оформлення замовлення
+		</p>
+		<div class="product__info u-margin-trim">
+			<p>
+				<b>Склад:</b> Свинячий поперековий м'яз, сіль, цукор, суміш перців, ялівець, часник, нітріт натрію.
+			</p>
+			<p><b>Харчова та енергетична цінність</b> (на 100г):</p>
+			<Nutrition
+				class="product__nutrition"
+				items={[
+					{ icon: "egg", text: "Білки: 11.3 г" },
+					{ icon: "droplets", text: "Жири: 24 г" },
+					{ icon: "harvest", text: "Вуглеводи: 11 г", notSquare: true },
+					{ icon: "energy", text: "274 Ккал" },
+				]}
+			/>
+			<p>
+				<b>Термін придатності:</b> При температурі 0+4°С та відносній вологості повітря 70-75% зберігати 30
+				діб,у вакуумній упаковці 30 діб, у газовій упаковці 30 діб
+			</p>
+		</div>
+	</div>
+</div>

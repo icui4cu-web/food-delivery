@@ -1,19 +1,24 @@
 .badge {
+	$root: &;
+
+	--padding-inline: em(12, 16);
 	width: fit-content;
-	padding: em(4, 14) 1em;
-	font: 14px/1.2 'Oswald', sans-serif;
+	padding: em(5, 16) var(--padding-inline);
+	font-family: 'Oswald', sans-serif;
+	line-height: 1.2;
+	white-space: nowrap;
 
 	&_attach {
-		$radius: 12px;
-
 		&_start {
-			border-top-right-radius: $radius;
-			border-bottom-right-radius: $radius;
+			border-top-right-radius: calc(infinity * 1px);
+			border-bottom-right-radius: calc(infinity * 1px);
+			padding-right: calc(var(--padding-inline) + var(--padding-inline) * var(--padding-multiplier));
 		}
 
 		&_end {
-			border-top-left-radius: $radius;
-			border-bottom-left-radius: $radius;
+			border-top-left-radius: calc(infinity * 1px);
+			border-bottom-left-radius: calc(infinity * 1px);
+			padding-right: calc(var(--padding-inline) + var(--padding-inline) * var(--padding-multiplier));
 			text-align: right;
 		}
 	}
@@ -42,6 +47,20 @@
 		&_gamma {
 			background-color: var(--clr-gamma);
 			color: #fff;
+		}
+	}
+
+	&_size {
+		&_sm {
+			--padding-multiplier: 0;
+		}
+
+		&_md {
+			--padding-multiplier: 0.7;
+		}
+
+		&_lg {
+			--padding-multiplier: 2;
 		}
 	}
 }

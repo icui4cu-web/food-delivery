@@ -1,4 +1,5 @@
 ---
+import Badges from "@components/Badges/Badges.astro";
 import Badge from "@components/Badge/Badge.astro";
 import Quantity from "@components/Quantity/Quantity.astro";
 import CartBtn from "@components/CartBtn/CartBtn.astro";
@@ -18,18 +19,8 @@ const { class: className, name, image, weight, badges, price, units, quantity } 
 			loading="lazy"
 			decoding="async"
 		/>
-		{
-			badges && (
-				<div class={`product-tile__badges _pos_${badges.position}`}>
-					{badges.items.map((item: any) => (
-						<Badge class="product-tile__badge" theme={item.theme} attach={badges.position}>
-							{item.label}
-						</Badge>
-					))}
-				</div>
-			)
-		}
-		<Badge class="product-tile__weight" theme="white" attach="end">{weight}</Badge>
+		{badges && <Badges class="product-tile__badges" {...badges} />}
+		<Badge class="product-tile__weight" theme="white" attach="end" size="sm">{weight}</Badge>
 	</a>
 	<div class="product-tile__content">
 		<div class="product-tile__name">

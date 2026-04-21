@@ -1,0 +1,16 @@
+.nutrition {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 34px;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		column-gap: em(8, 16);
+	}
+
+	&__icon {
+		color: var(--page-theme);
+		font-size: em(18, 16);
+	}
+}

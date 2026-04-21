@@ -5,28 +5,30 @@
 		&_homepage {
 			padding-top: 0;
 		}
+	}
 
-		&_catalog-home {
+	&_theme {
+		&_home {
 			--page-theme: var(--clr-gamma);
 		}
 
-		&_catalog-business {
+		&_business {
 			--page-theme: var(--clr-beta);
 		}
 
-		&_catalog-horeca {
+		&_horeca {
 			--page-theme: var(--clr-alpha);
 		}
+	}
+
+	&__main {
+		padding-bottom: fluid(50, 100);
 	}
 
 	&__section {
 		&:not(:last-child) {
 			margin-bottom: fluid(80, 140);
 		}
-	}
-
-	&>* {
-		flex-shrink: 0;
 	}
 
 	&__title {

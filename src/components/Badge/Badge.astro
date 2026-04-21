@@ -3,13 +3,21 @@ import "./badge.scss";
 
 interface Props {
 	theme: "primary" | "alpha" | "beta" | "gamma" | "white";
-	attach?: "start" | "end";
+	attach: "start" | "end";
+	size: "sm" | "md" | "lg";
 	class?: string;
 }
 
-const { class: className, theme, attach } = Astro.props;
+const { class: className, theme, attach, size } = Astro.props;
 ---
 
-<p class:list={[className, `badge badge_theme_${theme}`, attach && `badge_attach_${attach}`]}>
+<p
+	class:list={[
+		className,
+		`badge badge_theme_${theme}`,
+		`badge_attach_${attach}`,
+		`badge_size_${size}`,
+	]}
+>
 	<slot />
 </p>

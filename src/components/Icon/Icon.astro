@@ -6,11 +6,12 @@ interface Props {
 	class?: string;
 	fill?: string;
 	spritesheet?: string;
+	notSquare?: boolean;
 }
 
-const { class: className, id, spritesheet = "icons", fill } = Astro.props;
+const { class: className, id, spritesheet = "icons", fill, notSquare } = Astro.props;
 ---
 
-<svg class:list={[className, "icon"]}
+<svg class:list={[className, "icon", notSquare && `icon_id_${id}`]}
 	><use href={`/assets/img/${spritesheet}.svg#${id}`} {fill}></use></svg
 >

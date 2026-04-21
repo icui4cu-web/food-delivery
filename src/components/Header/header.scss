@@ -63,7 +63,9 @@
 	}
 
 	@media (width>=1200px) {
-		top: 27px;
+		&_pos_absolute {
+			top: 27px;
+		}
 
 		&__inner {
 			display: grid;

@@ -1,0 +1,26 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./nutrition.scss";
+
+interface Props {
+	items: {
+		icon: string;
+		text: string;
+		notSquare?: boolean;
+	}[];
+	class?: string;
+}
+
+const { class: className, items } = Astro.props;
+---
+
+<ul class:list={[className, "nutrition"]}>
+	{
+		items.map(({ icon, text, notSquare }) => (
+			<li class="nutrition__item">
+				<Icon class="nutrition__icon" id={icon} {notSquare} />
+				{text}
+			</li>
+		))
+	}
+</ul>

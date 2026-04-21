@@ -1,0 +1,26 @@
+---
+import Badge from "@components/Badge/Badge.astro";
+import "./badges.scss";
+
+interface Props {
+	items: {
+		text: string;
+		theme: "primary" | "alpha" | "beta" | "gamma" | "white";
+		size: "sm" | "md" | "lg";
+	}[];
+	position: "start" | "end";
+	class?: string;
+}
+
+const { class: className, items, position } = Astro.props;
+---
+
+<div class:list={[className, "badges", `badges_pos_${position}`]}>
+	{
+		items.map(({ text, theme, size }) => (
+			<Badge {theme} {size} attach={position}>
+				{text}
+			</Badge>
+		))
+	}
+</div>

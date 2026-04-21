@@ -6,10 +6,11 @@ import Footer from "@components/Footer/Footer.astro";
 interface Props {
 	metaTitle: string;
 	headerPosition: "absolute" | "static";
+	theme?: "home" | "business" | "horeca";
 	pageId?: string;
 }
 
-const { metaTitle, headerPosition, pageId } = Astro.props;
+const { metaTitle, headerPosition, pageId, theme } = Astro.props;
 ---
 
 <html lang="uk">
@@ -21,7 +22,7 @@ const { metaTitle, headerPosition, pageId } = Astro.props;
 		<link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
 		<slot name="head" />
 	</head>
-	<body class:list={["page", pageId && `page_id_${pageId}`]}>
+	<body class:list={["page", pageId && `page_id_${pageId}`, theme && `page_theme_${theme}`]}>
 		<Header position={headerPosition} />
 		<slot />
 		<Footer class="page__footer" />

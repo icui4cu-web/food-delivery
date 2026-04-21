@@ -1,0 +1,22 @@
+@use "sass:math";
+
+.badges {
+	$root: &;
+
+	position: absolute;
+	text-transform: uppercase;
+
+	&_pos {
+		&_start {
+			left: 0;
+		}
+
+		&_end {
+			right: 0;
+		}
+	}
+
+	&>*+* {
+		margin-top: var(--badges-space-y);
+	}
+}
