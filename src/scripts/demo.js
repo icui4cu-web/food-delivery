@@ -4,6 +4,7 @@ import * as Filter from "@components/Filter/filter"
 import * as PhoneLogin from "@components/PhoneLogin/phone-login"
 import * as Otp from "@components/OTP/otp"
 import * as Card from "@components/Card/card"
+import * as Cart from "@components/Cart/cart"
 
 // имитация запроса к серверу
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -104,3 +105,18 @@ document.querySelectorAll('.card').forEach(card => {
 		Card.setLoading(card, false)
 	})
 })
+
+// активация редактирования корзины (/checkout)
+const checkoutCart = document.getElementById('checkout-cart')
+if (checkoutCart) {
+	checkoutCart.addEventListener('card:toggle', (e) => {
+		const { editing } = e.detail
+		const cart = checkoutCart.querySelector('.cart')
+
+		if(editing) {
+			Cart.setView(cart, 'edit')
+		} else {
+			Cart.setView(cart, 'summary')
+		}
+	})
+}

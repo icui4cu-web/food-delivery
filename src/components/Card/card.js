@@ -1,7 +1,6 @@
 document.querySelectorAll('.card').forEach(card => {
 	const editBtn = card.querySelector('.card__edit-btn')
 	const saveBtn = card.querySelector('.card__save-btn')
-
 	editBtn?.addEventListener('click', () => toggle(card))
 	saveBtn?.addEventListener('click', () => {
 		card.dispatchEvent(new CustomEvent('card:save', { bubbles: true }))
@@ -11,16 +10,18 @@ document.querySelectorAll('.card').forEach(card => {
 export function toggle(card) {
 	const editBtn = card.querySelector('.card__edit-btn')
 	const isEdit = card.classList.toggle('card_edit-mode')
-
 	if (editBtn) {
 		if (!editBtn.dataset.defaultHtml) {
 			editBtn.dataset.defaultHtml = editBtn.innerHTML
 		}
-
 		editBtn.innerHTML = isEdit
 			? editBtn.dataset.collapseText
 			: editBtn.dataset.defaultHtml
 	}
+	card.dispatchEvent(new CustomEvent('card:toggle', {
+		bubbles: true,
+		detail: { editing: isEdit }
+	}))
 }
 
 export function collapse(card) {
@@ -29,6 +30,10 @@ export function collapse(card) {
 	if (editBtn?.dataset.defaultHtml) {
 		editBtn.innerHTML = editBtn.dataset.defaultHtml
 	}
+	card.dispatchEvent(new CustomEvent('card:toggle', {
+		bubbles: true,
+		detail: { editing: false }
+	}))
 }
 
 export function setLoading(card, loading) {

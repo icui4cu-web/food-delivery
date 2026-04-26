@@ -21,7 +21,7 @@ import Offers from "@components/Offers/Offers.astro";
 			<Title as="h1" size={1}>Кошик замовлення</Title>
 		</hgroup>
 		<SidebarGrid class="page__section" align="start" reverse>
-			<CartSection slot="content" />
+			<CartSection slot="content" view="edit" />
 			<OrderSummary slot="sidebar" {...orderSummaryData.mock1} />
 		</SidebarGrid>
 

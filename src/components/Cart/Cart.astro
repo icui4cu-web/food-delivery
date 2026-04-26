@@ -4,10 +4,16 @@ import Btn from "@components/Btn/Btn.astro";
 import Quantity from "@components/Quantity/Quantity.astro";
 import "./cart.scss";
 
-const { class: className } = Astro.props;
+interface Props {
+	view: "summary" | "edit";
+	class?: string;
+	hideFooter?: boolean;
+}
+
+const { class: className, view, hideFooter } = Astro.props;
 ---
 
-<div class:list={[className, "cart"]}>
+<div class:list={[className, "cart", `cart_view_${view}`]}>
 	<div class="cart__body">
 		<div class="cart__header">
 			<p class="cart__th cart__th_id_sku">Артикул</p>
@@ -41,7 +47,10 @@ const { class: className } = Astro.props;
 						</span>
 						<span class="cart__weight">{weight}</span>
 					</p>
-					<p class="cart__col cart__col_id_price">{price.value}</p>
+					<p class="cart__col cart__col_id_price">
+						{price.value}
+						<span class="cart__count">1шт</span>
+					</p>
 					<div class="cart__col cart__col_id_quantity">
 						<Quantity class="cart__quantity" {...quantity} {units} />
 					</div>
@@ -60,8 +69,16 @@ const { class: className } = Astro.props;
 			))
 		}
 	</div>
-	<div class="cart__footer">
-		<Btn class="cart__continue-btn" href="#" variant="solid">Продовжити покупки</Btn>
-		<Btn href="#" variant="outline" iconStart="trash">Очистити кошик</Btn>
-	</div>
+	{
+		!hideFooter && (
+			<div class="cart__footer">
+				<Btn class="cart__continue-btn" href="#" variant="solid">
+					Продовжити покупки
+				</Btn>
+				<Btn href="#" variant="outline" iconStart="trash">
+					Очистити кошик
+				</Btn>
+			</div>
+		)
+	}
 </div>

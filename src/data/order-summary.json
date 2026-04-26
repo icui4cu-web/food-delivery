@@ -22,11 +22,10 @@
 			{ "label": "Всього:", "value": "2330 грн", "size": "xl", "divider": true }
 		],
 		"action": {
-			"label": "Замовити",
-			"disabled": true
+			"label": "Замовити"
 		},
 		"notes": [
-			"<span class=\"u-color-page-theme\" aria-hidden=\"true\">**</span> Натискаючи «Замовити», ви приймаєте <a href=\"#\">Правила сервісу</a>",
+			"<span class=\"u-color-page-theme\" aria-hidden=\"true\">**</span> Натискаючи «Замовити», ви приймаєте <a href=\"#\" target=\"_blank\">Правила сервісу</a>",
 			"<span class=\"u-color-page-theme\" aria-hidden=\"true\">**</span> Зверніть увагу, що після обробки вашого замовлення та підтвердження наявності замовлених позицій остаточний склад та сума замовлення за узгодженням можуть бути змінені"
 		],
 		"comment": true

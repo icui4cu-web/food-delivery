@@ -7,18 +7,20 @@ interface Props {
 	title: string;
 	class?: string;
 	saveBtnLabel?: string;
+	isEditable?: boolean;
+	[key: string]: unknown;
 }
 
-const { class: className, title, saveBtnLabel = 'Зберегти' } = Astro.props;
-const isEditable = Astro.slots.has("edit")
+const { class: className, title, saveBtnLabel = 'Зберегти', isEditable, ...props } = Astro.props;
+const editBtn = isEditable || Astro.slots.has("edit")
 ---
 
-<section class:list={[className, "card"]}>
+<section class:list={[className, "card"]} {...props}>
 	<header class="card__header">
 		<h2 class="card__title">{title}</h2>
 		<slot name="header" />
 		{
-			isEditable && (
+			editBtn && (
 				<button class="card__edit-btn" type="button" data-collapse-text="Згорнути">
 					<Icon id="pencil" />
 					Змінити

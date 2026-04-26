@@ -5,7 +5,8 @@
 		}
 	}
 
-	&__cart-summary {
+	&__cart.cart_view_summary {
+		border-top: 2px solid #f4f1ee;
 		margin-inline: calc(var(--card-padding) * -1);
 	}
 }

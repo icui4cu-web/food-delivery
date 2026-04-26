@@ -1,13 +1,27 @@
 .cart {
-	box-shadow: 0 0 3.5px rgba(186, 168, 143, 0.5);
+	$root: &;
+
 	background-color: #fff;
-	border: 1px solid #fff;
-	border-radius: 20px;
-	overflow: hidden;
+
+	&_view {
+		&_edit {
+			box-shadow: 0 0 3.5px rgba(186, 168, 143, 0.5);
+			border: 1px solid #fff;
+			border-radius: 20px;
+			overflow: hidden;
+		}
+	}
 
 	&__body {
 		display: grid;
-		grid-template-columns: repeat(2, max-content) auto repeat(4, max-content);
+
+		#{$root}_view_edit & {
+			grid-template-columns: repeat(2, max-content) auto repeat(4, max-content);
+		}
+
+		#{$root}_view_summary & {
+			grid-template-columns: repeat(2, max-content) auto repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	&__header,
@@ -21,6 +35,10 @@
 	&__header {
 		background-color: #e5e0db;
 		font-size: 12px;
+
+		#{$root}_view_summary & {
+			display: none;
+		}
 	}
 
 	&__th {
@@ -45,15 +63,32 @@
 				text-align: center;
 			}
 
-			&_price,
-			&_sum {
+			:where(&_price, &_sum) {
 				font-size: 20px;
 				font-family: 'Oswald', sans-serif;
-				text-align: right;
+				white-space: nowrap;
+
+				#{$root}_view_edit & {
+					text-align: right;
+				}
+
+				#{$root}_view_summary & {
+					text-align: center;
+				}
+			}
+
+			&_quantity {
+				#{$root}_view_summary & {
+					display: none;
+				}
 			}
 
 			&_action {
 				text-align: center;
+
+				#{$root}_view_summary & {
+					display: none;
+				}
 			}
 		}
 	}
@@ -83,6 +118,19 @@
 		width: 132px;
 	}
 
+	&__count {
+		font-size: 16px;
+
+		&::before {
+			content: 'x';
+			padding-inline: em(12, 16);
+		}
+
+		#{$root}_view_edit & {
+			display: none;
+		}
+	}
+
 	&__remove-btn {
 		width: 44px;
 		font-size: 24px;
@@ -94,6 +142,10 @@
 		justify-content: space-between;
 		gap: 10px 24px;
 		padding: 16px;
+
+		#{$root}_view_summary & {
+			display: none;
+		}
 	}
 
 	@media (width<1200px) {
@@ -105,23 +157,29 @@
 
 	@media (width<992px) {
 		&__body {
-			grid-template-columns: repeat(2, max-content) auto repeat(3, max-content);
+			#{$root}_view_edit & {
+				grid-template-columns: repeat(2, max-content) auto repeat(3, max-content);
+			}
 		}
 
-		&__col_id_price,
-		&__th_id_price {
-			display: none;
+		:where(&__col_id_price, &__th_id_price) {
+			#{$root}_view_edit & {
+				display: none;
+			}
 		}
 	}
 
 	@media (width<768px) {
 		&__body {
-			grid-template-columns: max-content auto repeat(3, max-content);
+			#{$root}_view_edit & {
+				grid-template-columns: max-content auto repeat(3, max-content);
+			}
 		}
 
-		&__col_id_sku,
-		&__th_id_sku {
-			display: none;
+		:where(&__col_id_sku, &__th_id_sku) {
+			#{$root}_view_edit & {
+				display: none;
+			}
 		}
 	}
 
@@ -147,6 +205,12 @@
 			padding: 0;
 
 			&_id {
+				&_sku {
+					#{$root}_view_summary & {
+						display: none;
+					}
+				}
+
 				&__img {
 					width: 77px;
 				}
@@ -156,11 +220,17 @@
 					width: calc(100% - 77px - $column-gap);
 				}
 
-				&_sum {
-					width: calc(100% - 132px - 44px - $column-gap * 2);
+				:where(&_sum, &_price) {
+					align-self: end;
 					font-size: 18px;
 					text-align: left;
 					line-height: 1.3;
+				}
+
+				&_sum {
+					#{$root}_view_edit & {
+						width: calc(100% - 132px - 44px - $column-gap * 2);
+					}
 
 					&::before {
 						content: attr(aria-label);
