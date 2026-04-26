@@ -1,0 +1,96 @@
+.otp {
+	$root: &;
+
+	&__message {
+		margin-bottom: 30px;
+		font-size: 18px;
+	}
+
+	&__error {
+		margin-bottom: 5px;
+		font-size: 14px;
+		color: #f00;
+		text-align: center;
+
+		#{$root}:not(#{$root}_invalid) & {
+			display: none;
+		}
+	}
+
+	&__fields {
+		margin: 0 auto 20px;
+		max-width: 335px;
+		display: flex;
+		column-gap: 20px;
+	}
+
+	&__cell {
+		min-width: 0;
+		flex-grow: 1;
+		padding: 0;
+		text-align: center;
+
+		#{$root}_invalid & {
+			border-color: #f00;
+		}
+	}
+
+	&__submit-btn {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	&__details {
+		font-size: 14px;
+	}
+
+	&__summary {
+		display: block;
+		width: fit-content;
+		margin-inline: auto;
+		text-decoration: underline;
+		text-align: center;
+		transition: color .2s;
+	}
+
+	&__hint {
+		margin-top: 14px;
+		padding: 24px;
+		border-radius: 20px;
+		background-color: #e5e0db;
+
+		ul li {
+			list-style: disc;
+			list-style-position: inside;
+
+			&::marker {
+				content: '- ';
+			}
+		}
+	}
+
+	&__timer {
+		margin-top: 12px;
+		text-align: center;
+		font-size: 14px;
+
+		#{$root}:not(#{$root}_counting) & {
+			display: none;
+		}
+	}
+
+	&__resend-btn {
+		margin-top: 28px;
+		width: 100%;
+
+		#{$root}_counting & {
+			display: none;
+		}
+	}
+
+	@media (hover) {
+		&__summary:hover {
+			color: var(--clr-primary);
+		}
+	}
+}

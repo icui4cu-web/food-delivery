@@ -1,0 +1,7 @@
+.checkout-method-form {
+	$cols: 3;
+	display: grid;
+	align-items: end;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, max(230px, 100% / ($cols + 1) + 1px)), 1fr));
+	gap: 13px;
+}

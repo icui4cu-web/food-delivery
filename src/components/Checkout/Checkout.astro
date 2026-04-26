@@ -1,0 +1,33 @@
+---
+import Card from "@components/Card/Card.astro";
+import CardPreview from "@components/Card/CardPreview.astro";
+import PersonalData from "@components/PersonalData/PersonalData.astro";
+import CartSummary from "@components/CartSummary/CartSummary.astro";
+import CitySelector from "@components/CitySelector/CitySelector.astro";
+import CheckoutOptions from "@components/CheckoutOptions/CheckoutOptions.astro";
+import Btn from "@components/Btn/Btn.astro";
+import "./checkout.scss";
+---
+
+<div class="checkout">
+	<Card class="checkout__section" title="Персональні дані">
+		<CardPreview icon="user" slot="preview"><b>Замовник:</b> Іванов Іван  +38 067 999 55 22</CardPreview>
+		<PersonalData slot="edit" />
+	</Card>
+	<Card class="checkout__section" title="Замовлення">
+		<CartSummary class="checkout__cart-summary" />
+	</Card>
+	
+	<Card class="checkout__section" title="Доставка">
+		<CitySelector slot="header" />
+		<CheckoutOptions type="delivery" />
+	</Card>
+	<Card class="checkout__section" title="Оплата">
+		<CheckoutOptions type="payment" />
+	</Card>
+	<Card class="checkout__section" title="Отримувач" saveBtnLabel="Змінити отримувача">
+		<CardPreview icon="user" slot="preview"><b>Гість</b></CardPreview>
+		<PersonalData slot="edit" />
+		<Btn variant="outline" slot="actions">Залишити Замовника</Btn>
+	</Card>
+</div>

@@ -1,0 +1,19 @@
+.phone-login {
+	&__step:not(&__step_active) {
+		display: none;
+	}
+
+	&__actions {
+		margin-top: 29px;
+	}
+
+	&__submit-btn {
+		width: 100%;
+	}
+
+	&__notice {
+		margin-top: 20px;
+		text-align: center;
+		font-size: em(14, 16);
+	}
+}

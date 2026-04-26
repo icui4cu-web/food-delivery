@@ -1,0 +1,12 @@
+---
+import Field from "@components/Field/Field.astro";
+import "./checkout-method-form.scss";
+
+const { class: className, ...props } = Astro.props
+---
+
+<div class:list={[className, 'checkout-method-form']} {...props}>
+	<Field label="Місто/Насений пункт" component="input" id="delivery-address-town" required />
+	<Field label="Вулиця" component="input" id="delivery-address-street" required />
+	<Field label="№ Будинку" component="input" id="delivery-address-house" required />
+</div>

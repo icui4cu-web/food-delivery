@@ -1,0 +1,39 @@
+---
+import products from "@data/products.json";
+import "./cart-summary.scss";
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[className, "cart-summary"]}>
+	{
+		products.map(({ image, name, weight, price }) => (
+			<div class="cart-summary__row">
+				<p class="cart-summary__col cart-summary__col_id_sku">14310</p>
+				<div class="cart-summary__col cart-summary__col_id_img">
+					<img
+						class="cart-summary__img"
+						src={image}
+						alt=""
+						width="77"
+						height="57"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+				<p class="cart-summary__col cart-summary__col_id_name">
+					<span class="cart-summary__name">
+						<a class="cart-summary__name-link" href="#">
+							{name}
+						</a>
+					</span>
+					<span class="cart-summary__weight">{weight}</span>
+				</p>
+				<p class="cart-summary__col cart-summary__col_id_price">{price.value}<span class="cart-summary__total"> x 1шт</span></p>
+				<p class="cart-summary__col cart-summary__col_id_sum" aria-label="Сума, грн">
+					{price.value}
+				</p>
+			</div>
+		))
+	}
+</div>

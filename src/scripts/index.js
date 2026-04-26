@@ -1,3 +1,4 @@
+import "./init";
 import "@components/Hero/hero"
 import "@components/Header/header"
 import "@components/Categories/categories"
@@ -8,5 +9,11 @@ import "@components/Quantity/quantity";
 import "@components/Partnership/partnership";
 import "@components/Filter/filter";
 import "@components/ProductToolbar/product-toolbar";
+import "@components/OTP/otp";
+import "@components/Auth/auth";
+import "@components/Card/card";
+import "@components/OrderSummary/order-summary";
+import "@components/CheckoutOptions/checkout-options";
+import "@components/CitySelector/city-selector";
 
 import "./demo";

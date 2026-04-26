@@ -1,0 +1,11 @@
+---
+import Field from "@components/Field/Field.astro";
+import "./personal-data.scss";
+---
+
+<form class="personal-data">
+	<Field component="input" label="Прізвище" id="profile-lastname" name="lastname" />
+	<Field component="input" label="Ім'я" id="profile-firstname" name="firstname" />
+	<Field component="input" label="По батькові" id="profile-middlename" name="middlename" />
+	<Field component="input" label="Мобільний телефон" id="profile-phone" name="phone" data-phone-mask="" />
+</form>

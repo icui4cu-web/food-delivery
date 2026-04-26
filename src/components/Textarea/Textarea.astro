@@ -1,0 +1,7 @@
+---
+import "./textarea.scss";
+
+const { class: className, ...props } = Astro.props;
+---
+
+<textarea class:list={[className, "textarea"]} {...props}></textarea>

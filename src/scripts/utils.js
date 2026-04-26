@@ -19,3 +19,33 @@ export function throttle(fn, delay) {
 		}
 	};
 }
+
+export function preventZoomIOS() {
+	const viewport = document.head.querySelector('meta[name=viewport]')
+
+	if (!viewport) return
+
+	let content = viewport.getAttribute('content')
+	let re = /maximum\-scale=[0-9\.]+/g
+
+	if (re.test(content)) {
+		content = content.replace(re, 'maximum-scale=1.0')
+	} else {
+		content = [content, 'maximum-scale=1.0'].join(', ')
+	}
+
+	viewport.setAttribute('content', content);
+}
+
+export function normalizePhone(phone) {
+	return phone.replace(/[^\d+]/g, '');
+}
+
+export function setFormLoading(form, isLoading) {
+	const submitButtons = form.querySelectorAll('button[type="submit"], button:not([type])')
+
+	submitButtons.forEach(btn => {
+		btn.disabled = isLoading
+		btn.classList.toggle('btn_loading', isLoading)
+	})
+}

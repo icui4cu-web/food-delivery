@@ -1,0 +1,10 @@
+.personal-data {
+	--cols: 1;
+	display: grid;
+	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+	gap: 24px 30px;
+
+	@media (width>=576px) {
+		--cols: 2;
+	}
+}

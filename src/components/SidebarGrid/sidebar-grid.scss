@@ -1,0 +1,19 @@
+.sidebar-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 32px 15px;
+
+	&_align {
+		&_start {
+			align-items: start;
+		}
+	}
+
+	@media (width>=1200px) {
+		grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
+
+		&_reverse {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 290px);
+		}
+	}
+}

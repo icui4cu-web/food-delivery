@@ -1,0 +1,42 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import Icon from "@components/Icon/Icon.astro";
+import "./card.scss";
+
+interface Props {
+	title: string;
+	class?: string;
+	saveBtnLabel?: string;
+}
+
+const { class: className, title, saveBtnLabel = 'Зберегти' } = Astro.props;
+const isEditable = Astro.slots.has("edit")
+---
+
+<section class:list={[className, "card"]}>
+	<header class="card__header">
+		<h2 class="card__title">{title}</h2>
+		<slot name="header" />
+		{
+			isEditable && (
+				<button class="card__edit-btn" type="button" data-collapse-text="Згорнути">
+					<Icon id="pencil" />
+					Змінити
+				</button>
+			)
+		}
+	</header>
+	<slot />
+	{Astro.slots.has("preview") && <slot name="preview" />}
+	{
+		Astro.slots.has("edit") && (
+			<div class="card__edit">
+				<slot name="edit" />
+				<div class="card__actions">
+					<Btn class="card__save-btn" variant="solid" type="button">{saveBtnLabel}</Btn>
+					<slot name="actions" />
+				</div>
+			</div>
+		)
+	}
+</section>

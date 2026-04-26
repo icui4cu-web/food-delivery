@@ -11,3 +11,7 @@
 .u-pb-0 {
 	padding-bottom: 0 !important;
 }
+
+.u-color-page-theme {
+	color: var(--page-theme, var(--clr-primary));
+}

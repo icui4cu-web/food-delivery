@@ -1,11 +1,11 @@
 ---
-
 import Filter from "@components/Filter/Filter.astro";
 import ProductToolbar from "@components/ProductToolbar/ProductToolbar.astro";
 import ProductsGrid from "@components/ProductsGrid/ProductsGrid.astro";
 import ProductsList from "@components/ProductsList/ProductsList.astro";
 import Pagination from "@components/Pagination/Pagination.astro";
 import "./catalog.scss";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
 
 interface Props {
 	view: "grid" | "list";
@@ -17,11 +17,13 @@ const { class: className, view, backgroundText } = Astro.props;
 ---
 
 <div class:list={[className, "catalog"]} data-background-text={backgroundText}>
-	<Filter class="catalog__filter" />
-	<div class="catalog__content">
-		<ProductToolbar class="catalog__toolbar" />
-		{view === 'grid' && <ProductsGrid />}
-		{view === 'list' && <ProductsList />}
-		<Pagination class="catalog__pagination" />
-	</div>
+	<SidebarGrid>
+		<Filter slot="sidebar" />
+		<div class="catalog__content" slot="content">
+			<ProductToolbar class="catalog__toolbar" />
+			{view === "grid" && <ProductsGrid />}
+			{view === "list" && <ProductsList />}
+			<Pagination class="catalog__pagination" />
+		</div>
+	</SidebarGrid>
 </div>

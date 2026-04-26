@@ -1,0 +1,73 @@
+---
+import Radio from "@components/Radio/Radio.astro";
+import Icon from "@components/Icon/Icon.astro";
+import CheckoutMethodForm from "@components/CheckoutMethodForm/CheckoutMethodForm.astro";
+import "./checkout-options.scss";
+
+interface Props {
+	type: "delivery" | "payment";
+}
+
+interface Option {
+	label: string;
+	description?: string;
+	icon?: string;
+	dropdownComponent?: any;
+}
+
+const data: Record<"delivery" | "payment", Option[]> = {
+	delivery: [
+		{ label: "Самовивіз з Фабрики", description: "за адресою Київ, Горлівська, 137", icon: "store" },
+		{
+			label: "Доставка кур’єрською службої",
+			description: "по Києву за тарифами перевізника",
+			icon: "motorcycle",
+		},
+		{
+			label: "Адресна доставка ФудФекторі",
+			description: "по Києву: +5% до суми замовлення;  по області розраховується індивідуально",
+			icon: "truck",
+			dropdownComponent: CheckoutMethodForm,
+		},
+	],
+	payment: [
+		{ label: "Готівкою при отриманні" },
+		{ label: "Безготіковий розрахунок" },
+		{ label: "Оплата карткою Visa/MasterCard" },
+	],
+};
+
+const { type } = Astro.props;
+---
+
+<div class="checkout-options">
+	{
+		data[type].map(({ label, description, icon, dropdownComponent: DropdownComponent }, i) => (
+			<>
+				<div class="checkout-options__item">
+					<p class="checkout-options__label-row">
+						<Radio
+							class="checkout-options__radio"
+							id={`${type}-method-${i}`}
+							name={type}
+							checked={!i}
+							autocomplete="off"
+						/>
+						{icon && <Icon class="checkout-options__icon" id={icon} />}
+						<label class="checkout-options__label" for={`${type}-method-${i}`}>
+							{label}
+						</label>
+					</p>
+					{description && <p class="checkout-options__description">{description}</p>}
+				</div>
+				{DropdownComponent && (
+					<DropdownComponent
+						class="checkout-options__dropdown"
+						id={`${type}-dropdown-${i}`}
+						hidden={!!i}
+					/>
+				)}
+			</>
+		))
+	}
+</div>

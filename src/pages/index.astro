@@ -6,6 +6,10 @@ const pages = [
 	{ label: "Каталог плитка (Horeca)", slug: "catalog-grid-horeca" },
 	{ label: "Каталог список", slug: "catalog-list" },
 	{ label: "Сторінка продукту", slug: "product" },
+	{ label: "Кошик", slug: "cart" },
+	{ label: "Оформлення замовлення", slug: "checkout" },
+	{ label: "Оформлення замовлення - Вхід", slug: "checkout-login" },
+	{ label: "Персональні дані", slug: "profile" },
 ];
 ---
 
@@ -15,8 +19,8 @@ const pages = [
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Pages</title>
 	</head>
-	<body>
-		<ol>
+	<body style="padding: 20px">
+		<ol style="list-style: numeric">
 			{
 				pages.map(({ label, slug }) => (
 					<li>

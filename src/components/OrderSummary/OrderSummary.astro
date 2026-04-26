@@ -1,0 +1,63 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import Field from "@components/Field/Field.astro";
+import "./order-summary.scss";
+
+const { rows, action, notes, comment } = Astro.props;
+---
+
+<div class="order-summary">
+	<dl>
+		{
+			rows.map((row: any) => (
+				<div
+					class:list={[
+						"order-summary__row",
+						row.size && `order-summary__row_size_${row.size}`,
+						row.divider && "order-summary__row_bordered",
+					]}
+				>
+					<dt class="order-summary__label">{row.label}</dt>
+					<dd class="order-summary__value">{row.value}</dd>
+				</div>
+			))
+		}
+	</dl>
+
+	<div class="order-summary__footer">
+		{
+			comment && (
+				<>
+					<Btn
+						class="order-summary__comment-btn"
+						variant="ghost"
+						aria-controls="order-comment-group"
+						aria-expanded="false"
+					>
+						+ Додати коментар
+					</Btn>
+					<Field
+						class="order-summary__comment"
+						label="Коментар до замовлення"
+						component="textarea"
+						id="order-comment"
+						name="comment"
+						rows="4"
+						componentProps={{ id: "order-comment-group", hidden: "" }}
+					/>
+				</>
+			)
+		}
+		<Btn
+			class="order-summary__order-btn"
+			type="button"
+			variant="solid-alpha"
+			disabled={action.disabled}
+		>
+			{action.label}
+		</Btn>
+		<div class="order-summary__notes u-margin-trim">
+			{notes.map((note: string) => <p set:html={note} />)}
+		</div>
+	</div>
+</div>

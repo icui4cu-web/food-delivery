@@ -10,17 +10,21 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 		| "solid"
 		| "solid-alpha"
 		| "solid-beta"
+		| "solid-gamma"
 		| "outline"
 		| "outline-muted"
 		| "outline-white"
 		| "solid-white"
-		| "ghost";
+		| "link"
+		| "ghost"
+		| "ghost-underline";
 	size?: "lg";
 	href?: string;
 	class?: string;
 	iconStart?: string;
 	iconEnd?: string;
 	type?: "button" | "submit" | "reset";
+	disabled?: boolean;
 	title?: string;
 }>;
 
@@ -43,7 +47,7 @@ const hasLabel = Astro.slots.has("default");
 	class:list={[
 		className,
 		"btn",
-		`btn_variant_${variant}`,
+		variant && `btn_variant_${variant}`,
 		size && `btn_size_${size}`,
 		!hasLabel && "btn_icon-only",
 	]}
@@ -52,7 +56,7 @@ const hasLabel = Astro.slots.has("default");
 	type={!href ? type : undefined}
 	{...props}
 >
-	{iconStart && <Icon class:list={["btn__icon", hasLabel && "_start"]} id={iconStart} />}
+	{iconStart && <Icon class="btn__icon" id={iconStart} />}
 	<slot />
-	{iconEnd && <Icon class:list={["btn__icon", hasLabel && "_end"]} id={iconEnd} />}
+	{iconEnd && <Icon class="btn__icon" id={iconEnd} />}
 </Tag>

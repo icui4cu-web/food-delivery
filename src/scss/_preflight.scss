@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -246,4 +248,8 @@ button:disabled {
 th {
 	text-align: inherit;
 	font-weight: inherit;
+}
+
+[hidden] {
+	display: none !important;
 }

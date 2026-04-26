@@ -1,0 +1,22 @@
+---
+import Input from "@components/Input/Input.astro";
+import Textarea from "@components/Textarea/Textarea.astro";
+import "./field.scss";
+
+interface Props {
+	id: string;
+	label: string;
+	component: "input" | "textarea";
+	componentProps?: object;
+	class?: string;
+	[key: string]: unknown;
+}
+
+const { class: className, id, label, component = "input", componentProps, ...props } = Astro.props;
+---
+
+<div class:list={[className, "field"]} {...componentProps}>
+	<label class="field__label" for={id}>{label}</label>
+	{component === "input" && <Input class="field__control" {id} {...props} />}
+	{component === "textarea" && <Textarea class="field__control" {id} {...props} />}
+</div>

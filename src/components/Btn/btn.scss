@@ -1,6 +1,7 @@
 .btn {
 	--bg: transparent;
 	--color: #000;
+	position: relative;
 	min-height: 40px;
 	padding: 8px 20px;
 	display: inline-flex;
@@ -11,16 +12,14 @@
 	color: var(--color);
 	border: 1px solid var(--border-color);
 	border-radius: 40px;
-	font: var(--page-font);
-	font-size: 18px;
-	line-height: 1.2;
+	font: 18px/1.2 var(--page-font-family);
 	text-align: center;
 	user-select: none;
 	outline: none;
 	transition-property: background-color, color, border-color, filter;
 	transition-duration: .15s;
 
-	&:not(&_icon-only, &_variant_ghost) {
+	&:where(:not(&_icon-only, &_variant_ghost, &_variant_ghost-underline)) {
 		min-width: 173px;
 	}
 
@@ -29,48 +28,68 @@
 			--bg: #000;
 			--color: #fff;
 			--border-color: transparent;
+			--outline-color: #000;
 		}
 
 		&_solid-alpha {
 			--bg: var(--clr-alpha);
 			--color: #000;
 			--border-color: transparent;
+			--outline-color: var(--clr-alpha);
 		}
 
 		&_solid-beta {
 			--bg: var(--clr-beta);
 			--color: #000;
 			--border-color: transparent;
+			--outline-color: var(--clr-beta);
+		}
+
+		&_solid-gamma {
+			--bg: var(--clr-gamma);
+			--color: #fff;
+			--border-color: transparent;
+			--outline-color: var(--clr-gamma);
 		}
 
 		&_outline {
 			--bg: transparent;
 			--color: #000;
 			--border-color: #000;
+			--outline-color: #000;
 		}
 
 		&_outline-muted {
 			--bg: transparent;
 			--color: #000;
 			--border-color: #b7b7b7;
+			--outline-color: var(--clr-primary);
 		}
 
 		&_outline-white {
 			--bg: transparent;
 			--color: #fff;
 			--border-color: #fff;
+			--outline-color: var(--clr-primary);
 		}
 
 		&_solid-white {
 			--bg: #fff;
 			--color: #000;
 			--border-color: #b7b7b7;
+			--outline-color: var(--clr-primary);
 		}
 
-		&_ghost {
+		&_ghost,
+		&_ghost-underline {
 			min-height: auto;
 			padding: 0;
 			border-radius: 0;
+			--outline-color: var(--clr-primary);
+		}
+
+		&_ghost-underline {
+			text-decoration: underline;
 		}
 	}
 
@@ -81,10 +100,6 @@
 		}
 	}
 
-	&:focus-visible {
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--clr-primary), transparent 70%);
-	}
-
 	&_icon-only {
 		padding: 0;
 		aspect-ratio: 1;
@@ -92,16 +107,35 @@
 		font-size: 20px;
 	}
 
+	&:focus-visible {
+		outline: 2px solid var(--outline-color);
+		outline-offset: 2px;
+	}
+
+	&_loading {
+		color: transparent;
+		transition: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: calc(50% - 0.5em);
+			left: calc(50% - 0.5em);
+			width: 1em;
+			height: 1em;
+			border: 2px solid var(--color);
+			border-bottom-color: transparent;
+			border-radius: 50%;
+			animation: btn-loading .5s linear infinite;
+		}
+
+		* {
+			visibility: hidden;
+		}
+	}
+
 	&__icon {
 		transform: var(--btn-icon-transform, none);
-
-		&._start {
-			margin-left: -0.5em;
-		}
-
-		&._end {
-			margin-right: -0.5em;
-		}
 	}
 
 	@media (hover) {
@@ -111,7 +145,8 @@
 			}
 
 			&_solid-alpha:hover,
-			&_solid-beta:hover {
+			&_solid-beta:hover,
+			&_solid-gamma:hover {
 				filter: brightness(1.2);
 			}
 
@@ -131,10 +166,21 @@
 				--color: #000;
 				--border-color: transparent;
 			}
+
+			&_ghost:hover,
+			&_ghost-underline:hover {
+				--color: var(--clr-primary);
+			}
 		}
 
-		&_variant_ghost:hover {
-			--color: var(--clr-primary);
+		&:disabled {
+			pointer-events: none;
 		}
+	}
+}
+
+@keyframes btn-loading {
+	to {
+		transform: rotate(360deg);
 	}
 }

@@ -1,0 +1,21 @@
+.email-login {
+	&__row {
+		&:not(:last-child) {
+			margin-bottom: 23px;
+		}
+	}
+
+	&__actions {
+		margin-top: 28px;
+		text-align: center;
+	}
+
+	&__submit-btn {
+		width: 100%;
+	}
+
+	&__remind-btn {
+		margin-top: 22px;
+		font-size: 14px;
+	}
+}

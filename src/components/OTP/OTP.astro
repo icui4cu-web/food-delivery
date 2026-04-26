@@ -1,0 +1,42 @@
+---
+import Input from "@components/Input/Input.astro";
+import Btn from "@components/Btn/Btn.astro";
+import "./otp.scss";
+
+const { class: className, ...props } = Astro.props;
+---
+
+<form class:list={[className, "otp otp_counting"]} {...props} autocomplete="off">
+	<p class="otp__message">
+		На <span class="otp__phone"></span> був надісланий код для підтвердження
+	</p>
+	<p class="otp__error">Код вказано не вірно</p>
+	<div class="otp__fields">
+		{
+			Array.from({ length: 4 }).map(() => (
+				<Input class="otp__cell" maxlength="1" inputmode="numeric" required />
+			))
+		}
+	</div>
+	<Btn class="otp__submit-btn" variant="solid" type="submit">Підтвердити</Btn>
+	<details class="otp__details">
+		<summary class="otp__summary">Не отримали код підтверження?</summary>
+		<div class="otp__hint">
+			<p><b>Якщо протягом 60 секунд ви не отримали код, виконайте наступні дії:</b></p>
+			<ul>
+				<li>перевірте правильність введення номера телефону;</li>
+				<li>переконайтеся, що є з’єднання з Інтернетом;</li>
+				<li>перевірте, можливо ви випадково обмежили повідомлення у Viber;</li>
+				<li>
+					перевірте пам'ять у телефоні, спробуйте видалити діалогі, щоб переконатися у наявності вільного
+					місця;
+				</li>
+				<li>перезавантажте телефон.</li>
+			</ul>
+		</div>
+	</details>
+	<p class="otp__timer">
+		Відправити код повторно: через <span class="otp__countdown" data-timeout="10">0:10</span> хв
+	</p>
+	<Btn class="otp__resend-btn" variant="outline">Відправити код повторно</Btn>
+</form>

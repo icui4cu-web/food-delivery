@@ -1,0 +1,34 @@
+---
+import "./sidebar-grid.scss";
+
+interface Props {
+	class?: string;
+	reverse?: boolean;
+	align?: "start";
+}
+
+const { class: className, align, reverse } = Astro.props;
+---
+
+<div
+	class:list={[
+		className,
+		"sidebar-grid",
+		align && `sidebar-grid_align_${align}`,
+		reverse && "sidebar-grid_reverse",
+	]}
+>
+	{
+		reverse ? (
+			<>
+				<slot name="content" />
+				<slot name="sidebar" />
+			</>
+		) : (
+			<>
+				<slot name="sidebar" />
+				<slot name="content" />
+			</>
+		)
+	}
+</div>

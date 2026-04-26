@@ -18,9 +18,6 @@
 
 	@media (width>=1200px) {
 		position: relative;
-		display: grid;
-		grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
-		column-gap: 15px;
 
 		&::before {
 			content: attr(data-background-text);

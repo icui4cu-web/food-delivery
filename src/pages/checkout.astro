@@ -1,0 +1,26 @@
+---
+import orderSummaryData from "@data/order-summary.json";
+
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import CheckoutSection from "@components/Checkout/Checkout.astro";
+import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
+
+---
+
+<Layout metaTitle="Оформлення замовлення" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кошик"]} />
+	<main class="page__main container">
+		<hgroup class="page__title">
+			<Subtitle size="lg">Для дому</Subtitle>
+			<Title as="h1" size={1}>Оформлення замовлення</Title>
+		</hgroup>
+		<SidebarGrid class="page__section" align="start" reverse>
+			<CheckoutSection slot="content" />
+			<OrderSummary slot="sidebar" {...orderSummaryData.mock2} />
+		</SidebarGrid>
+	</main>
+</Layout>

@@ -1,0 +1,67 @@
+---
+import products from "@data/products.json";
+import Btn from "@components/Btn/Btn.astro";
+import Quantity from "@components/Quantity/Quantity.astro";
+import "./cart.scss";
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[className, "cart"]}>
+	<div class="cart__body">
+		<div class="cart__header">
+			<p class="cart__th cart__th_id_sku">Артикул</p>
+			<p class="cart__th cart__th_id_img">Фото</p>
+			<p class="cart__th cart__th_id_name">Назва</p>
+			<p class="cart__th cart__th_id_price">Ціна з ПДВ, грн</p>
+			<p class="cart__th cart__th_id_quantity">Кількість</p>
+			<p class="cart__th cart__th_id_sum">Сума з ПДВ, грн</p>
+			<p class="cart__th cart__th_id_action">Прибрати</p>
+		</div>
+		{
+			products.map(({ image, name, weight, price, quantity, units }) => (
+				<div class="cart__row">
+					<p class="cart__col cart__col_id_sku">14310</p>
+					<div class="cart__col cart__col_id_img">
+						<img
+							class="cart__img"
+							src={image}
+							alt=""
+							width="77"
+							height="57"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+					<p class="cart__col cart__col_id_name">
+						<span class="cart__name">
+							<a class="cart__name-link" href="#">
+								{name}
+							</a>
+						</span>
+						<span class="cart__weight">{weight}</span>
+					</p>
+					<p class="cart__col cart__col_id_price">{price.value}</p>
+					<div class="cart__col cart__col_id_quantity">
+						<Quantity class="cart__quantity" {...quantity} {units} />
+					</div>
+					<p class="cart__col cart__col_id_sum" aria-label="Сума, грн">
+						{price.value}
+					</p>
+					<div class="cart__col cart__col_id_action">
+						<Btn
+							class="cart__remove-btn"
+							variant="ghost"
+							iconStart="trash"
+							title="Видалити товар із кошика"
+						/>
+					</div>
+				</div>
+			))
+		}
+	</div>
+	<div class="cart__footer">
+		<Btn class="cart__continue-btn" href="#" variant="solid">Продовжити покупки</Btn>
+		<Btn href="#" variant="outline" iconStart="trash">Очистити кошик</Btn>
+	</div>
+</div>

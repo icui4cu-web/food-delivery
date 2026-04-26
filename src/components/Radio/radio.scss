@@ -1,0 +1,25 @@
+.radio {
+	--theme: var(--page-theme, var(--clr-primary));
+	width: 21px;
+	height: 21px;
+	border: 1px solid var(--theme);
+	border-radius: 50%;
+	appearance: none;
+	padding: 3px;
+	background-clip: content-box;
+	print-color-adjust: exact;
+	transition: background-color .2s;
+
+	&:checked {
+		background-color: var(--theme);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--theme);
+		outline-offset: 2px;
+	}
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+}

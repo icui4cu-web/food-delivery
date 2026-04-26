@@ -1,0 +1,11 @@
+.checkout {
+	&__section {
+		&:not(:last-child) {
+			margin-bottom: 26px;
+		}
+	}
+
+	&__cart-summary {
+		margin-inline: calc(var(--card-padding) * -1);
+	}
+}

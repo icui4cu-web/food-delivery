@@ -1,0 +1,39 @@
+---
+import orderSummaryData from "@data/order-summary.json"
+
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import CartSection from "@components/Cart/Cart.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
+import Section from "@components/Section/Section.astro";
+import SwiperNav from "@components/SwiperNav/SwiperNav.astro";
+import Offers from "@components/Offers/Offers.astro";
+---
+
+<Layout metaTitle="Кошик" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кошик"]} />
+	<main class="page__main container">
+		<hgroup class="page__title">
+			<Subtitle size="lg">Для дому</Subtitle>
+			<Title as="h1" size={1}>Кошик замовлення</Title>
+		</hgroup>
+		<SidebarGrid class="page__section" align="start" reverse>
+			<CartSection slot="content" />
+			<OrderSummary slot="sidebar" {...orderSummaryData.mock1} />
+		</SidebarGrid>
+
+		<Section
+			class="container"
+			title="Також рекомендуємо"
+			subtitle="Це теж добре смакує!"
+		>
+			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="offers" />
+			</Fragment>
+			<Offers sliderId="offers" />
+		</Section>
+	</main>
+</Layout>

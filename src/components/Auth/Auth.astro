@@ -1,0 +1,36 @@
+---
+import Card from "@components/Card/Card.astro";
+import PhoneLogin from "@components/PhoneLogin/PhoneLogin.astro";
+import EmailLogin from "@components/EmailLogin/EmailLogin.astro";
+import Btn from "@components/Btn/Btn.astro";
+import Icon from "@components/Icon/Icon.astro";
+import "./auth.scss";
+---
+
+<Card title="Увійдіть для оформлення замовлення">
+	<div class="auth" data-current-method="phone">
+		<div class="auth__inner">
+			<div class="auth__method auth__method_active" data-method="phone">
+				<PhoneLogin />
+			</div>
+			<div class="auth__method" data-method="email">
+				<EmailLogin />
+			</div>
+			<p class="auth__divider">або</p>
+			<div class="auth__alt-login">
+				<Btn class="auth__alt-btn" variant="outline" type="button">
+					<Icon id="google" />
+					Продовжити через Google
+				</Btn>
+				<Btn class="auth__alt-btn" variant="outline" type="button" data-method="email">
+					<Icon id="email" />
+					Увійти через E-mail
+				</Btn>
+				<Btn class="auth__alt-btn" variant="outline" type="button" data-method="phone">
+					<Icon id="phone" />
+					Увійти за номером телефону
+				</Btn>
+			</div>
+		</div>
+	</div>
+</Card>
