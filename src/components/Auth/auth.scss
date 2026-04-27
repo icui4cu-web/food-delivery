@@ -30,7 +30,6 @@
 		flex-direction: column;
 		justify-content: center;
 		row-gap: fluid(24, 50, 668, 1035, cqw);
-		;
 	}
 
 	&__alt-btn {
@@ -43,8 +42,8 @@
 			color: var(--clr-primary);
 		}
 
-		#{$root}[data-current-method="phone"] &[data-method="phone"],
-		#{$root}[data-current-method="email"] &[data-method="email"] {
+		#{$root}[data-current-method="phone"] &[data-auth-method="phone"],
+		#{$root}[data-current-method="email"] &[data-auth-method="email"] {
 			display: none;
 		}
 	}

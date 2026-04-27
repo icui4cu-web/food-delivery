@@ -13,6 +13,7 @@ import "@components/OTP/otp";
 import "@components/Auth/auth";
 import "@components/Card/card";
 import "@components/OrderSummary/order-summary";
+import "@components/Checkout/checkout";
 import "@components/CheckoutOptions/checkout-options";
 import "@components/CitySelector/city-selector";
 

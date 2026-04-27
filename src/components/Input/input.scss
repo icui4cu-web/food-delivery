@@ -11,6 +11,7 @@
 	&:user-invalid,
 	&_invalid {
 		color: #f00;
+		border-color: #f00;
 	}
 
 	&:not(:user-invalid, &_invalid):focus {

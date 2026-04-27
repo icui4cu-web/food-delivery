@@ -1,18 +1,16 @@
 ---
-import Btn from "@components/Btn/Btn.astro";
 import Icon from "@components/Icon/Icon.astro";
 import "./card.scss";
 
 interface Props {
 	title: string;
 	class?: string;
-	saveBtnLabel?: string;
 	isEditable?: boolean;
 	[key: string]: unknown;
 }
 
-const { class: className, title, saveBtnLabel = 'Зберегти', isEditable, ...props } = Astro.props;
-const editBtn = isEditable || Astro.slots.has("edit")
+const { class: className, title, isEditable, ...props } = Astro.props;
+const editBtn = isEditable || Astro.slots.has("edit");
 ---
 
 <section class:list={[className, "card"]} {...props}>
@@ -34,10 +32,6 @@ const editBtn = isEditable || Astro.slots.has("edit")
 		Astro.slots.has("edit") && (
 			<div class="card__edit">
 				<slot name="edit" />
-				<div class="card__actions">
-					<Btn class="card__save-btn" variant="solid" type="button">{saveBtnLabel}</Btn>
-					<slot name="actions" />
-				</div>
 			</div>
 		)
 	}

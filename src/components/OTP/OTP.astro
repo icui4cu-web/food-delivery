@@ -10,8 +10,8 @@ const { class: className, ...props } = Astro.props;
 	<p class="otp__message">
 		На <span class="otp__phone"></span> був надісланий код для підтвердження
 	</p>
-	<p class="otp__error">Код вказано не вірно</p>
 	<div class="otp__fields">
+		<p class="otp__error">Код вказано не вірно</p>
 		{
 			Array.from({ length: 4 }).map(() => (
 				<Input class="otp__cell" maxlength="1" inputmode="numeric" required />

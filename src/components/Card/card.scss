@@ -62,24 +62,6 @@
 		}
 	}
 
-	&__actions {
-		margin-top: fluid(32, 42);
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px fluid(32, 50);
-
-		&>* {
-			width: 100%;
-		}
-	}
-
-	@media (width>=576px) {
-		&__actions > * {
-			min-width: fit-content;
-			width: 234px;
-		}
-	}
-
 	@media (hover) {
 		&__edit-btn:hover {
 			text-decoration: underline;

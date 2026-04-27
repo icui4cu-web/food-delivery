@@ -1,4 +1,4 @@
-.email-login {
+.auth-form {
 	&__row {
 		&:not(:last-child) {
 			margin-bottom: 23px;
@@ -6,15 +6,15 @@
 	}
 
 	&__actions {
-		margin-top: 28px;
+		margin-top: 29px;
 		text-align: center;
 	}
 
-	&__submit-btn {
+	&__primary-btn {
 		width: 100%;
 	}
 
-	&__remind-btn {
+	&__secondary-btn {
 		margin-top: 22px;
 		font-size: 14px;
 	}

@@ -1,10 +1,6 @@
 document.querySelectorAll('.card').forEach(card => {
 	const editBtn = card.querySelector('.card__edit-btn')
-	const saveBtn = card.querySelector('.card__save-btn')
 	editBtn?.addEventListener('click', () => toggle(card))
-	saveBtn?.addEventListener('click', () => {
-		card.dispatchEvent(new CustomEvent('card:save', { bubbles: true }))
-	})
 })
 
 export function toggle(card) {
@@ -34,13 +30,6 @@ export function collapse(card) {
 		bubbles: true,
 		detail: { editing: false }
 	}))
-}
-
-export function setLoading(card, loading) {
-	const btn = card.querySelector('.card__save-btn')
-	if (!btn) return
-	btn.disabled = loading
-	btn.classList.toggle('btn_loading', loading)
 }
 
 export function updatePreviewText(card, text) {

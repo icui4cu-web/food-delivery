@@ -2,6 +2,7 @@
 import Card from "@components/Card/Card.astro";
 import PhoneLogin from "@components/PhoneLogin/PhoneLogin.astro";
 import EmailLogin from "@components/EmailLogin/EmailLogin.astro";
+import ForgotPassword from "@components/ForgotPassword/ForgotPassword.astro";
 import Btn from "@components/Btn/Btn.astro";
 import Icon from "@components/Icon/Icon.astro";
 import "./auth.scss";
@@ -16,17 +17,20 @@ import "./auth.scss";
 			<div class="auth__method" data-method="email">
 				<EmailLogin />
 			</div>
+			<div class="auth__method" data-method="forgot-password">
+				<ForgotPassword />
+			</div>
 			<p class="auth__divider">або</p>
 			<div class="auth__alt-login">
 				<Btn class="auth__alt-btn" variant="outline" type="button">
 					<Icon id="google" />
 					Продовжити через Google
 				</Btn>
-				<Btn class="auth__alt-btn" variant="outline" type="button" data-method="email">
+				<Btn class="auth__alt-btn" variant="outline" type="button" data-auth-method="email">
 					<Icon id="email" />
 					Увійти через E-mail
 				</Btn>
-				<Btn class="auth__alt-btn" variant="outline" type="button" data-method="phone">
+				<Btn class="auth__alt-btn" variant="outline" type="button" data-auth-method="phone">
 					<Icon id="phone" />
 					Увійти за номером телефону
 				</Btn>

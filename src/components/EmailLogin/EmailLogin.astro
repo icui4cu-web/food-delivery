@@ -1,12 +1,12 @@
 ---
 import Field from "@components/Field/Field.astro";
 import Btn from "@components/Btn/Btn.astro";
-import "./email-login.scss";
+import "@components/AuthForm/auth-form.scss";
 ---
 
-<form class="email-login" id="email-login-form">
+<form class="auth-form" id="email-login-form">
 	<Field
-		class="email-login__row"
+		class="auth-form__row"
 		label="Ел. пошта"
 		component="input"
 		id="login-email"
@@ -15,7 +15,7 @@ import "./email-login.scss";
 		required
 	/>
 	<Field
-		class="email-login__row"
+		class="auth-form__row"
 		label="Пароль"
 		component="input"
 		id="login-password"
@@ -23,8 +23,8 @@ import "./email-login.scss";
 		name="password"
 		required
 	/>
-	<div class="email-login__actions">
-		<Btn class="email-login__submit-btn" variant="solid" type="submit">Продовжити</Btn>
-		<Btn class="email-login__remind-btn" variant="ghost-underline">Нагадати пароль</Btn>
+	<div class="auth-form__actions">
+		<Btn class="auth-form__primary-btn" variant="solid" type="submit">Продовжити</Btn>
+		<Btn class="auth-form__secondary-btn" variant="ghost-underline" data-auth-method="forgot-password">Нагадати пароль</Btn>
 	</div>
 </form>

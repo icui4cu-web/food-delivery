@@ -1,11 +1,31 @@
 ---
 import Field from "@components/Field/Field.astro";
 import "./personal-data.scss";
+
+const { as: Tag = "div", slot, fieldsPerfixId, ...props } = Astro.props;
 ---
 
-<form class="personal-data">
-	<Field component="input" label="Прізвище" id="profile-lastname" name="lastname" />
-	<Field component="input" label="Ім'я" id="profile-firstname" name="firstname" />
-	<Field component="input" label="По батькові" id="profile-middlename" name="middlename" />
-	<Field component="input" label="Мобільний телефон" id="profile-phone" name="phone" data-phone-mask="" />
-</form>
+<Tag class="personal-data" {...props}>
+	<Field component="input" label="Прізвище" id={`${fieldsPerfixId}-lastname`} name="lastname" />
+	<Field component="input" label="Ім'я" id={`${fieldsPerfixId}-firstname`} name="firstname" />
+	<Field
+		component="input"
+		label="По батькові"
+		id={`${fieldsPerfixId}-middlename`}
+		name="middlename"
+	/>
+	<Field
+		component="input"
+		label="Мобільний телефон"
+		id={`${fieldsPerfixId}-phone`}
+		name="phone"
+		data-phone-mask=""
+	/>
+	{
+		Astro.slots.has("actions") && (
+			<div class="personal-data__actions">
+				<slot name="actions" />
+			</div>
+		)
+	}
+</Tag>

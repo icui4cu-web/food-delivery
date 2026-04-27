@@ -9,6 +9,7 @@ if (block) {
 	const btn = block.querySelector('.otp__resend-btn');
 	const STORAGE_KEY = 'otp_end_time';
 	const INITIAL = parseInt(countdown?.dataset.timeout, 10);
+	const saved = localStorage.getItem(STORAGE_KEY);
 	let interval = null;
 
 	const formatTime = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
@@ -30,21 +31,29 @@ if (block) {
 		}, 1000);
 	}
 
+	function resetCells() {
+		const form = block.closest('form');
+		if (form) form.reset();
+		else cells.forEach(cell => cell.value = '');
+		cells[0]?.focus();
+		setInvalid(block, false);
+	}
+
 	function restartTimer() {
 		const endTime = Date.now() + INITIAL * 1000;
 		localStorage.setItem(STORAGE_KEY, endTime);
 		startTimer(endTime);
 	}
 
-	if (countdown) {
-		const saved = localStorage.getItem(STORAGE_KEY);
-		if (saved) {
-			const endTime = parseInt(saved, 10);
-			if (endTime > Date.now()) startTimer(endTime);
-			else { localStorage.removeItem(STORAGE_KEY); block.classList.remove('otp_counting'); }
-		}
-		btn?.addEventListener('click', restartTimer);
+	if (saved) {
+		const endTime = parseInt(saved, 10);
+		if (endTime > Date.now()) startTimer(endTime);
+		else { localStorage.removeItem(STORAGE_KEY); block.classList.remove('otp_counting'); }
 	}
+	btn.addEventListener('click', () => {
+		restartTimer();
+		resetCells();
+	});
 
 	cells.forEach((cell, index) => {
 		cell.addEventListener('focus', () => cell.select());

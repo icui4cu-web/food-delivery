@@ -1,5 +1,5 @@
 ---
-import orderSummaryData from "@data/order-summary.json"
+import orderSummaryData from "@data/order-summary.json";
 
 import Layout from "@layouts/Layout.astro";
 import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
@@ -7,6 +7,10 @@ import Subtitle from "@components/Subtitle/Subtitle.astro";
 import Title from "@components/Title/Title.astro";
 import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
 import Auth from "@components/Auth/Auth.astro";
+import Card from "@components/Card/Card.astro";
+import CardPreview from "@components/Card/CardPreview.astro";
+import PersonalData from "@components/PersonalData/PersonalData.astro";
+import Btn from "@components/Btn/Btn.astro";
 import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
 ---
 
@@ -18,7 +22,20 @@ import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
 			<Title as="h1" size={1}>Оформлення замовлення</Title>
 		</hgroup>
 		<SidebarGrid class="page__section" align="start" reverse>
-			<Auth slot="content" />
+			<div slot="content">
+				<Auth />
+
+				<br /><br />
+
+				<Card title="Персональні дані">
+					<CardPreview icon="user" slot="preview"><b>Гість</b></CardPreview>
+					<PersonalData as="form" slot="edit" id="personal-data-form" fieldsPerfixId="profile">
+						<Fragment slot="actions">
+							<Btn variant="solid" type="submit">Зберегти</Btn>
+						</Fragment>
+					</PersonalData>
+				</Card>
+			</div>
 			<OrderSummary slot="sidebar" {...orderSummaryData.mock2} />
 		</SidebarGrid>
 	</main>

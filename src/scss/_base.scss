@@ -6,7 +6,8 @@
 	--container-width: #{var.$container-width};
 	--container-gutters: #{var.$container-gutters-mobile};
 	--page-font-family: "Roboto", sans-serif;
-	--page-font: fluid(14, 16)/1.5 var(--page-font-family);
+	--page-line-height: 1.5;
+	--page-font: fluid(14, 16)/var(--page-line-height) var(--page-font-family);
 	--clr-primary: #bd1d2d;
 	--clr-alpha: #ffa300;
 	--clr-beta: #62b5e5;

@@ -11,14 +11,20 @@ import "./checkout.scss";
 
 <div class="checkout">
 	<Card class="checkout__section" title="Персональні дані">
-		<CardPreview icon="user" slot="preview"><b>Замовник:</b> Іванов Іван  +38 067 999 55 22</CardPreview>
-		<PersonalData slot="edit" />
+		<CardPreview icon="user" slot="preview"
+			><b>Замовник:</b> Іванов Іван +38 067 999 55 22</CardPreview
+		>
+		<PersonalData slot="edit" id="owner-form" fieldsPerfixId="owner">
+			<Fragment slot="actions">
+				<Btn variant="solid" id="owner-save-btn">Зберегти</Btn>
+			</Fragment>
+		</PersonalData>
 	</Card>
 
-	<Card class="checkout__section" id="checkout-cart" title="Замовлення" isEditable>
+	<Card class="checkout__section" id="checkout-cart-card" title="Замовлення" isEditable>
 		<Cart class="checkout__cart" view="summary" hideFooter />
 	</Card>
-	
+
 	<Card class="checkout__section" title="Доставка">
 		<CitySelector slot="header" />
 		<CheckoutOptions type="delivery" />
@@ -28,9 +34,13 @@ import "./checkout.scss";
 		<CheckoutOptions type="payment" />
 	</Card>
 
-	<Card class="checkout__section" title="Отримувач" saveBtnLabel="Змінити отримувача">
+	<Card class="checkout__section" title="Отримувач">
 		<CardPreview icon="user" slot="preview"><b>Гість</b></CardPreview>
-		<PersonalData slot="edit" />
-		<Btn variant="outline" slot="actions">Залишити Замовника</Btn>
+		<PersonalData slot="edit" id="receiver-form" fieldsPerfixId="receiver">
+			<Fragment slot="actions">
+				<Btn variant="solid" id="receiver-save-btn">Змінити отримувача</Btn>
+				<Btn variant="outline" id="keep-owner-btn">Залишити Замовника</Btn>
+			</Fragment>
+		</PersonalData>
 	</Card>
 </div>
