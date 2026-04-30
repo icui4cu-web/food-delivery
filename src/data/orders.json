@@ -1,0 +1,34 @@
+[
+	{
+		"id": "2406-15 ",
+		"orderDate": "17-06-2026",
+		"deliveryDate": "19-06-2026",
+		"weight": "13.4 кг",
+		"sum": "7494.41 грн",
+		"status": "processing"
+	},
+	{
+		"id": "2406-14",
+		"orderDate": "15-06-2026",
+		"deliveryDate": "19-06-2026",
+		"weight": "21.6 кг",
+		"sum": "5694.41 грн",
+		"status": "confirmed"
+	},
+	{
+		"id": "2406-14",
+		"orderDate": "15-06-2026",
+		"deliveryDate": "19-06-2026",
+		"weight": "1 кг",
+		"sum": "1 грн",
+		"status": "delivered"
+	},
+	{
+		"id": "2406-14",
+		"orderDate": "15-06-2026",
+		"deliveryDate": "19-06-2026",
+		"weight": "21.6 кг",
+		"sum": "5694.41 грн",
+		"status": "cancelled"
+	}
+]

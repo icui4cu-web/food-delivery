@@ -11,10 +11,12 @@ import "@components/Filter/filter";
 import "@components/ProductToolbar/product-toolbar";
 import "@components/OTP/otp";
 import "@components/Auth/auth";
-import "@components/Card/card";
 import "@components/OrderSummary/order-summary";
-import "@components/Checkout/checkout";
 import "@components/CheckoutOptions/checkout-options";
 import "@components/CitySelector/city-selector";
+import "@components/InputPassword/input-password";
+import "@components/EditBtn/edit-btn";
+import "@components/Address/address";
+import "@components/Orders/orders";
 
 import "./demo";

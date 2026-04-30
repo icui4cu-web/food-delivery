@@ -9,9 +9,10 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 	line?: "start" | "end";
 }>;
 
-const { as: Tag, class: className, size, line } = Astro.props;
+const { as: Tag, class: className, size, line, ...props } = Astro.props;
+delete props.slot;
 ---
 
-<Tag class:list={[className, `title title_size_${size}`, line && `title_line_${line}`]}
+<Tag class:list={[className, `title title_size_${size}`, line && `title_line_${line}`]} {...props}
 	><slot /></Tag
 >

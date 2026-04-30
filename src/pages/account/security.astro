@@ -1,0 +1,50 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import AccountNav from "@components/Account/AccountNav/AccountNav.astro";
+import Account from "@components/Account/Account.astro";
+import AccountBackBtn from "@components/Account/AccountBackBtn/AccountBackBtn.astro";
+import Form from "@components/Form/Form.astro";
+import Field from "@components/Field/Field.astro";
+import Btn from "@components/Btn/Btn.astro";
+---
+
+<Layout metaTitle="Зміна паролю" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кабінет", "Зміна паролю"]} />
+	<main class="page__main container">
+		<SidebarGrid placement="account">
+			<AccountNav slot="sidebar" />
+			<Account slot="content">
+				<AccountBackBtn href="/account" slot="header">Змінити пароль</AccountBackBtn>
+				<Form class="account__password-form" action="" data-form="change-password">
+					<Field
+						label="Ваш поточний пароль"
+						component="input-password"
+						id="current-password"
+						name="current-password"
+						type="password"
+						required
+					/>
+					<Field
+						label="Новий пароль"
+						component="input-password"
+						id="new-password"
+						name="new-password"
+						type="password"
+						required
+					/>
+					<Field
+						label="Підтвердить новий пароль"
+						component="input-password"
+						id="confirm-password"
+						name="confirm-password"
+						type="password"
+						required
+					/>
+					<Btn variant="solid" type="submit" slot="actions">Зберегти</Btn>
+				</Form>
+			</Account>
+		</SidebarGrid>
+	</main>
+</Layout>

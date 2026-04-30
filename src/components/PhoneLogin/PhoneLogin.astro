@@ -7,7 +7,7 @@ import "@components/AuthForm/auth-form.scss";
 ---
 
 <div class="phone-login">
-	<form id="phone-login-form" class="auth-form phone-login__step phone-login__step_active">
+	<form class="auth-form phone-login__step phone-login__step_active" data-form="phone-login">
 		<Field class="auth-form__row" label="Номер телефону" component="input" id="phone" name="phone" data-phone-mask="" required />
 		<div class="auth-form__actions">
 			<Btn class="auth-form__primary-btn" variant="solid" type="submit">Продовжити</Btn>
@@ -17,5 +17,5 @@ import "@components/AuthForm/auth-form.scss";
 			на обробку персональних даних
 		</p>
 	</form>
-	<OTP class="phone-login__step" id="otp-login-form" />
+	<OTP class="phone-login__step" />
 </div>

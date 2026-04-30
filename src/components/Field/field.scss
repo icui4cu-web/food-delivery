@@ -1,4 +1,8 @@
 .field {
+	$root: &;
+
+	position: relative;
+
 	&__label {
 		margin-bottom: 6px;
 		color: #777;
@@ -6,5 +10,17 @@
 
 	&__control {
 		width: 100%;
+
+		#{$root}:has(#{$root}__error) & {
+			--input-border-color: #f00 !important;
+		}
+	}
+
+	&__error {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		color: #f00;
+		font-size: 14px;
 	}
 }

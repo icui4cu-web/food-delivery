@@ -1,0 +1,28 @@
+.order-details {
+	padding: 16px fluid(16, 32) fluid(16, 20);
+	border-radius: 20px;
+	background-color: #ffffff;
+	border: 1px solid #e5e0db;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 20px 48px;
+	font-size: em(18, 16);
+
+	&__title {
+		margin-bottom: em(4, 18);
+	}
+
+	&__description {
+		p {
+			margin-block: 0.3em;
+		}
+	}
+
+	@container (width>=576px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@container (width>=992px) {
+		grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+	}
+}

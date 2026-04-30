@@ -7,8 +7,8 @@ import "./filter.scss";
 const { class: className } = Astro.props;
 ---
 
-<form class:list={[className, "filter"]} action="" autocomplete="off" data-filter>
-	<button class="filter__close-btn" type="button" data-filter-close-btn>
+<form class:list={[className, "filter"]} action="" autocomplete="off">
+	<button class="filter__close-btn" type="button">
 		<Icon id="x" />
 	</button>
 	<fieldset class="filter__group filter__group_id_prices">
@@ -76,4 +76,4 @@ const { class: className } = Astro.props;
 		</summary>
 	</details>
 </form>
-<div class="filter-overlay" data-filter-overlay></div>
+<div class="filter-overlay"></div>

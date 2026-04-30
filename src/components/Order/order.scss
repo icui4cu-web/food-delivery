@@ -1,0 +1,13 @@
+.order {
+	& > *+* {
+		margin-top: fluid(16, 30);
+	}
+
+	&__cart-group {
+		background-color: #fff;
+		padding-bottom: 20px;
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid #e5e0db;
+	}
+}

@@ -1,0 +1,29 @@
+.order-status {
+	height: em(40, 18);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-inline: em(20, 18);
+	border-radius: calc(infinity * 1px);
+	font-size: fluid(14, 18);
+	line-height: 1;
+	white-space: nowrap;
+
+	&_theme {
+		&_processing {
+			background-color: #eee1a3;
+		}
+
+		&_confirmed {
+			background-color: #8bd0eb;
+		}
+
+		&_delivered {
+			background-color: #b4d7aa;
+		}
+
+		&_cancelled {
+			background-color: #ddd;
+		}
+	}
+}

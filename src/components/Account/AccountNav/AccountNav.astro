@@ -1,0 +1,51 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./account-nav.scss";
+
+const { placement } = Astro.props
+
+type NavItem =
+	| { label: string; icon: string; href: string }
+	| { label: string; icon: string; href?: never; "data-logout-btn": "" };
+
+const nav: NavItem[] = [
+	{ label: "Персональні дані", icon: "user-alt", href: "/account/profile" },
+	{ label: "Адреса доставки", icon: "location", href: "/account/address" },
+	{ label: "Історія замовлень", icon: "document", href: "/account/orders" },
+	{ label: "Зміна паролю", icon: "shield-done", href: "/account/security" },
+	{ label: "Вихід", icon: "arrow-left-square", "data-logout-btn": "" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<ul class:list={['account-nav', placement && `account-nav_placement_${placement}`]}>
+	{
+		nav.map(({ label, icon, href, ...props }) => {
+			const isCurrent = href === currentPath;
+
+			return (
+				<li class="account-nav__item">
+					{isCurrent ? (
+						<span class="account-nav__link account-nav__link_current">
+							<Icon class="account-nav__icon" id={icon} />
+							{label}
+							<Icon class="account-nav__arrow" id="chevron-right" />
+						</span>
+					) : href ? (
+						<a class="account-nav__link" href={href}>
+							<Icon class="account-nav__icon" id={icon} />
+							{label}
+							<Icon class="account-nav__arrow" id="chevron-right" />
+						</a>
+					) : (
+						<button class="account-nav__link" type="button" {...props}>
+							<Icon class="account-nav__icon" id={icon} />
+							{label}
+						</button>
+					)}
+				</li>
+			);
+		})
+	}
+</ul>

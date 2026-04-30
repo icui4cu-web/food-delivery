@@ -8,9 +8,11 @@ import Title from "@components/Title/Title.astro";
 import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
 import Auth from "@components/Auth/Auth.astro";
 import Card from "@components/Card/Card.astro";
-import CardPreview from "@components/Card/CardPreview.astro";
-import PersonalData from "@components/PersonalData/PersonalData.astro";
+import EditBtn from "@components/EditBtn/EditBtn.astro";
+import EditableCard from "@components/EditableCard/EditableCard.astro";
 import Btn from "@components/Btn/Btn.astro";
+import Form from "@components/Form/Form.astro";
+import Field from "@components/Field/Field.astro";
 import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
 ---
 
@@ -28,12 +30,23 @@ import OrderSummary from "@components/OrderSummary/OrderSummary.astro";
 				<br /><br />
 
 				<Card title="Персональні дані">
-					<CardPreview icon="user" slot="preview"><b>Гість</b></CardPreview>
-					<PersonalData as="form" slot="edit" id="personal-data-form" fieldsPerfixId="profile">
-						<Fragment slot="actions">
-							<Btn variant="solid" type="submit">Зберегти</Btn>
-						</Fragment>
-					</PersonalData>
+					<EditBtn class="card__btn" targetCard="personal-data" slot="header" />
+					<EditableCard icon="user" id="personal-data">
+						<b slot="preview">Гість</b>
+						<Form action="" data-form="account-personal-data" slot="edit">
+							<Field label="Прізвище" component="input" id="profile-lastname" name="lastname" />
+							<Field label="Ім'я" component="input" id="profile-firstname" name="firstname" />
+							<Field label="По батькові" component="input" id="profile-middlename" name="middlename" />
+							<Field
+								label="Мобільний телефон"
+								component="input"
+								id="profile-phone"
+								name="phone"
+								data-phone-mask=""
+							/>
+							<Btn variant="solid" type="submit" slot="actions">Зберегти</Btn>
+						</Form>
+					</EditableCard>
 				</Card>
 			</div>
 			<OrderSummary slot="sidebar" {...orderSummaryData.mock2} />

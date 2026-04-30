@@ -2,7 +2,7 @@
 	margin-block: fluid(17, 27) fluid(20px, 36);
 	display: flex;
 	flex-wrap: wrap;
-	font-size: fluid(16, 18);
+	font-size: 16px;
 	color: #999;
 
 	&__item {
@@ -30,7 +30,7 @@
 					position: absolute;
 					left: 0;
 					top: 50%;
-					transform: translateY(-50%);
+					transform: translateY(-60%);
 					line-height: 1;
 				}
 			}
@@ -46,7 +46,7 @@
 				position: absolute;
 				right: 0.5em;
 				top: 50%;
-				transform: translateY(-50%);
+				transform: translateY(-60%);
 			}
 		}
 	}

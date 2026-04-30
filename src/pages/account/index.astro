@@ -1,0 +1,30 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import Subtitle from "@components/Subtitle/Subtitle.astro";
+import Title from "@components/Title/Title.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import AccountNav from "@components/Account/AccountNav/AccountNav.astro";
+import Account from "@components/Account/Account.astro";
+
+---
+
+<Layout metaTitle="Кабінет" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кабінет"]} />
+	<main class="page__main container">
+		<hgroup class="page__title">
+			<Subtitle size="lg">Для дому</Subtitle>
+			<Title as="h1" size={1}>Кабінет роздрібного покупця</Title>
+		</hgroup>
+		<SidebarGrid placement="account">
+			<AccountNav placement="account-index" slot="sidebar" />
+			<Account slot="content">
+				<Title as="h1" size={3} slot="header">Hello, world!</Title>
+				<div class="wysiwyg">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum libero corrupti qui maxime debitis blanditiis, veritatis ullam pariatur quibusdam beatae itaque, eaque rerum quasi minus nisi deleniti, iure nihil totam.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum libero corrupti qui maxime debitis blanditiis, veritatis ullam pariatur quibusdam beatae itaque, eaque rerum quasi minus nisi deleniti, iure nihil totam.</p>
+				</div>
+			</Account>
+		</SidebarGrid>
+	</main>
+</Layout>

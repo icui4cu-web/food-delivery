@@ -40,7 +40,9 @@ const {
 	title,
 	...props
 } = Astro.props;
+
 const hasLabel = Astro.slots.has("default");
+delete props.slot
 ---
 
 <Tag

@@ -6,7 +6,7 @@ import "./otp.scss";
 const { class: className, ...props } = Astro.props;
 ---
 
-<form class:list={[className, "otp otp_counting"]} {...props} autocomplete="off">
+<form class:list={[className, "otp otp_counting"]} {...props} autocomplete="off" data-form="otp">
 	<p class="otp__message">
 		На <span class="otp__phone"></span> був надісланий код для підтвердження
 	</p>

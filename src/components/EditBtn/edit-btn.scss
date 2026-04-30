@@ -1,0 +1,21 @@
+.edit-btn {
+	display: inline-flex;
+	align-items: center;
+	column-gap: em(9, 18);
+	font-size: fluid(16, 18);
+	color: var(--clr-primary);
+
+	&_edit-mode & {
+		color: #000;
+	}
+
+	&__icon {
+		color: #000;
+	}
+
+	@media (hover) {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

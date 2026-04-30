@@ -1,0 +1,27 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import EditBtn from "@components/EditBtn/EditBtn.astro";
+import "./editable-card.scss";
+
+interface Props {
+	class?: string;
+	icon?: string;
+	hasEditBtn?: boolean;
+	collapsible?: boolean;
+	[key: string]: unknown;
+}
+
+const { class: className, icon, hasEditBtn, collapsible, ...props } = Astro.props;
+---
+
+<div
+	class:list={[className, "editable-card", collapsible && 'editable-card_collapsible']}
+	{...props}
+>
+	<div class="editable-card__preview">
+		{icon && <Icon class="editable-card__icon" id={icon} />}
+		<p class="editable-card__preview-text"><slot name="preview" /></p>
+		{hasEditBtn && <EditBtn class="editable-card__edit-btn" />}
+	</div>
+	<div class="editable-card__edit"><slot name="edit" /></div>
+</div>

@@ -1,0 +1,24 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import "./edit-btn.scss";
+
+interface Props {
+	targetCard?: string;
+	class?: string;
+	[key: string]: unknown;
+}
+
+const { class: className, targetCard, ...props } = Astro.props;
+delete props.slot;
+---
+
+<button
+	class:list={[className, "edit-btn"]}
+	type="button"
+	data-collapse-text="Згорнути"
+	data-target-card={targetCard}
+	{...props}
+>
+	<Icon class="edit-btn__icon" id="pencil" />
+	Змінити
+</button>

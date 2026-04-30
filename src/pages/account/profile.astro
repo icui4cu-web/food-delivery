@@ -1,0 +1,34 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import AccountNav from "@components/Account/AccountNav/AccountNav.astro";
+import Account from "@components/Account/Account.astro";
+import AccountBackBtn from "@components/Account/AccountBackBtn/AccountBackBtn.astro";
+import Form from "@components/Form/Form.astro";
+import Field from "@components/Field/Field.astro";
+import Btn from "@components/Btn/Btn.astro";
+---
+
+<Layout metaTitle="Кабінет" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кабінет", "Персональні дані"]} />
+	<main class="page__main container">
+		<SidebarGrid placement="account">
+			<AccountNav slot="sidebar" />
+			<Account slot="content">
+				<AccountBackBtn href="/account" slot="header">Персональні дані</AccountBackBtn>
+				<Form action="" data-form="profile-personal-data">
+					<Field label="Прізвище" component="input" id="profile-lastname" name="lastname" />
+					<Field label="Ім'я" component="input" id="profile-firstname" name="firstname" />
+					<Field label="По батькові" component="input" id="profile-middlename" name="middlename" />
+					<Field label="Мобільний телефон" component="input" id="profile-phone" name="phone" data-phone-mask="" />
+					<Field label="Email" component="input" id="profile-email" name="email" type="email" />
+					<Field label="Дата народження" component="input" id="profile-bitrthday" name="bitrthday" type="date" />
+					<Field label="Назва компанії" component="input" id="profile-company" name="company" />
+					<Field label="ІПН / РНОКПП / ЄДРПОУ" component="input" id="profile-tax-id" name="tax-id" />
+					<Btn variant="solid" type="submit" slot="actions">Зберегти</Btn>
+				</Form>
+			</Account>
+		</SidebarGrid>
+	</main>
+</Layout>

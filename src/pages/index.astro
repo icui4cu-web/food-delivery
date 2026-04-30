@@ -9,7 +9,9 @@ const pages = [
 	{ label: "Кошик", slug: "cart" },
 	{ label: "Оформлення замовлення", slug: "checkout" },
 	{ label: "Оформлення замовлення - Вхід", slug: "checkout-login" },
+	{ label: "Кабінет", slug: "account" },
 ];
+const kit = [{ label: "Icons", slug: "icons" }];
 ---
 
 <html lang="en">
@@ -23,7 +25,20 @@ const pages = [
 			{
 				pages.map(({ label, slug }) => (
 					<li>
-						<a href={`/${slug}`} target="_blank">{label}</a>
+						<a href={`/${slug}`} target="_blank">
+							{label}
+						</a>
+					</li>
+				))
+			}
+		</ol>
+		<ol style="list-style: numeric">
+			{
+				kit.map(({ label, slug }) => (
+					<li>
+						<a href={`/${slug}`} target="_blank">
+							{label}
+						</a>
 					</li>
 				))
 			}

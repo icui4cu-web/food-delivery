@@ -1,7 +1,7 @@
 .product-toolbar {
 	&__filter {
 		background-color: #fff;
-		border-radius: 20px;
+		border-radius: calc(infinity * 1px);
 	}
 
 	&__filter-total {
@@ -21,6 +21,7 @@
 	}
 
 	&__select {
+		--select-border-color: transparent;
 		min-width: 150px;
 		flex-grow: 1;
 		width: 280px;

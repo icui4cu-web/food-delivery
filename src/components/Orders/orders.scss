@@ -1,0 +1,56 @@
+.orders {
+	&__filter {
+		margin: 0 calc(var(--container-gutters) * -1) 40px;
+		padding: 1px var(--container-gutters);
+
+		.swiper-slide {
+			width: auto;
+		}
+
+		&:not(.swiper-initialized) .swiper-wrapper {
+			column-gap: 10px;
+		}
+	}
+
+	&__filter-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-inline: 20px;
+		border: 1px solid #a6a6a6;
+		border-radius: calc(infinity * 1px);
+		height: 40px;
+		font-size: fluid(16, 18);
+		color: #7c7c7c;
+		white-space: nowrap;
+		transition: color .2s, border-color .2s;
+
+		&_active {
+			color: #000;
+			border-color: currentColor;
+		}
+	}
+
+	&__item:not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	@media (width>=768px) {
+		&__filter {
+			&:not(.swiper-initialized) .swiper-wrapper {
+				column-gap: 20px;
+			}
+		}
+
+		&__filter-btn {
+			min-width: 157px;
+		}
+	}
+
+	@media (hover) {
+		&__filter-btn:not(:disabled):hover {
+			border-color: var(--clr-primary);
+			color: var(--clr-primary);
+		}
+	}
+}

@@ -49,3 +49,53 @@ export function setFormLoading(form, isLoading) {
 		btn.classList.toggle('btn_loading', isLoading)
 	})
 }
+
+/**
+ * Показує помилки полів у контейнері форми
+ * @param {Array<{name: string, message: string}>} errors
+ * @param {HTMLElement} container
+ */
+export function showFieldErrors(errors, container) {
+	errors.forEach(({ name, message }) => {
+		const field = container.querySelector(`[name="${name}"]`);
+		if (!field) return;
+
+		const existing = field.parentElement.querySelector('.field__error');
+		if (existing) return;
+
+		const error = document.createElement('span');
+		error.classList.add('field__error');
+		error.dataset.errorFor = name;
+		error.textContent = message;
+
+		field.insertAdjacentElement('afterend', error);
+	});
+}
+
+/**
+ * Прибирає всі помилки полів у контейнері
+ * @param {HTMLElement} container
+ */
+export function clearFieldErrors(container) {
+	container
+		.querySelectorAll('.field__error')
+		.forEach((el) => el.remove());
+}
+
+// 
+export function collectFormData(container, fields) {
+	return fields
+		.map(name => {
+			const input = container.elements?.[name]
+				?? container.querySelector(`[name="${name}"]`);
+			if (!input) return '';
+
+			const value = input.value.trim();
+			if ('phoneMask' in input.dataset) {
+				return value.includes('_') ? '' : value;
+			}
+			return value;
+		})
+		.filter(Boolean)
+		.join(' ');
+}

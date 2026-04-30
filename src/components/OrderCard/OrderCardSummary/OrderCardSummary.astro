@@ -1,0 +1,23 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+import OrderStatus from "@components/OrderStatus/OrderStatus.astro";
+import "./order-card-summary.scss";
+
+const { class: className, orderDate, deliveryDate, weight, sum, status } = Astro.props;
+---
+
+<div class:list={[className, "order-card-summary"]}>
+	<div class="order-card-summary__order-date">Замовлено: <b>{orderDate}</b></div>
+	<div class="order-card-summary__delivery-date">
+		<Icon class="order-card-summary__icon" id="truck-fast" notSquare />{deliveryDate}
+	</div>
+	<div class="order-card-summary__weight">
+		<Icon class="order-card-summary__icon" id="weight-scales" />{weight}
+	</div>
+	<div class="order-card-summary__sum">
+		<Icon class="order-card-summary__icon" id="dollar-minimalistic" />{sum}
+	</div>
+	<div class="order-card-summary__status">
+		<OrderStatus class="order-card-summary__status-badge" {status} />
+	</div>
+</div>

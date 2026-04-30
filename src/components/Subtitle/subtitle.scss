@@ -1,6 +1,7 @@
 .subtitle {
 	color: var(--page-theme, var(--clr-primary));
 	text-transform: uppercase;
+	line-height: 1;
 
 	&_size {
 		&_lg {

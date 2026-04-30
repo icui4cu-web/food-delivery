@@ -1,8 +1,8 @@
-.personal-data {
-	--cols: 1;
+.form {
+	$cols: 2;
 	display: grid;
-	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-	gap: 24px 30px;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, max(320px, 100% / ($cols + 1) + 1px)), 1fr));
+	gap: fluid(16, 24) 30px;
 
 	&__actions {
 		grid-column: 1 / -1;
@@ -16,12 +16,10 @@
 		}
 	}
 
-	@media (width>=576px) {
-		--cols: 2;
-
+	@media (width>=480px) {
 		&__actions>* {
+			width: min(100%, 250px);
 			min-width: fit-content;
-			width: 297px;
 		}
 	}
 }

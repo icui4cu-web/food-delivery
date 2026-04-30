@@ -20,51 +20,7 @@
 		font-weight: 400;
 	}
 
-	&__edit-btn {
+	&__btn {
 		margin-left: auto;
-		display: inline-flex;
-		align-items: center;
-		column-gap: em(9, 18);
-		font-size: fluid(16, 18);
-		color: var(--clr-primary);
-
-		#{$root}_edit-mode & {
-			color: #000;
-		}
-
-		.icon {
-			color: #000;
-		}
-	}
-
-	&__preview {
-		padding: em(15, 18) em(22, 18);
-		display: flex;
-		align-items: center;
-		column-gap: em(16, 18);
-		border-radius: 20px;
-		background-color: #e5e0db;
-		border: 1px solid #e1e1e1;
-		font-size: fluid(14, 18);
-
-		#{$root}_edit-mode & {
-			display: none;
-		}
-
-		.icon {
-			font-size: em(24, 18);
-		}
-	}
-
-	&__edit {
-		#{$root}:not(#{$root}_edit-mode) & {
-			display: none;
-		}
-	}
-
-	@media (hover) {
-		&__edit-btn:hover {
-			text-decoration: underline;
-		}
 	}
 }

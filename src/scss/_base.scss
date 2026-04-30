@@ -39,6 +39,6 @@ body {
 }
 
 ::selection {
-	background-color: var(--clr-primary);
+	background-color: var(--page-theme, var(--clr-primary));
 	color: #fff;
 }

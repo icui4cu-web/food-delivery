@@ -1,0 +1,64 @@
+---
+import Icon from "@components/Icon/Icon.astro";
+
+const icons = [
+	"search",
+	"cart",
+	"arrow-right",
+	"burger",
+	"telegram",
+	"instagram",
+	"tiktok",
+	"facebook",
+	"youtube",
+	"factory",
+	"certificate",
+	"validity",
+	"chevron-left",
+	"chevron-right",
+	"chevron-down",
+	"plus",
+	"minus",
+	"home",
+	"tiles",
+	"list",
+	"filter",
+	"x",
+	"egg",
+	"droplets",
+	"harvest",
+	"energy",
+	"trash",
+	"google",
+	"email",
+	"user",
+	"user-alt",
+	"pencil",
+	"phone",
+	"store",
+	"motorcycle",
+	"truck",
+	"location",
+	"document",
+	"shield-done",
+	"arrow-left-square",
+	"plus-square",
+	"eye",
+	"eye-blocked",
+	"dollar-minimalistic",
+	"weight-scales",
+	"truck-fast",
+	"repeat"
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pages</title>
+	</head>
+	<body style="padding: 30px; display: flex; flex-wrap: wrap; gap: 24px; font-size: 24px;">
+		{icons.map((id) => <Icon {id} />)}
+	</body>
+</html>

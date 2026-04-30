@@ -1,0 +1,28 @@
+@use "@scss/_var.scss";
+
+.account-back-btn {
+	display: inline-flex;
+	align-items: center;
+	column-gap: em(15, 30);
+	transition: color .2s;
+
+	&__icon {
+		font-size: em(20, 30);
+	}
+
+	@media (width>=var.$sidebar-bp) {
+		&:not(&_force-arrow) &__icon {
+			display: none;
+		}
+
+		&:not(&_force-arrow) {
+			pointer-events: none;
+		}
+	}
+
+	@media (hover) {
+		&:hover {
+			color: var(--clr-primary);
+		}
+	}
+}

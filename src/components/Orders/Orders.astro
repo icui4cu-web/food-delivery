@@ -1,0 +1,36 @@
+---
+import ordersData from "@data/orders.json"
+
+import OrderCard from "@components/OrderCard/OrderCard.astro"
+import "./orders.scss";
+
+const filters = [
+	{ label: "Всі", key: "all", active: true },
+	{ label: "В обробці", key: "processing" },
+	{ label: "Підтверджено", key: "confirmed" },
+	{ label: "Доставлено", key: "delivered" },
+	{ label: "Відмінено", key: "cancelled" },
+];
+---
+
+<div class="orders">
+	<div class="orders__filter swiper">
+		<div class="swiper-wrapper">
+			{
+				filters.map(({ active, label, key }) => (
+					<div class="swiper-slide">
+						<button
+							class:list={["orders__filter-btn", active && "orders__filter-btn_active"]}
+							type="button"
+							data-filter={key}
+							disabled={active}
+						>
+							{label}
+						</button>
+					</div>
+				))
+			}
+		</div>
+	</div>
+	{ordersData.map(order => <OrderCard class="orders__item" {order} />)}
+</div>

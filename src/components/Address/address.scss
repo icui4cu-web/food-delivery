@@ -1,0 +1,33 @@
+.address {
+	$root: &;
+
+	&__title {
+		margin-bottom: 15px;
+		font-size: 24px;
+		font-weight: inherit;
+	}
+
+	&__add-btn {
+		margin-top: fluid(24, 36);
+		font-weight: 700;
+
+		.icon {
+			font-size: em(20, 18);
+		}
+	}
+
+	&__add-form,
+	&__additional-list {
+		margin-top: fluid(24, 36);
+	}
+
+	&__additional-list {
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+
+		#{$root}_add-mode & {
+			display: none;
+		}
+	}
+}

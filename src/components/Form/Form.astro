@@ -1,0 +1,13 @@
+---
+import "./form.scss";
+
+const { class: className, as: Tag = 'form', ...props } = Astro.props;
+delete props.slot
+---
+
+<Tag class:list={[className, "form"]} {...props}>
+	<slot />
+	<div class="form__actions">
+		<slot name="actions" />
+	</div>
+</Tag>

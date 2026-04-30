@@ -1,0 +1,28 @@
+.order-card-header {
+	display: flex;
+	align-items: center;
+	column-gap: 24px;
+	padding: em(16, 24) 1em em(16, 24) fluid(16, 32);
+	border-radius: em(20, 24);
+	background-color: #e5e0db;
+	font-size: fluid(18, 24);
+	font-weight: 700;
+	line-height: 1.2;
+	transition: background-color .2s;
+
+	&__arrow {
+		margin-left: auto;
+		font-size: em(20, 24);
+	}
+
+	&__btn {
+		margin-left: auto;
+		font-weight: 700;
+	}
+
+	@media (hover) {
+		&[href]:hover {
+			background-color: color-mix(in srgb, #e5e0db, #000 5%);
+		}
+	}
+}

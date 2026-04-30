@@ -1,0 +1,20 @@
+---
+import ordersData from "@data/orders.json";
+
+import OrderCardHeader from "@components/OrderCard/OrderCardHeader/OrderCardHeader.astro";
+import Cart from "@components/Cart/Cart.astro";
+import OrderCardSummary from "@components/OrderCard/OrderCardSummary/OrderCardSummary.astro";
+import OrderDetails from "@components/OrderDetails/OrderDetails.astro";
+import OrderComment from "@components/OrderComment/OrderComment.astro";
+import "./order.scss";
+---
+
+<div class="order">
+	<div class="order__cart-group">
+		<OrderCardHeader as="div" orderId="2406-15" repeatBtn />
+		<Cart view="summary" />
+	</div>
+	<OrderCardSummary {...ordersData[0]} />
+	<OrderDetails />
+	<OrderComment />
+</div>

@@ -1,38 +1,19 @@
 ---
-import Icon from "@components/Icon/Icon.astro";
 import "./card.scss";
 
 interface Props {
 	title: string;
 	class?: string;
-	isEditable?: boolean;
 	[key: string]: unknown;
 }
 
-const { class: className, title, isEditable, ...props } = Astro.props;
-const editBtn = isEditable || Astro.slots.has("edit");
+const { class: className, title, ...props } = Astro.props;
 ---
 
 <section class:list={[className, "card"]} {...props}>
 	<header class="card__header">
 		<h2 class="card__title">{title}</h2>
 		<slot name="header" />
-		{
-			editBtn && (
-				<button class="card__edit-btn" type="button" data-collapse-text="Згорнути">
-					<Icon id="pencil" />
-					Змінити
-				</button>
-			)
-		}
 	</header>
 	<slot />
-	{Astro.slots.has("preview") && <slot name="preview" />}
-	{
-		Astro.slots.has("edit") && (
-			<div class="card__edit">
-				<slot name="edit" />
-			</div>
-		)
-	}
 </section>

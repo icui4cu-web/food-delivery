@@ -1,9 +1,8 @@
-const VIEWS = {
-	edit: 'cart_view_edit',
-	summary: 'cart_view_summary',
-}
+const VIEWS = ['cart_view_edit', 'cart_view_summary']
 
-export function setView(el, view) {
-	el.classList.remove(...Object.values(VIEWS))
-	el.classList.add(VIEWS[view])
+export function toggleView() {
+	const cart = document.querySelector('.cart')
+
+    cart.classList.toggle(VIEWS[0])
+    cart.classList.toggle(VIEWS[1])
 }

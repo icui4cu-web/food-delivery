@@ -1,0 +1,19 @@
+---
+import "./order-status.scss";
+
+interface Props {
+	status: "processing" | "confirmed" | "delivered" | "cancelled";
+	class?: string;
+}
+
+const { class: className, status } = Astro.props;
+
+const statuses = {
+	processing: "В обробці",
+	confirmed: "Підтверджено",
+	delivered: "Доставлено",
+	cancelled: "Відмінено",
+};
+---
+
+<p class:list={[className, "order-status", `order-status_theme_${status}`]}>{statuses[status]}</p>

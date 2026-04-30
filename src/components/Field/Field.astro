@@ -1,12 +1,14 @@
 ---
 import Input from "@components/Input/Input.astro";
+import InputPassword from "@components/InputPassword/InputPassword.astro";
 import Textarea from "@components/Textarea/Textarea.astro";
+import Select from "@components/Select/Select.astro";
 import "./field.scss";
 
 interface Props {
 	id: string;
 	label: string;
-	component: "input" | "textarea";
+	component: "input" | "input-password" | "textarea" | "select";
 	componentProps?: object;
 	class?: string;
 	[key: string]: unknown;
@@ -18,5 +20,13 @@ const { class: className, id, label, component = "input", componentProps, ...pro
 <div class:list={[className, "field"]} {...componentProps}>
 	<label class="field__label" for={id}>{label}</label>
 	{component === "input" && <Input class="field__control" {id} {...props} />}
+	{component === "input-password" && <InputPassword class="field__control" {id} {...props} />}
 	{component === "textarea" && <Textarea class="field__control" {id} {...props} />}
+	{
+		component === "select" && (
+			<Select class="field__control" {id} {...props}>
+				<slot />
+			</Select>
+		)
+	}
 </div>

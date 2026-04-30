@@ -1,0 +1,12 @@
+---
+import OrderCardHeader from "./OrderCardHeader/OrderCardHeader.astro";
+import OrderCardSummary from "./OrderCardSummary/OrderCardSummary.astro";
+import "./order-card.scss";
+
+const { class: className, order } = Astro.props;
+---
+
+<div class:list={[className, "order-card"]}>
+	<OrderCardHeader class="order-card__header" as="a" orderId={order.id} href="/account/order-2406-15" />
+	<OrderCardSummary class="order-card__summary" {...order} />
+</div>

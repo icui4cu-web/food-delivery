@@ -5,9 +5,10 @@ interface Props {
 	class?: string;
 	reverse?: boolean;
 	align?: "start";
+	placement?: 'account';
 }
 
-const { class: className, align, reverse } = Astro.props;
+const { class: className, align, reverse, placement } = Astro.props;
 ---
 
 <div
@@ -16,6 +17,7 @@ const { class: className, align, reverse } = Astro.props;
 		"sidebar-grid",
 		align && `sidebar-grid_align_${align}`,
 		reverse && "sidebar-grid_reverse",
+		placement && `sidebar-grid_placement_${placement}`,
 	]}
 >
 	{

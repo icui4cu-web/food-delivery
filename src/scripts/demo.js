@@ -1,10 +1,11 @@
-import { setFormLoading } from "@js/utils"
+import { collectFormData, setFormLoading, showFieldErrors, clearFieldErrors } from "@js/utils"
 import * as CartBtn from "@components/CartBtn/cart-btn"
 import * as Filter from "@components/Filter/filter"
 import * as PhoneLogin from "@components/PhoneLogin/phone-login"
 import * as Otp from "@components/OTP/otp"
-import * as Card from "@components/Card/card"
 import * as Cart from "@components/Cart/cart"
+import * as EditableCard from "@components/EditableCard/editable-card"
+import * as EditBtn from "@components/EditBtn/edit-btn"
 
 // Імітація запиту до сервера
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -31,89 +32,115 @@ document.querySelector('[data-filter]')?.addEventListener('filter:change', async
 	Filter.loading(false);
 });
 
-// Форма логіну  (/checkout-login)
-const phoneLoginForm = document.getElementById('phone-login-form')
-if (phoneLoginForm) {
-	phoneLoginForm.addEventListener('submit', async (e) => {
+// Перемикання режиму редагування кошика (/checkout)
+const cartViewToggler = document.getElementById('cart-view-toggler')
+cartViewToggler?.addEventListener('click', () => {
+	EditBtn.toggleEditMode(cartViewToggler)
+	Cart.toggleView()
+})
+
+document.querySelectorAll('[data-form]').forEach(form => {
+	form.addEventListener('submit', async (e) => {
 		e.preventDefault()
 
-		const formData = new FormData(phoneLoginForm)
+		const formId = form.dataset.form
+		const formData = new FormData(form)
 
-		// блокируем форму до завершения запроса
-		setFormLoading(phoneLoginForm, true)
+		clearFieldErrors(form);
 
-		// fetch Надсилаємо форму на сервер
-		await delay(1000);
+		// обработка форм до отправки на сервер
+		if (formId === 'change-password') {
+			const newPassword = formData.get('new-password');
+			const confirmPassword = formData.get('confirm-password');
 
-		// fetch success (переходимо до введення OTP-коду та передаємо номер телефону)
-		Otp.updatePhone(formData.get('phone'))
-		PhoneLogin.nextStep()
+			if (newPassword !== confirmPassword) {
+				showFieldErrors([
+					{ name: 'confirm-password', message: 'Паролі не співпадають' }
+				], form);
+				setFormLoading(form, false);
+				return;
+			}
+		} else if (formId === 'otp') {
+			Otp.setInvalid(form, false)
+		}
 
-		// fetch finally (розблоковуємо форму для повторного надсилання)
-		setFormLoading(phoneLoginForm, false)
-	})
-}
+		setFormLoading(form, true)
 
-// Форма введення OTP-коду (/checkout-login)
-const otpLoginForm = document.getElementById('otp-login-form')
-if (otpLoginForm) {
-	otpLoginForm.addEventListener('submit', async (e) => {
-		e.preventDefault()
-
-		const formData = new FormData(otpLoginForm)
-
-		// Блокуємо форму до завершення запиту
-		setFormLoading(otpLoginForm, true)
-
-		// Скидаємо повідомлення про помилку OTP-коду
-		Otp.setInvalid(otpLoginForm, false)
-
-		// fetch (Надсилаємо форму на сервер)
+		// fetch(form.action, {
+		// 	method: "POST",
+		// 	body: formData
+		// })
 		await delay(1000);
 
 		// fetch success
-		// location.redirect = '/'
+		const card = form.closest('.editable-card')
 
-		// fetch error (показуємо повідомлення про неправильний код)
-		Otp.setInvalid(otpLoginForm, true)
+		if (formId === 'phone-login') {
+			Otp.updatePhone(formData.get('phone'))
+			PhoneLogin.nextStep()
+		} else if (formId === 'email-login') {
 
-		// fetch finally (розблоковуємо форму)
-		setFormLoading(otpLoginForm, false)
-	})
-}
+		} else if (formId === 'forgot-password') {
 
-// Перемикання режиму редагування кошика (/checkout)
-const checkoutCartCard = document.getElementById('checkout-cart-card')
-if (checkoutCartCard) {
-	checkoutCartCard.addEventListener('card:toggle', (e) => {
-		const { editing } = e.detail
-		const cart = checkoutCartCard.querySelector('.cart')
-
-		if (editing) {
-			Cart.setView(cart, 'edit')
-		} else {
-			Cart.setView(cart, 'summary')
+		} else if (formId === 'account-personal-data') {
+			if (card) EditableCard.updatePreview(card, '<b>--Відповідь із сервера--</b>')
+		} else if (formId === 'primary-address') {
+			if (card) EditableCard.updatePreview(card, '<b>--Відповідь із сервера--</b>')
+		} else if (formId === 'additional-address') {
+			if (card) EditableCard.updatePreview(card, '<b>--Відповідь із сервера--</b>')
 		}
+
+		if (card) EditableCard.close(card)
+
+		// fetch error
+		if (formId === 'otp') {
+			Otp.setInvalid(form, true)
+		}
+
+		// fetch finally
+		setFormLoading(form, false)
 	})
+})
+
+// Зв'язок між формами "Персональні дані"/"Отримувач" (/checkout)
+// та оновлення прев'ю на клієнті з потрібних полів
+function saveCheckoutCard(btn, sourceId, cardId, label, fields) {
+	document.getElementById(btn)?.addEventListener('click', () => {
+		const source = document.getElementById(sourceId);
+		const card = document.getElementById(cardId);
+		const formData = collectFormData(source, fields);
+		EditableCard.close(card);
+		EditableCard.updatePreview(card, `<b>${label}:</b> ${formData}`);
+	});
 }
 
-// Редагування форми персональних даних із збереженням на сервері (/checkout-login)
-const personalDataForm = document.getElementById('personal-data-form')
-personalDataForm?.addEventListener('submit', async (e) => {
-	e.preventDefault()
+const customerFields = ['customer-lastname', 'customer-firstname', 'customer-middlename', 'customer-phone'];
+const recipientFields = ['recipient-lastname', 'recipient-firstname', 'recipient-middlename', 'recipient-phone'];
 
-	setFormLoading(personalDataForm, true)
+saveCheckoutCard('customer-save-btn', 'customer', 'customer', 'Замовник', customerFields);
+saveCheckoutCard('recipient-save-btn', 'recipient', 'recipient', 'Інший', recipientFields);
+saveCheckoutCard('keep-customer-btn', 'customer', 'recipient', 'Отримувач', customerFields);
 
-	// fetch
-	await delay(1000);
+// Видалення додаткових адрес доставки (/account/address)
+document.querySelectorAll('[data-remove-address]').forEach(btn => {
+	btn.addEventListener('click', async () => {
+		const addressId = btn.dataset.removeAddress
 
-	// fetch success
-	const card = personalDataForm.closest('.card')
-	if (card) {
-		Card.collapse(card)
-		Card.updatePreviewText(card, '<b>--Відповідь із сервера--</b>')
-	}
+		btn.disabled = true
+		btn.classList.add('btn_loading')
 
-	// fetch finally
-	setFormLoading(personalDataForm, false)
+		// fetch
+		await delay(1000);
+
+		// fetch success
+		// оновлюємо сторінку, щоб отримати актуальний список
+		location.reload()
+	})
+})
+
+// Фільтрування замовлень (/account/orders)
+document.querySelector('.orders')?.addEventListener('orders:filter', e => {
+	const { filter } = e.detail; // all, processing, confirmed, delivered, cancelled
+	console.log(filter);
+	
 })

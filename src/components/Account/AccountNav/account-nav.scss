@@ -1,0 +1,64 @@
+@use "@scss/_var.scss";
+
+.account-nav {
+	$accent-color: #eb9900;
+
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 11px;
+		}
+	}
+
+	&__link {
+		--arrow-color: #d0d0d0;
+		width: 100%;
+		padding: em(12, 18) em(14, 18) em(12, 18) em(20, 18);
+		display: flex;
+		align-items: center;
+		column-gap: em(14, 18);
+		border-radius: calc(infinity * 1px);
+		border: 1px solid #b7b7b7;
+		font-size: 18px;
+		transition: border-color .2s, background-color .2s;
+		user-select: none;
+
+		&_current {
+			--arrow-color: #000;
+			background-color: $accent-color;
+			border-color: transparent;
+		}
+
+		&:focus-visible {
+			outline: 1px solid $accent-color;
+			border-color: $accent-color;
+			background-color: color-mix(in srgb, $accent-color, transparent 90%);
+		}
+	}
+
+	&__icon {
+		font-size: em(20, 18);
+	}
+
+	&__arrow {
+		margin-left: auto;
+		font-size: em(20, 18);
+		color: var(--arrow-color);
+		transition: color .2s;
+	}
+
+	@media (width<var.$sidebar-bp) {
+		&:not(&_placement_account-index) {
+			display: none;
+		}
+	}
+
+	@media (hover) {
+		&__link {
+			&:not(&_current):hover {
+				--arrow-color: #{$accent-color};
+				border-color: $accent-color;
+				background-color: color-mix(in srgb, $accent-color, transparent 90%);
+			}
+		}
+	}
+}

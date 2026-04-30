@@ -1,0 +1,76 @@
+.wysiwyg {
+	&> :first-child {
+		margin-top: 0;
+	}
+
+	&> :last-child {
+		margin-bottom: 0;
+	}
+
+	:where(h1, h2, h3, h4, h5, h6) {
+		font-weight: 500;
+	}
+
+	:where(h1, h2) {
+		font-family: "Oswald", sans-serif;
+			letter-spacing: -0.025em;
+			text-transform: uppercase;
+			line-height: 1.363636364;
+	}
+
+	:where(h1) {
+		font-size: fluid(30, 44);
+	}
+
+	:where(h2) {
+		font-size: fluid(30, 40);
+	}
+
+	:where(h3) {
+		font-size: fluid(24, 30);
+			line-height: 1.2;
+	}
+
+	:where(h4) {
+		font-size: fluid(20, 24);
+	}
+
+	:where(h5) {
+		font-size: 18px;
+	}
+
+	:where(h6) {
+		font-size: 16px;
+	}
+
+	:where(p) {
+		hyphens: auto
+	}
+
+	:where(a:not([class])) {
+		color: #0000FF;
+		text-decoration: none
+	}
+
+	:where(a:not([class]):hover, a:not([class]):focus-visible) {
+		text-decoration: underline
+	}
+
+	:where(p, ol, ul) {
+		margin-block: 1em;
+	}
+
+	:where(li + li) {
+		margin-top: 0.5em;
+	}
+
+	ul {
+		list-style-type: disc;
+		padding-left: 30px;
+	}
+
+	ol {
+		list-style-type: numeric;
+		padding-left: 30px;
+	}
+}

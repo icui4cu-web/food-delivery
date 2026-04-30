@@ -1,0 +1,14 @@
+---
+import Title from "@components/Title/Title.astro";
+import Icon from "@components/Icon/Icon.astro";
+import "./account-back-btn.scss";
+
+const { forceArrow, ...props } = Astro.props;
+---
+
+<Title
+	class:list={["account-back-btn", forceArrow && `account-back-btn_force-arrow`]}
+	as="a"
+	size={3}
+	{...props}><Icon class="account-back-btn__icon" id="chevron-left" /><slot /></Title
+>

@@ -1,0 +1,21 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+import Icon from "@components/Icon/Icon.astro";
+import Btn from "@components/Btn/Btn.astro";
+import "./order-card-header.scss";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag;
+	orderId: string;
+	class?: string;
+	repeatBtn?: boolean;
+}>;
+
+const { as: Tag, class: className, orderId, repeatBtn, ...props } = Astro.props;
+---
+
+<Tag class:list={[className, "order-card-header"]} {...props}>
+	Замовлення № {orderId}
+	{props.href && <Icon class="order-card-header__arrow" id="chevron-right" />}
+	{repeatBtn && <Btn class="order-card-header__btn" variant="ghost" iconStart="repeat">Повторити</Btn>}
+</Tag>

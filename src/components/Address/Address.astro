@@ -1,0 +1,97 @@
+---
+import EditableCard from "@components/EditableCard/EditableCard.astro";
+import Form from "@components/Form/Form.astro";
+import Field from "@components/Field/Field.astro";
+import Btn from "@components/Btn/Btn.astro";
+import "./address.scss";
+---
+
+<div class="address">
+	<h2 class="address__title">Основна адреса доставки</h2>
+	<EditableCard icon="location" hasEditBtn collapsible>
+		<Fragment slot="preview">м. Дніпро, вул. Волгоградська 135, будинок 14, квартира 67</Fragment>
+		<Form action="" data-form="primary-address" slot="edit">
+			<Field label="Область" component="select" id="primary-region" name="region">
+				<option selected>Київська</option>
+			</Field>
+			<Field label="Місто" component="input" id="primary-city" name="city" />
+			<Field label="Вулиця" component="input" id="primary-street" name="street" />
+			<Field label="Будинок" component="input" id="primary-apartment" name="apartment" />
+			<Field label="ПІБ Отримувача" component="input" id="primary-fullname" name="recipient-name" />
+			<Field
+				label="Мобільний телефон"
+				component="input"
+				id="primary-phone"
+				name="phone"
+				data-phone-mask=""
+			/>
+			<Btn variant="solid" type="submit" slot="actions">Зберегти</Btn>
+		</Form>
+	</EditableCard>
+	<Btn class="address__add-btn" iconStart="plus-square" variant="ghost">Додати адресу</Btn>
+	<Form class="address__add-form" action="" data-form="additional-address" hidden>
+		<Field label="Область" component="select" id="additional-region" name="region">
+			<option selected>Київська</option>
+		</Field>
+		<Field label="Місто" component="input" id="additional-city" name="city" />
+		<Field label="Вулиця" component="input" id="additional-street" name="street" />
+		<Field label="Будинок" component="input" id="additional-apartment" name="apartment" />
+		<Field label="ПІБ Отримувача" component="input" id="additional-fullname" name="recipient-name" />
+		<Field
+			label="Мобільний телефон"
+			component="input"
+			id="additional-phone"
+			name="phone"
+			data-phone-mask=""
+		/>
+		<Btn variant="solid" type="submit" slot="actions">Зберегти</Btn>
+	</Form>
+	<div class="address__additional-list">
+		<EditableCard icon="location" hasEditBtn collapsible>
+			<Fragment slot="preview">м. Дніпро, вул. Волгоградська 135, будинок 14, квартира 67</Fragment>
+			<Form action="" data-form="additional-address" slot="edit">
+				<Field label="Область" component="select" id="additional-region-1" name="region">
+					<option selected>Київська</option>
+				</Field>
+				<Field label="Місто" component="input" id="additional-city-1" name="city" />
+				<Field label="Вулиця" component="input" id="additional-street-1" name="street" />
+				<Field label="Будинок" component="input" id="additional-apartment-1" name="apartment" />
+				<Field label="ПІБ Отримувача" component="input" id="additional-fullname-1" name="recipient-name" />
+				<Field
+					label="Мобільний телефон"
+					component="input"
+					id="additional-phone-1"
+					name="phone"
+					data-phone-mask=""
+				/>
+				<Fragment slot="actions">
+					<Btn variant="solid" type="submit">Зберегти</Btn>
+					<Btn variant="outline" iconStart="trash" data-remove-address="1">Видалити</Btn>
+				</Fragment>
+			</Form>
+		</EditableCard>
+		<EditableCard icon="location" hasEditBtn collapsible>
+			<Fragment slot="preview">м. Дніпро, вул. Волгоградська 135, будинок 14, квартира 67</Fragment>
+			<Form action="" data-form="additional-address" slot="edit">
+				<Field label="Область" component="select" id="additional-region-2" name="region">
+					<option selected>Київська</option>
+				</Field>
+				<Field label="Місто" component="input" id="additional-city-2" name="city" />
+				<Field label="Вулиця" component="input" id="additional-street-2" name="street" />
+				<Field label="Будинок" component="input" id="additional-apartment-2" name="apartment" />
+				<Field label="ПІБ Отримувача" component="input" id="additional-fullname-2" name="recipient-name" />
+				<Field
+					label="Мобільний телефон"
+					component="input"
+					id="additional-phone-2"
+					name="phone"
+					data-phone-mask=""
+				/>
+				<Fragment slot="actions">
+					<Btn variant="solid" type="submit">Зберегти</Btn>
+					<Btn variant="outline" iconStart="trash" data-remove-address="2">Видалити</Btn>
+				</Fragment>
+			</Form>
+		</EditableCard>
+	</div>
+</div>

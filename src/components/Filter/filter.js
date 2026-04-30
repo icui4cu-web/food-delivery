@@ -1,12 +1,12 @@
 
 
 export function loading(state) {
-	const filter = document.querySelector('[data-filter]');
+	const filter = document.querySelector('.filter');
 	state ? filter.setAttribute('inert', '') : filter.removeAttribute('inert');
 }
 
 export function toggle(isOpen) {
-	document.querySelector('[data-filter]').classList.toggle('_open', isOpen)
+	document.querySelector('.filter').classList.toggle('_open', isOpen)
 	document.body.classList.toggle('filter-scroll-lock', isOpen)
 }
 
@@ -14,8 +14,8 @@ function init() {
 	const rangeEl = document.getElementById('filter-price-range');
 	const inputMin = document.querySelector('[data-filter-price-min]');
 	const inputMax = document.querySelector('[data-filter-price-max]');
-	const closeBtn = document.querySelector('[data-filter-close-btn]')
-	const overlay = document.querySelector('[data-filter-overlay]')
+	const closeBtn = document.querySelector('.filter__close-btn')
+	const overlay = document.querySelector('.filter-overlay')
 
 	const min = +rangeEl.dataset.min;
 	const max = +rangeEl.dataset.max;
@@ -71,6 +71,6 @@ function init() {
 	overlay.addEventListener('click', () => toggle(false))
 }
 
-if (document.querySelector('[data-filter]')) {
+if (document.querySelector('.filter')) {
 	init();
 }

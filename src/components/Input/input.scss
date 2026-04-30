@@ -4,17 +4,16 @@
 	border-radius: 20px;
 	background-color: #fff;
 	color: #000;
-	border: 1px solid #e1e1e1;
+	border: 1px solid var(--input-border-color, #e1e1e1);
 	font: 16px var(--page-font-family);
 	transition: border-color .2s;
+	text-overflow: ellipsis;
 
-	&:user-invalid,
-	&_invalid {
-		color: #f00;
-		border-color: #f00;
+	&:user-invalid {
+		--input-border-color: #f00;
 	}
 
-	&:not(:user-invalid, &_invalid):focus {
-		border-color: #999;
+	&:not(:user-invalid):focus {
+		--input-border-color: #999;
 	}
 }

@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import AccountNav from "@components/Account/AccountNav/AccountNav.astro";
+import Account from "@components/Account/Account.astro";
+import AccountBackBtn from "@components/Account/AccountBackBtn/AccountBackBtn.astro";
+import Order from "@components/Order/Order.astro";
+---
+
+<Layout metaTitle="Мої замовлення" headerPosition="static" theme="home">
+	<link rel="stylesheet" href="/assets/css/nouislider.min.css" slot="head" />
+	<script src="/assets/js/nouislider.min.js" slot="scripts" is:inline></script>
+
+	<Breadcrumbs items={["Кабінет", "Мої замовлення"]} />
+	<main class="page__main container">
+		<SidebarGrid placement="account">
+			<AccountNav slot="sidebar" />
+			<Account title="" slot="content">
+				<AccountBackBtn href="/account/orders" slot="header" forceArrow>Мої замовлення</AccountBackBtn>
+				<Order />
+			</Account>
+		</SidebarGrid>
+	</main>
+</Layout>

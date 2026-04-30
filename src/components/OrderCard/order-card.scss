@@ -1,0 +1,15 @@
+.order-card {
+	$radius: 20px;
+
+	&__header {
+		isolation: isolate;
+	}
+
+	&__summary {
+		margin-top: -$radius;
+		padding: #{8px + $radius} fluid(16, 32) 12px;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		border: none;
+	}
+}

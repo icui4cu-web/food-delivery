@@ -1,0 +1,22 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import AccountBackBtn from "@components/Account/AccountBackBtn/AccountBackBtn.astro";
+import SidebarGrid from "@components/SidebarGrid/SidebarGrid.astro";
+import AccountNav from "@components/Account/AccountNav/AccountNav.astro";
+import Account from "@components/Account/Account.astro";
+import AddressSection from "@components/Address/Address.astro";
+---
+
+<Layout metaTitle="Адреса доставки" headerPosition="static" theme="home">
+	<Breadcrumbs items={["Кабінет", "Адреса доставки"]} />
+	<main class="page__main container">
+		<SidebarGrid placement="account">
+			<AccountNav slot="sidebar" />
+			<Account slot="content">
+				<AccountBackBtn href="/account" slot="header">Адреса доставки</AccountBackBtn>
+				<AddressSection />
+			</Account>
+		</SidebarGrid>
+	</main>
+</Layout>
