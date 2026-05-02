@@ -1,0 +1,41 @@
+@use "sass:math";
+
+.collage {
+	container-type: inline-size;
+	display: grid;
+
+	&__img {
+		display: block;
+		width: 100%;
+		object-fit: cover;
+		border-radius: math.div(25 * 100, 715) * 1cqw;
+	}
+
+	@media (width<992px) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: math.div(10px * 100%, 339px);
+
+		&>*:nth-child(1) {
+			grid-column: 1 / -1;
+			aspect-ratio: 339 / 300;
+		}
+
+		&>*:nth-child(n + 2) {
+			aspect-ratio: 1;
+		}
+	}
+
+	@media (width>=992px) {
+		grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
+		gap: math.div(17px * 100%, 565px) math.div(17px * 100%, 715px);
+
+		&>*:nth-child(1) {
+			grid-row: 1 / 4;
+			aspect-ratio: 399 / 565;
+		}
+
+		&>*:nth-child(n + 2) {
+			aspect-ratio: 299 / 177;
+		}
+	}
+}

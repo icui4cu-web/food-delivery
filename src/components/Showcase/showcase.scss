@@ -1,0 +1,50 @@
+@use "@scss/_var.scss";
+
+.showcase {
+	&__title {
+		margin-bottom: fluid(18, 35);
+	}
+
+	&__description {
+		font-size: em(18, 16);
+	}
+
+	&__btn {
+		margin-top: fluid(24, 35);
+	}
+
+	@media (width<992px) {
+		&__collage {
+			max-width: 500px;
+			margin: 35px auto 0;
+		}
+	}
+
+	@media (width>=992px) {
+		display: grid;
+		grid-template-columns: minmax(0, 653fr) minmax(0, 715fr);
+		align-items: start;
+		column-gap: 32px;
+
+		&__title {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (width>=var.$container-outer-width-desktop) {
+		grid-template-rows: auto 1fr;
+
+		&__title {
+			grid-column: 1 / 2;
+		}
+
+		&__text {
+			grid-column: 1;
+		}
+
+		&__collage {
+			grid-column: 2;
+			grid-row: 1 / -1;
+		}
+	}
+}

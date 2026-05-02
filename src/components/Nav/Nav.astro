@@ -1,26 +1,49 @@
 ---
+import Icon from "@components/Icon/Icon.astro";
 import "./nav.scss";
 
 const { class: className } = Astro.props;
 
 const nav = [
-	"Акції",
-	"Продукція",
-	"Про нас",
-	"Партнерам",
-	"Доставка",
-	"Контакти",
+	{ label: "Акції" },
+	{
+		label: "Продукція",
+		subnav: [
+			{ label: "Для дому", hoverLabel: "Роздрібний каталог", icon: "store", theme: "home" },
+			{ label: "Для Бізнесу", hoverLabel: "Оптовий каталог", icon: "truck", theme: "business" },
+			{ label: "Для HoReCa", hoverLabel: "Каталог HoReCa", icon: "restaurant", theme: "horeca" },
+		],
+	},
+	{ label: "Про нас" },
+	{ label: "Партнерам" },
+	{ label: "Доставка" },
+	{ label: "Контакти" },
 ];
 ---
 
 <nav class:list={[className, "nav"]}>
 	<ul class="nav__list">
 		{
-			nav.map((text) => (
+			nav.map(({ label, subnav }) => (
 				<li class="nav__item">
 					<a class="nav__link" href="#">
-						{text}
+						{label}
 					</a>
+					{subnav && (
+						<div class="nav__subnav subnav">
+							<ul class="subnav__list">
+								{subnav.map(({ label, hoverLabel, icon, theme }) => (
+									<li class="subnav__item">
+										<a class:list={["subnav__link", theme && `subnav__link_theme_${theme}`]} href="#">
+											{icon && <Icon class="subnav__icon" id={icon} />}
+											<span class="subnav__label">{label}</span>
+											{hoverLabel && <span class="subnav__hover-label">{hoverLabel}</span>}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
 				</li>
 			))
 		}

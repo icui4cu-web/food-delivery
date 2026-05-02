@@ -45,6 +45,7 @@ export default defineConfig({
 	integrations: import.meta.env.PROD ? [
 		htmlBeautifier({ 
 			max_preserve_newlines: 0,
+			// @ts-ignore
 			inline: []
 		 })
 	] : []

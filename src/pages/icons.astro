@@ -48,7 +48,8 @@ const icons = [
 	"dollar-minimalistic",
 	"weight-scales",
 	"truck-fast",
-	"repeat"
+	"repeat",
+	"restaurant"
 ];
 ---
 
@@ -58,7 +59,9 @@ const icons = [
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Pages</title>
 	</head>
-	<body style="padding: 30px; display: flex; flex-wrap: wrap; gap: 24px; font-size: 24px;">
-		{icons.map((id) => <Icon {id} />)}
+	<body>
+		<div style="padding: 30px; display: flex; flex-wrap: wrap; gap: 24px; font-size: 24px;">
+			{icons.map((id) => <Icon {id} />)}
+		</div>
 	</body>
 </html>

@@ -1,0 +1,68 @@
+---
+import "./collage.scss";
+
+const { class: className } = Astro.props;
+
+const images = {
+	mobile: [
+		{
+			src: "/media/showcase/showcase-mobile-1.webp",
+			width: 500,
+			height: 443,
+		},
+		{
+			src: "/media/showcase/showcase-mobile-2.webp",
+			width: 157,
+			height: 157,
+		},
+		{
+			src: "/media/showcase/showcase-mobile-2.webp",
+			width: 157,
+			height: 157,
+		},
+		{
+			src: "/media/showcase/showcase-mobile-3.webp",
+			width: 157,
+			height: 157,
+		},
+	],
+	desktop: [
+		{
+			src: "/media/showcase/showcase-desktop-1.webp",
+			width: 399,
+			height: 565,
+		},
+		{
+			src: "/media/showcase/showcase-desktop-2.webp",
+			width: 299,
+			height: 177,
+		},
+		{
+			src: "/media/showcase/showcase-desktop-3.webp",
+			width: 299,
+			height: 177,
+		},
+		{
+			src: "/media/showcase/showcase-desktop-4.webp",
+			width: 299,
+			height: 177,
+		},
+	],
+};
+---
+
+<div class:list={[className, "collage"]}>
+	{
+		images.mobile.map((_, i) => (
+			<picture>
+				<source
+					srcset={images.desktop[i].src}
+					width={images.desktop[i].width}
+					height={images.desktop[i].height}
+					media="(min-width: 992px)"
+				/>
+				<img class="collage__img" {...images.mobile[i]} loading="lazy" decoding="async" />
+			</picture>
+		))
+	}
+</div>

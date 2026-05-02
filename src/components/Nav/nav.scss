@@ -9,19 +9,134 @@
 		font-weight: 500;
 	}
 
+	&__item {
+		position: relative;
+	}
+
 	&__link {
 		display: block;
 		align-content: center;
-		padding: 8px fluid(8, 15, 992, 1200);
-		border-radius: 100px;
+		padding: 2px fluid(8, 15, 992, 1200);
+		border-radius: calc(infinity * 1px);
 		text-align: center;
-		transition: background-color .15s, color .15s;
+		transition: background-color .2s;
+	}
+
+	&__subnav {
+		#{$root}__item:not(:hover) & {
+			display: none;
+		}
 	}
 
 	@media (hover) {
+		&__item:hover &__link {
+			background-color: #fff;
+		}
+	}
+}
+
+.subnav {
+	$root: &;
+	$font-size: 18px;
+
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding-top: 11px;
+
+	&__list {
+		position: relative;
+		padding-block: em(25, $font-size);
+		border-radius: 15px;
+		filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.17));
+		background-color: #f8f7f6;
+		font-size: $font-size;
+		font-weight: 400;
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 100%;
+			left: calc(50% - 6px);
+			border-style: solid;
+			border-width: 0px 12px 10px 12px;
+			border-color: transparent transparent #f8f7f6 transparent;
+			transform: rotate(0deg);
+		}
+	}
+
+	&__item:not(:last-child) {
+		margin-bottom: em(6, $font-size);
+	}
+
+	&__link {
+		--link-theme: currentColor;
+		display: grid;
+		align-items: center;
+		grid-template-columns: auto 1fr;
+		grid-template-areas: 'icon label';
+		column-gap: em(20, $font-size);
+		padding: 3px em(26, $font-size);
+		white-space: nowrap;
+		overflow: hidden;
+
+		&_theme {
+			&_home {
+				--link-theme: var(--clr-gamma);
+			}
+
+			&_business {
+				--link-theme: var(--clr-beta);
+			}
+
+			&_horeca {
+				--link-theme: var(--clr-alpha);
+			}
+		}
+	}
+
+	&__icon {
+		grid-area: icon;
+		font-size: em(24, $font-size);
+		color: var(--link-theme);
+	}
+
+	&__label,
+	&__hover-label {
+		grid-area: label;
+	}
+
+	@media (hover) {
+		$transition-duration: .3s;
+
 		&__link:hover {
-			background-color: var(--nav-link-hover-bg, rgba($color: #fff, $alpha: 0.8));
-			color: var(--nav-link-hover-color, currentColor);
+			background-color: color-mix(in srgb, var(--link-theme), transparent 85%);
+		}
+
+		&__label,
+		&__hover-label {
+			transition-property: transform, opacity, visibility;
+			transition-duration: $transition-duration;
+		}
+
+		&__label {
+			transition-delay: $transition-duration;
+		}
+
+		&__link:hover &__label {
+			transition-delay: 0s;
+		}
+
+		&__link:hover &__label,
+		&__link:not(:hover) &__hover-label {
+			transform: translateY(100%);
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&__link:hover &__hover-label {
+			transition-delay: $transition-duration;
 		}
 	}
 }

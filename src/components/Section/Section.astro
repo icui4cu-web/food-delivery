@@ -16,7 +16,7 @@ const { class: className, type, title, subtitle } = Astro.props;
 <section class:list={[className, "section", type && `section_type_${type}`]}>
 	<header class="section__header">
 		<hgroup class="section__hgroup">
-			<Subtitle>{subtitle}</Subtitle>
+			{subtitle && <Subtitle>{subtitle}</Subtitle>}
 			<Title as="h2" size={2}>{title}</Title>
 		</hgroup>
 		{

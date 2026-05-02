@@ -1,0 +1,83 @@
+@use "sass:math";
+
+.recipes {
+	$root: &;
+
+	container-type: inline-size;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-rows: repeat(2, auto);
+	gap: math.div(17px * 100%, 493px) math.div(17px * 100%, 1240px);
+
+	&__link {
+		position: relative;
+		aspect-ratio: 299 / 238;
+		border-radius: cqw(25, 1240);
+		overflow: hidden;
+
+		&:first-child {
+			grid-column: 2 / 4;
+			grid-row: 1 / -1;
+			aspect-ratio: 609 / 493;
+		}
+	}
+
+	&__info {
+		position: absolute;
+		inset: auto math.div(17px * 100%, 609px) math.div(20px * 100%, 493px);
+		padding: cqw(11, 1240);
+		border-radius: cqw(18, 1240);
+		border: 1px solid rgba($color: #fff, $alpha: 0.2);
+		backdrop-filter: blur(6px);
+		background: radial-gradient(93% 223% at 46% 28%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.24));
+		color: #fff;
+
+		#{$root}__link:first-child & {
+			padding: cqw(24, 1240);
+			padding-top: cqw(20, 1240);
+		}
+	}
+
+	&__title {
+		margin-bottom: em(8, 18);
+		font-size: cqw(18, 1240);
+		font-weight: 500;
+		line-height: 1.1;
+
+		#{$root}__link:first-child & {
+			margin-bottom: em(20, 28);
+			font-size: cqw(28, 1240);
+		}
+	}
+
+	&__description {
+		color: #D1D1D1;
+		line-height: 1.35;
+		font-size: cqw(14, 1240);
+
+		#{$root}__link:first-child & {
+			font-size: cqw(18, 1240);
+		}
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: inherit;
+	}
+
+	@media (hover) {
+		&__info {
+			transition-property: opacity, transform, visibility;
+			transition-duration: .5s;
+
+			#{$root}__link:not(:hover) & {
+				visibility: hidden;
+				opacity: 0;
+				transform: translateY(30px);
+			}
+		}
+	}
+}

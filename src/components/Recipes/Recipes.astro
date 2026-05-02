@@ -1,0 +1,45 @@
+---
+import "./recipes.scss";
+
+const recipes = [
+	{
+		src: "/demo-content/recipe-1.webp",
+		width: 692,
+		height: 560,
+	},
+	{
+		src: "/demo-content/recipe-2.webp",
+		width: 338,
+		height: 269,
+	},
+	{
+		src: "/demo-content/recipe-3.webp",
+		width: 338,
+		height: 269,
+	},
+	{
+		src: "/demo-content/recipe-4.webp",
+		width: 338,
+		height: 269,
+	},
+	{
+		src: "/demo-content/recipe-5.webp",
+		width: 338,
+		height: 269,
+	},
+];
+---
+
+<div class="recipes">
+	{
+		recipes.map((img) => (
+			<a class="recipes__link" href="#">
+				<div class="recipes__info">
+					<h3 class="recipes__title">Ніжна куряча печінка з ароматними грушами</h3>
+					<p class="recipes__description">Час приготування: 25 хв | Кількість порцій: 4</p>
+				</div>
+				<img class="recipes__img" {...img} alt="" loading="lazy" decoding="async" />
+			</a>
+		))
+	}
+</div>
