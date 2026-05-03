@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
 import Section from "@components/Section/Section.astro";
+import SwiperNav from "@components/SwiperNav/SwiperNav.astro";
 import Btn from "@components/Btn/Btn.astro";
 import Showcase from "@components/Showcase/Showcase.astro";
 import Recipes from "@components/Recipes/Recipes.astro";
@@ -10,15 +11,16 @@ import Recipes from "@components/Recipes/Recipes.astro";
 <Layout metaTitle="Showcase" headerPosition="static" theme="home">
 	<Breadcrumbs items={[]} />
 	<main class="page__main">
-		<!-- <Showcase /> -->
+		<Showcase class="page__section container" />
 		 <Section
 			class="page__section container"
 			title="Рецепти"
 		>
 			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="recipes" placement="recipes" />
 				<Btn href="#" variant="solid" iconEnd="arrow-right">Дивитись всі</Btn>
 			</Fragment>
-			<Recipes />
+			<Recipes sliderId="recipes" />
 		</Section>
 	</main>
 </Layout>

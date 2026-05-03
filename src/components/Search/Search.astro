@@ -1,0 +1,20 @@
+---
+import Btn from "@components/Btn/Btn.astro";
+import "./search.scss";
+
+const { class: className } = Astro.props;
+---
+
+<search class:list={[className, "search"]}>
+	<form class="search__form">
+		<Btn class="search__close" aria-label="Закрити пошук" variant="outline" iconStart="x" />
+		<input class="search__input" type="search" placeholder="Я шукаю..." minlength="3" required />
+		<Btn
+			class="search__submit"
+			aria-label="Пошук"
+			variant="outline"
+			iconStart="search"
+			type="submit"
+		/>
+	</form>
+</search>

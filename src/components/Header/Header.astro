@@ -1,8 +1,9 @@
 ---
-import Btn from "@components/Btn/Btn.astro";
+import Icon from "@components/Icon/Icon.astro";
 import Logo from "@components/Logo/Logo.astro";
 import Nav from "@components/Nav/Nav.astro";
-import Icon from "@components/Icon/Icon.astro";
+import Btn from "@components/Btn/Btn.astro";
+import Search from "@components/Search/Search.astro";
 import "./header.scss";
 
 interface Props {
@@ -22,8 +23,11 @@ const { position } = Astro.props;
 		</div>
 		<Nav class="header__nav" />
 		<div class="header__actions">
-			<Btn class="header__search-btn" variant="outline" iconStart="search" title="Пошук" />
-			<Btn class="header__profile-btn" variant="outline" iconStart="user-alt" title="Профіль" />
+			<div class="header__search-group">
+				<Btn class="header__search-btn" variant="outline" iconStart="search" title="Пошук" />
+				<Search class="header__search" />
+			</div>
+			<Btn class="header__profile-btn" variant="outline" iconStart="user-alt" title="Профіль" href="#" />
 			<Btn variant="solid" iconStart="cart" title="Кошик" />
 		</div>
 	</div>

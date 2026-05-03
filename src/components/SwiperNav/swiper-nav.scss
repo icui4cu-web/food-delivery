@@ -6,6 +6,12 @@
 		font-size: 18px;
 	}
 
+	@media (width>=860px) {
+		&_placement_recipes {
+			display: none;
+		}
+	}
+
 	@media (width>=992px) {
 		&_placement_categories {
 			display: none;

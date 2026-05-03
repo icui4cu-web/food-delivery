@@ -49,10 +49,8 @@
 		font-size: 32px;
 	}
 
-	@media (width<1200px) {
-
-		&__nav,
-		&__search-btn,
+	@media (width<var.$nav-bp) {
+		&__search-group,
 		&__profile-btn {
 			display: none;
 		}
@@ -62,7 +60,7 @@
 		}
 	}
 
-	@media (width>=1200px) {
+	@media (width>=var.$nav-bp) {
 		&_pos_absolute {
 			top: 27px;
 		}
@@ -92,6 +90,18 @@
 			display: flex;
 			align-items: center;
 			column-gap: 21px;
+		}
+
+		&__search-group {
+			position: relative;
+		}
+
+		&__search {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			right: 0;
+			width: 365px;
 		}
 	}
 }

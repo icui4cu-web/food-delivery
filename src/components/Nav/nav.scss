@@ -1,30 +1,90 @@
+@use "@scss/_var.scss";
+
 .nav {
 	$root: &;
 
 	&__list {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		font-size: fluid(16, 20, 992, 1200);
+		font-size: 20px;
 		font-weight: 500;
 	}
 
-	&__item {
-		position: relative;
+	@media (width<var.$nav-bp) {
+		position: fixed;
+		z-index: var.$nav-z + 1;
+		top: 0;
+		right: 100%;
+		width: 334px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+		max-width: calc(100% - 20px);
+		visibility: hidden;
+		transition: transform .5s, visibility .5s;
+
+		&_open {
+			visibility: visible;
+			transform: translateX(100%);
+		}
+
+		&__header {
+			margin-bottom: 53px;
+			display: flex;
+			align-items: center;
+			column-gap: 20px;
+			padding: 26px 16px 0 41px;
+		}
+
+		&__close-btn {
+			margin-left: auto;
+			padding: 4px;
+			font-size: 32px;
+		}
+
+		&__list {
+			padding: 0 47px 10px;
+			overflow-y: auto;
+			overscroll-behavior-y: contain;
+		}
+
+		&__item:not(:last-child) {
+			margin-bottom: 21px;
+		}
+
+		&__subnav {
+			padding-top: 20px;
+		}
 	}
 
-	&__link {
-		display: block;
-		align-content: center;
-		padding: 2px fluid(8, 15, 992, 1200);
-		border-radius: calc(infinity * 1px);
-		text-align: center;
-		transition: background-color .2s;
-	}
-
-	&__subnav {
-		#{$root}__item:not(:hover) & {
+	@media (width>=var.$nav-bp) {
+		&__header {
 			display: none;
+		}
+
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			font-size: fluid(16, 20, 992, 1200);
+		}
+
+		&__item {
+			position: relative;
+		}
+
+		&__link {
+			display: block;
+			align-content: center;
+			padding: 2px fluid(8, 15, 992, 1200);
+			border-radius: calc(infinity * 1px);
+			text-align: center;
+			transition: background-color .2s;
+		}
+
+		&__subnav {
+			#{$root}__item:not(:hover) & {
+				display: none;
+			}
 		}
 	}
 
@@ -39,37 +99,6 @@
 	$root: &;
 	$font-size: 18px;
 
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-	padding-top: 11px;
-
-	&__list {
-		position: relative;
-		padding-block: em(25, $font-size);
-		border-radius: 15px;
-		filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.17));
-		background-color: #f8f7f6;
-		font-size: $font-size;
-		font-weight: 400;
-
-		&::before {
-			content: '';
-			position: absolute;
-			bottom: 100%;
-			left: calc(50% - 6px);
-			border-style: solid;
-			border-width: 0px 12px 10px 12px;
-			border-color: transparent transparent #f8f7f6 transparent;
-			transform: rotate(0deg);
-		}
-	}
-
-	&__item:not(:last-child) {
-		margin-bottom: em(6, $font-size);
-	}
-
 	&__link {
 		--link-theme: currentColor;
 		display: grid;
@@ -77,8 +106,9 @@
 		grid-template-columns: auto 1fr;
 		grid-template-areas: 'icon label';
 		column-gap: em(20, $font-size);
-		padding: 3px em(26, $font-size);
-		white-space: nowrap;
+		padding-block: 3px;
+		font-size: $font-size;
+		font-weight: 400;
 		overflow: hidden;
 
 		&_theme {
@@ -107,36 +137,110 @@
 		grid-area: label;
 	}
 
-	@media (hover) {
-		$transition-duration: .3s;
-
-		&__link:hover {
-			background-color: color-mix(in srgb, var(--link-theme), transparent 85%);
+	@media (width<var.$nav-bp) {
+		&__item:not(:last-child) {
+			margin-bottom: 18px;
 		}
 
-		&__label,
 		&__hover-label {
-			transition-property: transform, opacity, visibility;
-			transition-duration: $transition-duration;
+			display: none;
+		}
+	}
+
+	@media (width>=var.$nav-bp) {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 11px;
+
+		&__list {
+			position: relative;
+			padding-block: em(25, $font-size);
+			border-radius: 15px;
+			filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.17));
+			background-color: #f8f7f6;
+
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: 100%;
+				left: calc(50% - 6px);
+				border-style: solid;
+				border-width: 0px 12px 10px 12px;
+				border-color: transparent transparent #f8f7f6 transparent;
+				transform: rotate(0deg);
+			}
 		}
 
-		&__label {
-			transition-delay: $transition-duration;
+		&__item:not(:last-child) {
+			margin-bottom: em(6, $font-size);
 		}
 
-		&__link:hover &__label {
-			transition-delay: 0s;
+
+		&__link {
+			padding-inline: em(26, $font-size);
+			white-space: nowrap;
 		}
 
-		&__link:hover &__label,
-		&__link:not(:hover) &__hover-label {
-			transform: translateY(100%);
-			opacity: 0;
-			visibility: hidden;
-		}
+		@media (hover) {
+			$transition-duration: .3s;
 
-		&__link:hover &__hover-label {
-			transition-delay: $transition-duration;
+			&__link:hover {
+				background-color: color-mix(in srgb, var(--link-theme), transparent 85%);
+			}
+
+			&__label,
+			&__hover-label {
+				transition-property: transform, opacity, visibility;
+				transition-duration: $transition-duration;
+			}
+
+			&__link:hover &__label,
+			&__link:not(:hover) &__hover-label {
+				transform: translateY(100%);
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			&__label {
+				transition-delay: $transition-duration;
+			}
+
+			&__link:hover &__label {
+				transition-delay: 0s;
+			}
+
+			&__link:hover &__hover-label {
+				transition-delay: $transition-duration;
+			}
 		}
+	}
+}
+
+.nav-overlay {
+	@media (width<var.$nav-bp) {
+		position: fixed;
+		z-index: var.$nav-z;
+		inset: 0;
+		background-color: rgba($color: #000000, $alpha: .7);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .5s, visibility .5s;
+
+		@at-root .nav_open + & {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	@media (width>=var.$nav-bp) {
+		display: none;
+	}
+}
+
+.nav-scroll-lock {
+	@media (width<var.$nav-bp) {
+		overflow: hidden;
 	}
 }

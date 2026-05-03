@@ -1,4 +1,6 @@
 import "./init";
+import "@components/Nav/nav"
+import "@components/Search/search"
 import "@components/Hero/hero"
 import "@components/Header/header"
 import "@components/Categories/categories"
@@ -18,5 +20,6 @@ import "@components/InputPassword/input-password";
 import "@components/EditBtn/edit-btn";
 import "@components/Address/address";
 import "@components/Orders/orders";
+import "@components/Recipes/recipes";
 
 import "./demo";
