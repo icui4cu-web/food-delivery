@@ -1,5 +1,5 @@
 import { throttle } from "@js/utils";
-import * as Nav from "@components/Nav/nav";
+import * as MobileNav from "@components/MobileNav/mobile-nav";
 import * as Search from "@components/Search/search";
 
 const header = document.querySelector('.header');
@@ -15,5 +15,8 @@ const handleScroll = throttle(() => {
 window.addEventListener('scroll', handleScroll, { passive: true });
 handleScroll()
 
-document.querySelector('.header__nav-btn')?.addEventListener('click', () => Nav.toggle(true))
-document.querySelector('.header__search-btn')?.addEventListener('click', () => Search.toggle(search, true))
+document.querySelector('.header__nav-btn')?.addEventListener('click', () => MobileNav.toggle(true))
+document.querySelector('.header__search-btn')?.addEventListener('click', (e) => {
+	e.stopPropagation()
+	Search.toggle(search, true)
+})

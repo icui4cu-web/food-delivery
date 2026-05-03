@@ -1,0 +1,63 @@
+@use "@scss/_var.scss";
+
+.mobile-nav {
+	@media (width<var.$nav-bp) {
+		position: fixed;
+		z-index: var.$nav-z + 1;
+		top: 0;
+		right: 100%;
+		width: 334px;
+		height: 100%;
+		padding: 26px 40px 10px;
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+		max-width: calc(100% - 20px);
+		visibility: hidden;
+		transition: transform .5s, visibility .5s;
+
+		&_open {
+			visibility: visible;
+			transform: translateX(100%);
+		}
+
+		&__close-btn {
+			margin-inline: auto -25px;
+			padding: 2px;
+			font-size: 36px;
+		}
+	}
+
+	@media (width>=var.$nav-bp) {
+		&__close-btn {
+			display: none;
+		}
+	}
+}
+
+.mobile-nav-overlay {
+	@media (width<var.$nav-bp) {
+		position: fixed;
+		z-index: var.$nav-z;
+		inset: 0;
+		background-color: rgba($color: #000000, $alpha: .7);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .5s, visibility .5s;
+
+		@at-root .mobile-nav_open+& {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	@media (width>=var.$nav-bp) {
+		display: none;
+	}
+}
+
+.mobile-nav-scroll-lock {
+	@media (width<var.$nav-bp) {
+		overflow: hidden;
+	}
+}

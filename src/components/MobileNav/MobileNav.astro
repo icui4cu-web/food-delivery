@@ -1,0 +1,10 @@
+---
+import "./mobile-nav.scss";
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[className, "mobile-nav"]}>
+	<slot />
+</div>
+<div class="mobile-nav-overlay"></div>

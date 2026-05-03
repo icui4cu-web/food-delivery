@@ -1,7 +1,6 @@
 ---
 import Icon from "@components/Icon/Icon.astro";
 import "./nav.scss";
-import Btn from "@components/Btn/Btn.astro";
 
 const { class: className } = Astro.props;
 
@@ -22,12 +21,7 @@ const nav = [
 ];
 ---
 
-<nav class:list={[className, "nav nav_open"]}>
-	<div class="nav__header">
-		<Btn variant="outline" iconStart="search" title="Пошук" />
-		<Btn variant="outline" iconStart="user-alt" title="Профіль" />
-		<button class="nav__close-btn" aria-label="Закрити навігацію"><Icon id="x" /></button>
-	</div>
+<nav class:list={[className, "nav"]}>
 	<ul class="nav__list">
 		{
 			nav.map(({ label, subnav }) => (
@@ -55,4 +49,3 @@ const nav = [
 		}
 	</ul>
 </nav>
-<div class="nav-overlay"></div>

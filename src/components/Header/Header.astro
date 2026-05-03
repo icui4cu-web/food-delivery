@@ -1,9 +1,11 @@
 ---
 import Icon from "@components/Icon/Icon.astro";
 import Logo from "@components/Logo/Logo.astro";
+import MobileNav from "@components/MobileNav/MobileNav.astro";
 import Nav from "@components/Nav/Nav.astro";
 import Btn from "@components/Btn/Btn.astro";
 import Search from "@components/Search/Search.astro";
+import MobileNavCloseBtn from "@components/MobileNav/MobileNavCloseBtn.astro";
 import "./header.scss";
 
 interface Props {
@@ -21,14 +23,23 @@ const { position } = Astro.props;
 		<div class="header__logo">
 			<Logo class="header__logo" />
 		</div>
-		<Nav class="header__nav" />
-		<div class="header__actions">
-			<div class="header__search-group">
-				<Btn class="header__search-btn" variant="outline" iconStart="search" title="Пошук" />
-				<Search class="header__search" />
+		<MobileNav class="header__mobile-nav">
+			<div class="header__actions">
+				<div class="header__search-group">
+					<Btn class="header__search-btn" variant="outline" iconStart="search" title="Пошук" />
+					<Search class="header__search" />
+				</div>
+				<Btn
+					variant="outline"
+					iconStart="user-alt"
+					title="Профіль"
+					href="#"
+				/>
+				<Btn class="header__cart-desktop" variant="solid" iconStart="cart" title="Кошик" />
+				<MobileNavCloseBtn />
 			</div>
-			<Btn class="header__profile-btn" variant="outline" iconStart="user-alt" title="Профіль" href="#" />
-			<Btn variant="solid" iconStart="cart" title="Кошик" />
-		</div>
+			<Nav class="header__nav" />
+		</MobileNav>
+		<Btn class="header__cart-mobile" variant="solid" iconStart="cart" title="Кошик" />
 	</div>
 </header>

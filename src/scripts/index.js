@@ -1,5 +1,5 @@
 import "./init";
-import "@components/Nav/nav"
+import "@components/MobileNav/mobile-nav"
 import "@components/Search/search"
 import "@components/Hero/hero"
 import "@components/Header/header"

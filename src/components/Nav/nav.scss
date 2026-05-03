@@ -9,40 +9,7 @@
 	}
 
 	@media (width<var.$nav-bp) {
-		position: fixed;
-		z-index: var.$nav-z + 1;
-		top: 0;
-		right: 100%;
-		width: 334px;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		background-color: #fff;
-		max-width: calc(100% - 20px);
-		visibility: hidden;
-		transition: transform .5s, visibility .5s;
-
-		&_open {
-			visibility: visible;
-			transform: translateX(100%);
-		}
-
-		&__header {
-			margin-bottom: 53px;
-			display: flex;
-			align-items: center;
-			column-gap: 20px;
-			padding: 26px 16px 0 41px;
-		}
-
-		&__close-btn {
-			margin-left: auto;
-			padding: 4px;
-			font-size: 32px;
-		}
-
 		&__list {
-			padding: 0 47px 10px;
 			overflow-y: auto;
 			overscroll-behavior-y: contain;
 		}
@@ -218,29 +185,5 @@
 	}
 }
 
-.nav-overlay {
-	@media (width<var.$nav-bp) {
-		position: fixed;
-		z-index: var.$nav-z;
-		inset: 0;
-		background-color: rgba($color: #000000, $alpha: .7);
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity .5s, visibility .5s;
 
-		@at-root .nav_open + & {
-			visibility: visible;
-			opacity: 1;
-		}
-	}
 
-	@media (width>=var.$nav-bp) {
-		display: none;
-	}
-}
-
-.nav-scroll-lock {
-	@media (width<var.$nav-bp) {
-		overflow: hidden;
-	}
-}
