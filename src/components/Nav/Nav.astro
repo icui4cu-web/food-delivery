@@ -9,9 +9,9 @@ const nav = [
 	{
 		label: "Продукція",
 		subnav: [
-			{ label: "Для дому", hoverLabel: "Роздрібний каталог", icon: "store", theme: "home" },
-			{ label: "Для Бізнесу", hoverLabel: "Оптовий каталог", icon: "truck", theme: "business" },
-			{ label: "Для HoReCa", hoverLabel: "Каталог HoReCa", icon: "restaurant", theme: "horeca" },
+			{ label: "Для дому", icon: "store", theme: "home" },
+			{ label: "Для Бізнесу", icon: "truck", theme: "business" },
+			{ label: "Для HoReCa", icon: "restaurant", theme: "horeca" },
 		],
 	},
 	{ label: "Про нас" },
@@ -32,12 +32,11 @@ const nav = [
 					{subnav && (
 						<div class="nav__subnav subnav">
 							<ul class="subnav__list">
-								{subnav.map(({ label, hoverLabel, icon, theme }) => (
+								{subnav.map(({ label, icon, theme }) => (
 									<li class="subnav__item">
 										<a class:list={["subnav__link", theme && `subnav__link_theme_${theme}`]} href="#">
 											{icon && <Icon class="subnav__icon" id={icon} />}
-											<span class="subnav__label">{label}</span>
-											{hoverLabel && <span class="subnav__hover-label">{hoverLabel}</span>}
+											{label}
 										</a>
 									</li>
 								))}

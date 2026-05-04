@@ -68,10 +68,8 @@
 
 	&__link {
 		--link-theme: currentColor;
-		display: grid;
+		display: flex;
 		align-items: center;
-		grid-template-columns: auto 1fr;
-		grid-template-areas: 'icon label';
 		column-gap: em(20, $font-size);
 		padding-block: 3px;
 		font-size: $font-size;
@@ -99,18 +97,9 @@
 		color: var(--link-theme);
 	}
 
-	&__label,
-	&__hover-label {
-		grid-area: label;
-	}
-
 	@media (width<var.$nav-bp) {
 		&__item:not(:last-child) {
 			margin-bottom: 18px;
-		}
-
-		&__hover-label {
-			display: none;
 		}
 	}
 
@@ -122,6 +111,7 @@
 		padding-top: 11px;
 
 		&__list {
+			min-width: 270px;
 			position: relative;
 			padding-block: em(25, $font-size);
 			border-radius: 15px;
@@ -151,35 +141,8 @@
 		}
 
 		@media (hover) {
-			$transition-duration: .3s;
-
 			&__link:hover {
 				background-color: color-mix(in srgb, var(--link-theme), transparent 85%);
-			}
-
-			&__label,
-			&__hover-label {
-				transition-property: transform, opacity, visibility;
-				transition-duration: $transition-duration;
-			}
-
-			&__link:hover &__label,
-			&__link:not(:hover) &__hover-label {
-				transform: translateY(100%);
-				opacity: 0;
-				visibility: hidden;
-			}
-
-			&__label {
-				transition-delay: $transition-duration;
-			}
-
-			&__link:hover &__label {
-				transition-delay: 0s;
-			}
-
-			&__link:hover &__hover-label {
-				transition-delay: $transition-duration;
 			}
 		}
 	}

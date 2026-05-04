@@ -24,14 +24,14 @@
 
 		&_current {
 			--arrow-color: #000;
-			background-color: $accent-color;
+			background-color: var(--clr-alpha);
 			border-color: transparent;
 		}
 
 		&:focus-visible {
-			outline: 1px solid $accent-color;
-			border-color: $accent-color;
-			background-color: color-mix(in srgb, $accent-color, transparent 90%);
+			outline: 1px solid var(--clr-alpha);
+			border-color: var(--clr-alpha);
+			background-color: color-mix(in srgb, var(--clr-alpha), transparent 90%);
 		}
 	}
 
@@ -55,9 +55,9 @@
 	@media (hover) {
 		&__link {
 			&:not(&_current):hover {
-				--arrow-color: #{$accent-color};
-				border-color: $accent-color;
-				background-color: color-mix(in srgb, $accent-color, transparent 90%);
+				--arrow-color: var(--clr-alpha);
+				border-color: var(--clr-alpha);
+				background-color: color-mix(in srgb, var(--clr-alpha), transparent 90%);
 			}
 		}
 	}

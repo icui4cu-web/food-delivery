@@ -15,3 +15,17 @@
 .u-color-page-theme {
 	color: var(--page-theme, var(--clr-primary));
 }
+
+.u-theme {
+	&-home {
+		--theme: var(--clr-gamma);
+	}
+
+	&-business {
+		--theme: var(--clr-beta);
+	}
+
+	&-horeca {
+		--theme: var(--clr-alpha);
+	}
+}

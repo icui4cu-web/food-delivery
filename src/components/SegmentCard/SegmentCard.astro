@@ -1,0 +1,43 @@
+---
+import "./segment-card.scss";
+
+interface Props {
+	segment: "home" | "business" | "horeca";
+}
+
+const { segment } = Astro.props;
+
+const segments = {
+	home: {
+		label: "СІМ’Я",
+		img: {
+			src: "/media/hero/accordion-family.webp",
+			alt: "Свіжі продукти для сім'ї",
+		},
+	},
+	business: {
+		label: "БІЗНЕС",
+		img: {
+			src: "/media/hero/accordion-business.webp",
+			alt: "Свіжі продукти для бізнесу",
+		},
+	},
+	horeca: {
+		label: "HoReCa",
+		img: {
+			src: "/media/hero/accordion-horeca.webp",
+			alt: "",
+		},
+	},
+};
+
+const { label, img } = segments[segment];
+---
+
+<div class:list={["segment-card", `u-theme-${segment}`]}>
+	<div class="segment-card__panel">
+		<div class="segment-card__num" aria-hidden="true">1</div>
+		<p class="segment-card__label">{label}</p>
+	</div>
+	<img class="segment-card__img" {...img} width="500" height="240" decoding="async" />
+</div>

@@ -1,0 +1,51 @@
+.segment-card {
+	display: flex;
+
+	&__panel {
+		flex-shrink: 0;
+		isolation: isolate;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		row-gap: 10px;
+		border-radius: calc(infinity * 1px);
+		padding: 3px 3px 32px 3px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		background-color: var(--theme);
+	}
+
+	&__label {
+		writing-mode: vertical-lr;
+		transform: rotate(180deg);
+		letter-spacing: 0.05em;
+		font-size: 18px;
+		font-weight: 700;
+		white-space: nowrap;
+		text-transform: uppercase;
+		color: #fff;
+	}
+
+	&__num {
+		flex-shrink: 0;
+		width: 30px;
+		aspect-ratio: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+		border-radius: 50px;
+		font-size: 20px;
+		font-weight: 700;
+		color: var(--theme);
+	}
+
+	&__img {
+		min-width: 0;
+		margin-left: -18px;
+		border-top-right-radius: 18px;
+		border-bottom-right-radius: 18px;
+		object-fit: cover;
+	}
+}

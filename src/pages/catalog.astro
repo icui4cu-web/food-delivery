@@ -1,0 +1,19 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
+import Title from "@components/Title/Title.astro";
+import CatalogOverview from "@components/CatalogOverview/CatalogOverview.astro";
+---
+
+<Layout metaTitle="Каталог" headerPosition="static" theme="home">
+	<link rel="stylesheet" href="/assets/css/nouislider.min.css" slot="head">
+	<script src="/assets/js/nouislider.min.js" slot="scripts" is:inline></script>
+
+	<Breadcrumbs items={["Каталог"]} />
+	<main class="page__main">
+		<hgroup class="page__title container">
+			<Title as="h1" size={1}>Каталог продукції</Title>
+		</hgroup>
+		<CatalogOverview class="container" />
+	</main>
+</Layout>
