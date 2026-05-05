@@ -1,9 +1,12 @@
 .segment-card {
-	display: flex;
+	$root: &;
 
-	&__panel {
-		flex-shrink: 0;
+	display: grid;
+	grid-template-columns: 36px 1fr;
+
+	&__btn {
 		isolation: isolate;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -42,10 +45,31 @@
 	}
 
 	&__img {
-		min-width: 0;
+		grid-column: 2 / 3;
+		grid-row: 1;
 		margin-left: -18px;
 		border-top-right-radius: 18px;
 		border-bottom-right-radius: 18px;
 		object-fit: cover;
+
+		&_back {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	@media (hover) {
+		&__img {
+			transition: visibility .2s, opacity .2s;
+			#{$root}:hover & {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			#{$root}:hover &_back {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
 	}
 }

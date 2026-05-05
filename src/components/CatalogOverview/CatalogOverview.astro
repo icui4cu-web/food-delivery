@@ -2,6 +2,7 @@
 import Title from "@components/Title/Title.astro";
 import "./catalog-overview.scss";
 import Icon from "@components/Icon/Icon.astro";
+import SegmentCard from "@components/SegmentCard/SegmentCard.astro";
 
 const { class: className } = Astro.props;
 
@@ -107,33 +108,38 @@ const catalog = [
 			},
 		],
 	},
-];
+] as const;
 ---
 
 <div class:list={[className, "catalog-overview"]}>
 	{
-		catalog.map(({ title, theme, icon, sections }) => (
+		catalog.map(({ title, theme, icon, sections }, index) => (
 			<div class={`catalog-overview__col u-theme-${theme}`}>
-				<Title class="catalog-overview__title" as="h3" size={3}>
-					<span class="catalog-overview__title-icon">
-						<Icon id={icon} notSquare={icon === 'truck'} />
-					</span>
-					{title}
-				</Title>
-				{sections.map(({ title, items }) => (
-					<>
-						<Title class="catalog-overview__subtitle" as="h4" size={4}>
-							{title}
-						</Title>
-						<ul class="catalog-overview__nav">
-							{items.map((text) => (
-								<li class="catalog-overview__item">
-									<a class="catalog-overview__link" href="#">{text}</a>
-								</li>
-							))}
-						</ul>
-					</>
-				))}
+				<SegmentCard class="catalog-overview__card" segment={theme} num={index + 1} />
+				<div class="catalog-overview__body">
+					<Title class="catalog-overview__title" as="h3" size={3}>
+						<span class="catalog-overview__title-icon">
+							<Icon id={icon} notSquare={icon === "truck"} />
+						</span>
+						{title}
+					</Title>
+					{sections.map(({ title, items }) => (
+						<>
+							<Title class="catalog-overview__subtitle" as="h4" size={4}>
+								{title}
+							</Title>
+							<ul class="catalog-overview__nav">
+								{items.map((text) => (
+									<li class="catalog-overview__item">
+										<a class="catalog-overview__link" href="#">
+											{text}
+										</a>
+									</li>
+								))}
+							</ul>
+						</>
+					))}
+				</div>
 			</div>
 		))
 	}

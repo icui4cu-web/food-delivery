@@ -3,10 +3,14 @@
 	$icon-gap: 20px;
 
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	column-gap: 74px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, fluid(300, 380)), 1fr));
+	gap: fluid(48, 74) fluid(24, 74);
 
-	&__col {
+	&__card {
+		margin-bottom: fluid(30, 50);
+	}
+
+	&__body {
 		position: relative;
 		padding-left: $icon-size + $icon-gap;
 
@@ -33,6 +37,7 @@
 	}
 
 	&__title-icon {
+		flex-shrink: 0;
 		margin-left: -$icon-size - $icon-gap;
 		width: $icon-size;
 		height: $icon-size;
@@ -46,21 +51,21 @@
 	}
 
 	&__subtitle {
-		margin-bottom: 4px;
+		margin-bottom: em(4, 24);
 	}
 
 	&__nav {
-		font-size: 18px;
+		font-size: em(18, 16);
 		padding-left: 20px;
 
 		&:not(:last-child) {
-			margin-bottom: 6px;
+			margin-bottom: em(6, 18);
 		}
 	}
 
 	&__item {
 		&:not(:last-child) {
-			margin-bottom: 6px;
+			margin-bottom: em(6, 18);
 		}
 	}
 

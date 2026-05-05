@@ -3,41 +3,56 @@ import "./segment-card.scss";
 
 interface Props {
 	segment: "home" | "business" | "horeca";
+	num: number;
+	class?: string;
 }
 
-const { segment } = Astro.props;
+const { class: className, segment, num } = Astro.props;
 
 const segments = {
 	home: {
 		label: "СІМ’Я",
 		img: {
-			src: "/media/hero/accordion-family.webp",
+			src: "/media/segment/segment-home-1.webp",
+			alt: "Свіжі продукти для сім'ї",
+		},
+		imgHover: {
+			src: "/media/segment/segment-home-2.webp",
 			alt: "Свіжі продукти для сім'ї",
 		},
 	},
 	business: {
 		label: "БІЗНЕС",
 		img: {
-			src: "/media/hero/accordion-business.webp",
+			src: "/media/segment/segment-business-1.webp",
+			alt: "Свіжі продукти для бізнесу",
+		},
+		imgHover: {
+			src: "/media/segment/segment-business-2.webp",
 			alt: "Свіжі продукти для бізнесу",
 		},
 	},
 	horeca: {
 		label: "HoReCa",
 		img: {
-			src: "/media/hero/accordion-horeca.webp",
-			alt: "",
+			src: "/media/segment/segment-horeca-1.webp",
+			alt: ""
+		},
+		imgHover: {
+			src: "/media/segment/segment-horeca-2.webp",
+			alt: ""
 		},
 	},
 };
 
-const { label, img } = segments[segment];
+const { label, img, imgHover } = segments[segment];
 ---
 
-<div class:list={["segment-card", `u-theme-${segment}`]}>
-	<div class="segment-card__panel">
-		<div class="segment-card__num" aria-hidden="true">1</div>
-		<p class="segment-card__label">{label}</p>
+<div class:list={[className, "segment-card", `u-theme-${segment}`]}>
+	<div class="segment-card__btn">
+		<span class="segment-card__num" aria-hidden="true">{num}</span>
+		<span class="segment-card__label">{label}</span>
 	</div>
-	<img class="segment-card__img" {...img} width="500" height="240" decoding="async" />
+	<img class="segment-card__img" {...img} width="500" height="240" loading="lazy" decoding="async" />
+	<img class="segment-card__img segment-card__img_back" {...imgHover} width="500" height="240" loading="lazy" decoding="async" />
 </div>

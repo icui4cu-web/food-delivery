@@ -3,6 +3,9 @@ import Layout from "@layouts/Layout.astro";
 import Breadcrumbs from "@components/Breadcrumbs/Breadcrumbs.astro";
 import Title from "@components/Title/Title.astro";
 import CatalogOverview from "@components/CatalogOverview/CatalogOverview.astro";
+import Section from "@components/Section/Section.astro";
+import SwiperNav from "@components/SwiperNav/SwiperNav.astro";
+import Offers from "@components/Offers/Offers.astro";
 ---
 
 <Layout metaTitle="Каталог" headerPosition="static" theme="home">
@@ -14,6 +17,12 @@ import CatalogOverview from "@components/CatalogOverview/CatalogOverview.astro";
 		<hgroup class="page__title container">
 			<Title as="h1" size={1}>Каталог продукції</Title>
 		</hgroup>
-		<CatalogOverview class="container" />
+		<CatalogOverview class="page__section container" />
+		<Section class="container" title="Рекомендуємо скуштувати" subtitle="Це теж добре смакує!">
+			<Fragment slot="section-actions">
+				<SwiperNav sliderTargetId="offers" />
+			</Fragment>
+			<Offers sliderId="offers" />
+		</Section>
 	</main>
 </Layout>
